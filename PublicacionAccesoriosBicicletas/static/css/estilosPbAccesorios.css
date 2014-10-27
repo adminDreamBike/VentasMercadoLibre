@@ -1,0 +1,177 @@
+article
+{
+	margin: 0.5em 1.5em 0 0.5em;
+	padding: 0 0.5em 0 0;
+}
+body
+{
+	font-family: 'Lato', sans-serif;
+	font-size: 16px;
+	margin: 0;
+}
+h1
+{
+	font-weight: normal;
+	font-size: 5.0em;
+	color: white;
+	margin: 0;		
+	margin-left: 100px;
+	margin-bottom: 0.2em;	
+}
+h2
+{
+	margin-bottom: 0;
+	padding-left: 0.5em;
+	font-size: 1.3em;
+	font-weight: bold;
+}
+h3
+{
+	font-size: 1em;
+	font-style: italic;
+	color: #5D4528;
+	font-weight: bold;
+}
+header
+{
+	padding-top: 1em;
+	background: #FF9900;
+}
+header figure, h1, h3
+{
+	display: inline-block;
+}
+header, div, nav
+{
+	margin: 0.5em 0.5em 0 0.5em;
+}
+header #logoTienda img
+{
+	margin-left: 10px;
+	margin-right: 1em;
+	width: 150px;
+	border: 3px solid #7D0552;
+
+}
+header #logoQC img
+{
+	width: 150px;
+}
+figure
+{	
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+}
+footer img
+{
+	margin: 2em 0 0 17em;
+}
+nav
+{
+	background: #990000;
+	font-size: 1.2em;
+}
+nav ul li
+{
+	display: inline-block;
+	margin: 0 3em 0 0;
+	vertical-align: top;
+}
+nav ul li a
+{
+	border-right: 2px solid white;
+	color: white;
+	display: block;
+	text-decoration: none;
+	padding-right: 2em;
+}
+nav ul
+{
+	margin: 0;
+	padding: 0.5em 0;
+	list-style: none;
+	text-align: center;
+}
+p
+{
+	display: inline-block;
+	margin: 0;
+	padding-left: 3.5em;
+	width: 250px;
+}
+
+#detallesGenerales, #especificaciones
+{
+	display: inline-block;
+}
+#detallesGenerales figure img
+{
+	width: 280px;
+	display: inline-block;
+}
+#especificaciones
+{
+	border-left: 1px solid #DCDCDC;
+	margin-top: 2em;
+	padding-left: 1em;
+	vertical-align: top;
+}
+#especificaciones ul
+{
+
+	margin: 0.5em 0 0 0;
+}
+#especificaciones ul li
+{
+	margin-bottom: 0.3em;
+}
+#info_Producto
+{
+	display: inline-block;
+
+	padding-top: 2em;
+	vertical-align: top;
+}
+#galeriaImagenes
+{
+	margin: 1em 0 0 5em;
+	display: block;
+}
+#galeriaImagenes figure
+{
+	margin-right: 1.5em;
+}
+#galeriaImagenes img
+{
+	width: 250px;
+}
+
+#tituloImagenes
+{
+	padding: 0.4em 0;
+	margin-top: 2em;
+	background: #5E5A80;
+}
+#tituloImagenes span
+{
+	font-size: 1.5em;
+	font-weight: bold;
+	margin-left: 0.5em;
+	color: white;
+}
+#precio
+{
+	font-size: 1.2em;
+	margin-left: 2em;
+	padding: 0.5em 0.2em;
+	text-align: right;
+	display: block;
+	background: #DCDCDC;
+}
+.descripcionLuz
+{
+	border-bottom: 1px solid #EEE;
+	display: inline-block;
+	padding: 0.2em 0;
+}
