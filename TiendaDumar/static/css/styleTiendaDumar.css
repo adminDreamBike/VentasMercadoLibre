@@ -89,6 +89,10 @@ nav
 	border-bottom: 3px solid gold;
 	font-size: 1em;
 	padding: 0;
+	position: fixed;
+	width: 100%;
+	z-index: 10;
+	top: 0px;
 }
 nav figure
 {
@@ -103,10 +107,10 @@ nav #logo
 
 nav #avatar
 {
-	margin: 0;
 	float: right;
-	right: 190px;
+	margin: 0;
 	position: relative;
+	right: 190px;
 	top: 10px;
 }
 nav #avatar img
@@ -122,13 +126,12 @@ nav #logo img
 nav #search-left span:before
 {
 	content: "\e600";
-	display: inline-block;
-	position: absolute;
-	top: 1em;
 }
 nav #search-left
 {
 	display: inline-block;
+	position: absolute;
+	top: .6em;
 }
 nav ul 
 {
@@ -152,14 +155,13 @@ nav ul li a
 }
 nav #busqueda
 {
-	border: 1px solid #888;
 	border-radius: 5px;	
+	border: 1px solid lightgray;
 	font-family: 'Lato', sans-serif;
-	padding: 0.5em 1.5em;
+	padding: 0 1em 0 2em;
 	position: relative;
-	bottom: 1.5em; 
-	right: 0.3em;
 	width: 200px;
+	height: 2.5em;
 }
 nav #logo img
 {
@@ -238,4 +240,68 @@ nav #opt_login
 {
 	content: "- ";
 }
-
+.icon-busqueda
+{
+	position: absolute;
+	left: .5em;
+	top: .6em;
+	color: #818181
+}
+.jcarousel-wrapper
+{
+	top:3em;
+}
+.search-input
+{
+	position: relative;
+}
+@media screen and (max-device-width : 480px) {
+	footer
+	{
+		margin-top: 2em;
+	}
+	nav ul
+	{
+		background: gray;
+		left: -100px;
+		padding: 0;
+		position: fixed;
+		top: 70px;
+		z-index: 2;
+		transition: .3s;
+	}
+	nav ul li
+	{
+		display: block;
+		margin: 0;
+	}
+	nav ul li a
+	{
+		border-right: none;
+		padding-right: 0;
+	}
+	nav #logo
+	{
+		margin-right: 1em;
+	}
+	nav #search-left
+	{
+		right: 25%;
+	}
+	#contenido .image_producto
+	{
+		display: block;
+		margin: 0 25% 16em 25%;
+	}
+	#contenido .items .image_producto img
+	{
+		padding-bottom: 0;
+		width: 400px;
+	}
+	#contenido .items .image_producto p
+	{
+		font-size: 22px;
+		text-align: center;
+		width: 400px;
+	}
+}

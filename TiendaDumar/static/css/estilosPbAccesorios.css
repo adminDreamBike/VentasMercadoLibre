@@ -26,19 +26,22 @@ article
 {
 	margin: 0.5em 1.5em 0 1em;
 	padding: 0 0.5em 0 0;
+	margin: 0;
+	padding: 0;
 }
 body
 {
 	font-family: 'Lato', sans-serif;
 	font-size: 16px;
 	margin: 0;
+	padding: 0;
 }
 h2
 {
-	padding-left: 1em;
 	font-size: 1.3em;
 	font-weight: bold;
 	margin-top: 1em;
+	padding-left: 1em;
 }
 figure
 {	
@@ -101,15 +104,18 @@ footer p:last-child
 	margin-top: 0;
 }
 nav
-{		
+{	
 	background: #32c7c6;
 	border-bottom: 3px solid gold;
 	font-size: 1em;
 	padding: 0;
+	position: fixed;
+	width: 100%;
+	z-index: 10;
+	top: 0px;
 }
 nav figure
-{
-	border-right: 1px solid lightblue;
+{	
 	display: inline-block;	
 }
 nav #logo
@@ -121,10 +127,10 @@ nav #logo
 
 nav #avatar
 {
-	margin: 0;
 	float: right;
-	right: 190px;
+	margin: 0;
 	position: relative;
+	right: 190px;
 	top: 10px;
 }
 nav #avatar img
@@ -139,18 +145,17 @@ nav #logo img
 nav #search-left span:before
 {
 	content: "\e600";
-	display: inline-block;
-	position: absolute;
-	top: 1em;
 }
 nav #search-left
 {
 	display: inline-block;
+	position: absolute;
+	top: .6em;
 }
 nav ul 
 {
-	margin: 0;
 	display: inline-block;
+	margin: 0;
 	padding-top: 1em;
 	vertical-align: top;
 }
@@ -169,13 +174,12 @@ nav ul li a
 }
 nav #busqueda
 {
-	border: 1px solid #888;
 	border-radius: 5px;	
+	border: 1px solid lightgray;
 	font-family: 'Lato', sans-serif;
-	padding: 0.5em 1.5em;
+	height: 2.5em;
+	padding: 0 1em 0 2em;
 	position: relative;
-	bottom: 1.5em; 
-	right: 0.3em;
 	width: 200px;
 }
 nav #logo img
@@ -184,8 +188,7 @@ nav #logo img
 	width: 70px;
 }
 nav #login_ingresar
-{
-	border-right: 1px solid white;
+{	border-right: 1px solid white;
 	padding-right: 1em;
 	text-decoration: none;
 }
@@ -201,19 +204,52 @@ nav #opt_login
 	float: right;
 	font-size: 0.8em;
 	padding-top: 1.5em;
-}	
-
-#contenido h2
+}
+#contenido div
 {
-	margin-bottom: 2em;
+	margin-top: 5em;
+}
+#contenido .info_Producto
+{
+	display: inline-block;
+	list-style: none;
+	margin: 0 0 0 3em;
+	padding: 0;
+	position: absolute;
+	top: 4em;
+	width: 300px;
+}
+#contenido .info_Producto li:before
+{
+	content: "";
+	display: table;
+	line-height: 0;
+}
+#contenido .info_Producto li:after
+{
+	display: table;
+	content: "";	
+	line-height: 0;
+}
+#contenido .info_Producto li
+{
+	margin-bottom: 0.5em;		
+	border-bottom: 1px dotted #ccc;
+}
+#contenido .info_Producto li .detalle_Producto
+{
+	float: right;
+	font-weight: bold;
 }
 #detallesGenerales, #especificaciones
 {
 	display: inline-block;
+	position: relative;
+	width: 38em;
 }
 #detallesGenerales figure img
 {
-	width: 280px;
+	width: 250px;
 	display: inline-block;
 }
 #especificaciones
@@ -230,12 +266,6 @@ nav #opt_login
 #especificaciones ul li
 {
 	margin-bottom: 0.3em;
-}
-#info_Producto
-{
-	display: inline-block;
-	padding-top: 2em;
-	vertical-align: top;
 }
 #galeriaImagenes
 {
@@ -278,16 +308,44 @@ nav #opt_login
 	display: block;
 	background: #DCDCDC;
 }
-.descripcionLuz
+.icon-busqueda
 {
-	border-bottom: 1px solid #EEE;
-	display: inline-block;
-	padding: 0.2em 0;
+	position: absolute;
+	left: .5em;
+	top: .6em;
+	color: #818181
 }
-.detalle_Producto
+.search-input
 {
-	display: inline-block;
-	margin: 0;
-	padding-left: 3.5em;
-	width: 250px;
+	position: relative;
+}
+@media screen and (max-device-width : 480px) {
+	footer
+	{
+		margin-top: 2em;
+		width: 200%;
+	}
+	nav ul
+	{
+		background: gray;
+		left: -100px;
+		padding: 0;
+		position: fixed;
+		top: 70px;
+		z-index: 2;
+	}
+	nav ul li
+	{
+		display: block;
+		margin: 0;
+	}
+	nav ul li a
+	{
+		border-right: none;
+		padding-right: 0;
+	}
+	nav #logo
+	{
+		margin-right: 1em;
+	}
 }

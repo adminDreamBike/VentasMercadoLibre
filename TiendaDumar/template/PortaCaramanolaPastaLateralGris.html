@@ -2,8 +2,10 @@
 <html lang="es">
 <head>
 	<meta charset="utf-8" />
+	<meta name="viewport" name="description" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<title>Publicación para la venta de accesorios para bicicletas.</title>
 	<link rel="stylesheet" type="text/css" href="../static/css/estilosPbAccesorios.css">
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,700,300italic' rel='stylesheet' type='text/css'>
 	
 </head>
@@ -20,10 +22,10 @@
 				<li><a href="ManillarBlanco.html">Manillares</a></li>
 			</ul>
 			<div id="search-left">				
-				<form action="/search/" method="get">
-					<input data-helper-text="Encuentra los accesorios para tu bibicleta" class="input_search" id="busqueda" type="search" name="q" value="" data-hasqtip="1">
+				<form action="" method="get" class="search-input">			
+					<input data-helper-text="Encuentra los accesorios para tu bibicleta" class="input_search" id="busqueda" type="search" name="q" placeholder="buscar">
+					<span class="icon-busqueda"></span>
 				</form>
-				<span class="icon-busqueda"></span>
 			</div>
 			<a href="" id="avatar">
 				<img src="../static/imagenes/avatar.png" alt="">
@@ -41,14 +43,29 @@
 		<article id="detallesGenerales">
 			<figure id="imagen_detalles">
 				<img src="../static/imagenes/portacaramanola-gris-pasta.jpg">
-			</figure>
-			<div id="info_Producto">
-				<span class="descripcionLuz">Código:<p class="detalle_Producto">B1432</p></span><br>
-				<span class="descripcionLuz">Marca: <p class="detalle_Producto">Giant</p></span><br>
-				<span class="descripcionLuz">Modelo:<p class="detalle_Producto">Sidecar BLACK</p></span><br>
-				<span class="descripcionLuz">Categoría:<p class="detalle_Producto"> Accesorios</p></span><br>
-				<span class="descripcionLuz">Subcategoria:<p class="detalle_Producto">Cages Bottle</p></span>					
-			</div>
+			</figure>			
+			<ul class="info_Producto">
+				<li>
+					<span class="descripcionLuz">Código:</span>
+					<span class="detalle_Producto">B1432</span>
+				</li>
+				<li>
+					<span class="descripcionLuz">Marca:</span>
+					<span class="detalle_Producto">Giant</span>
+				</li>
+				<li>
+					<span class="descripcionLuz">Modelo:</span>
+					<span class="detalle_Producto">Sidecar BLACK</span>
+				</li>
+				<li>
+					<span class="descripcionLuz">Categoría:</span>
+					<span class="detalle_Producto">Accesorios</span>
+				</li>
+				<li>
+					<span class="descripcionLuz">Subcategoria:</span>
+					<span class="detalle_Producto">Bottle Cages</span>
+				</li>
+			</ul>
 			<span id="precio">Precio: $ 8.000</span>				
 		</article>
 		<article id="especificaciones">
@@ -66,7 +83,7 @@
 			<div class="footer-column">
 				<ul class="footer-contactList">
 					<li class="footer-contactInfo"><a href="skype:dumarbikesstore?call"><img src="../static/imagenes/Skype.png">dumarbikesstore</a></li>
-					<li class="footer-contactInfo"><a href="callto://+(4) 7776819"><img src="../static/imagenes/phone.png">(4) 7776819</a></li>
+					<li class="footer-contactInfo"><a href="callto://+(4) 4234898"><img src="../static/imagenes/phone.png">(4) 4234898</a></li>
 					<li class="footer-contactInfo"><a href="callto://+3015363012"><img src="../static/imagenes/cell-iphone.png">3015363012</a></li>
 					<li class="footer-contactInfo"><a target="_blank" href="//twitter.com/dumarbikesstore"><img src="../static/imagenes/twitter.png">@dumarbikesstore</a></li>
 					<li class="footer-contactInfo"><a target="_blank" href="//facebook.com/dumarbikesstore"><img src="../static/imagenes/facebook.png">/dumarbikesstore</a></li>		
