@@ -319,33 +319,122 @@ nav #opt_login
 {
 	position: relative;
 }
-@media screen and (max-device-width : 480px) {
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 	footer
 	{
 		margin-top: 2em;
-		width: 200%;
 	}
-	nav ul
+
+	footer .footer-column
 	{
-		background: gray;
-		left: -100px;
+		margin-bottom: 1em;
+	}	
+
+	h2
+	{
+		text-align: center;
 		padding: 0;
-		position: fixed;
-		top: 70px;
-		z-index: 2;
+		margin-top: 0;
+	}
+
+	nav .is-active
+	{
+		left: 0;
 	}
 	nav ul li
 	{
 		display: block;
 		margin: 0;
+		padding-bottom: 10px;
 	}
 	nav ul li a
 	{
 		border-right: none;
 		padding-right: 0;
 	}
+	nav #avatar
+	{
+		right: 10px;
+	}
 	nav #logo
 	{
-		margin-right: 1em;
+		margin: 0 1em 0 0;
+		border-right: 0;
+	}
+	nav #logo img
+	{
+		border-right: 1px solid lightblue;
+		padding-top: 0.1em;
+	}
+	nav #search-left
+	{
+		right: 14%;
+	}
+	nav #opt_login
+	{
+		display: none;
+	}
+	.contenido-button
+	{
+		background: transparent;
+		border-radius: 50%;
+		border: solid 1px gold;
+		display: none;
+		height: 30px;
+		line-height: 30px;
+		outline: 0;
+		position: fixed;
+		right: .5em;
+		top: 6em;
+		width: 30px;
+		z-index: 3;
+	}
+	.imagen-Item
+	{
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		width: 200px;
+	}
+	.mainMenu
+	{
+		background: slategrey;
+		left: -140px;
+		padding: 0;
+		padding: 10px 10px 0 10px;
+		position: fixed;
+		top: 70px;
+		transition: .3s;
+		z-index: 2;
+	}
+	#contenido .is-active
+	{
+		display: block;
+	}
+	#contenido .icon-hideMenu:before
+	{
+		content: "\e605";
+	}
+	#contenido .items {
+		margin: 0;
+	}
+	#contenido .icon-shonMenu:before
+	{
+		content: "\e606";
+	}
+	#contenido .info_Producto
+	{
+		display: block;
+		width: 250px;
+		top: 0;
+		position: relative;
+	}
+	#detallesGenerales figure img
+	{
+		width: 200px;
+	}
+	#detallesGenerales, #especificaciones
+	{
+		width: 19em;
 	}
 }
