@@ -3,60 +3,63 @@
 <head>
 	<!--Atributo: Codificación-->
 	<meta charset="utf-8"/>
-	<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximun-scale=1"> -->
 	<!--Titulo de la pagina: Entre 60 y 70 caracteres -->
-	<title>Tienda Online de productos tecnologicos</title>
+	<title>Tienda Online de productos tecnologicos</title>	
 	
-	<meta name="description" content="Ventas de articulos teconologicos para uso personal. Estamos ubicados en Medellin. Celular, audifonos, parlantes, y mucho mas...">
+	<!-- <meta name="viewport" name="description" content="Ventas de articulos teconologicos para uso personal. Estamos ubicados en Medellin. Celular, audifonos, parlantes, y mucho mas..." content="width=device-width, initial-scale=1, maximum-scale=1"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
-	<link rel="stylesheet" type="text/css" href="../VentasMercadoLibre/static/css/jcarousel.responsive.css">
-	<link rel="stylesheet" href="../VentasMercadoLibre/static/css/styleTiendaDumar.css">
-	<link rel="stylesheet" type="text/css" href="../VentasMercadoLibre/static/css/style.css">
+	<link rel="stylesheet" type="text/css" href="../TiendaDumar/static/css/jcarousel.responsive.css">
+	<link rel="stylesheet" href="../TiendaDumar/static/css/styleTiendaDumar.css">
+	<link rel="stylesheet" type="text/css" href="../TiendaDumar/static/css/style.css">
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-	<script type="text/javascript" src="../VentasMercadoLibre/static/js/jquery.jcarousel.min.js"></script>
-	<script type="text/javascript" src="../VentasMercadoLibre/static/js/jcarousel.responsive.js"></script>
+	<script type="text/javascript" src="../TiendaDumar/static/js/jquery.jcarousel.min.js"></script>
+	<script type="text/javascript" src="../TiendaDumar/static/js/jcarousel.responsive.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,700,300italic' rel='stylesheet' type='text/css'>
+	
+
 
 </head>
 <body>
 	<header>
 		<nav>
 			<figure id="logo">
-				<a href="../index.html"><img src="../VentasMercadoLibre/static/imagenes/logo.png"></a>
+				<a href="index.html"><img src="../TiendaDumar/static/imagenes/logo.png"></a>
 			</figure>
-			<ul>
-				<li><a href="../VentasMercadoLibre/template/LuzNumemGiant.html">Luces</a></li>
-				<li><a href="../VentasMercadoLibre/template/PortaCaramanolaRaceAzul.html">PortaCaramañolas</a></li>
-				<li><a href="../VentasMercadoLibre/template/GuayaGiant.html">Guayas</a></li>
-				<li><a href="../VentasMercadoLibre/template/ManillarBlanco.html">Manillares</a></li>
+			<ul class="mainMenu" id="menu">
+				<li><a href="../TiendaDumar/template/LuzNumemGiant.html">Luces</a></li>
+				<li><a href="../TiendaDumar/PortaCaramanolaRaceAzul.html">PortaCaramañolas</a></li>
+				<li><a href="../TiendaDumar/template/GuayaGiant.html">Guayas</a></li>
+				<li><a href="../TiendaDumar/template/ManillarBlanco.html">Manillares</a></li>
 			</ul>			
-			<div id="search-left">				
-				<form action="/search/" method="get">
-					<input data-helper-text="Encuentra los accesorios para tu bibicleta" class="input_search" id="busqueda" type="search" name="q" value="" data-hasqtip="1">
+			<div id="search-left">
+				<form action="" method="get" class="search-input" id="search">			
+					<input data-helper-text="Encuentra los accesorios para tu bibicleta" class="input_search" id="busqueda" type="search" name="q" placeholder="buscar">
+					<span class="icon-busqueda"></span>
 				</form>
-				<span class="icon-busqueda"></span>
 			</div>
 			<a href="" id="avatar">
-				<img src="../VentasMercadoLibre/static/imagenes/avatar.png" alt="">
+				<img src="../TiendaDumar/static/imagenes/avatar.png" alt="">
 			</a>
 			<div id="opt_login">
 				<a href="" class="login" id="login_ingresar">Ingresar</a>
 				<a href="" class="login" id="login_reg">Registrame</a>
 			</div>
-		</nav>
+		</nav>		
 	</header>
 	<section id="contenido">
-		<div class="wrapper">           
-
+		<button class="contenido-button icon-shonMenu is-active" id="showMenu"></button>
+		<button class="contenido-button icon-hideMenu" id="hideMenu"></button>
+		<div class="wrapper"> 
             <div class="jcarousel-wrapper">
                 <div class="jcarousel">
                     <ul>
-                        <li><img src="../VentasMercadoLibre/static/imagenes/numen_mini-lockup.jpg" alt="Image 1"></li>
-                        <li><img src="../VentasMercadoLibre/static/imagenes/AIRLOCK DOUBLE LOOP -BLANC.jpg" alt="Image 2"></li>
-                        <li><img src="../VentasMercadoLibre/static/imagenes/portacaramañola.jpg" alt="Image 3"></li>
-                        <li><img src="../VentasMercadoLibre/static/imagenes/manillar-blanco-giant.jpg" alt="Image 4"></li>
-                        <li><img src="../VentasMercadoLibre/static/imagenes/portacaramañola-metalica-black.jpeg" alt="Image 5"></li>
-                        <li><img src="../VentasMercadoLibre/static/imagenes/portacaramanola-gris-pasta.jpg" alt="Image 6"></li>
+                        <li><img src="../TiendaDumar/static/imagenes/numen_mini-lockup.jpg" alt="Image 1"></li>
+                        <li><img src="../TiendaDumar/static/imagenes/AIRLOCK DOUBLE LOOP -BLANC.jpg" alt="Image 2"></li>
+                        <li><img src="../TiendaDumar/static/imagenes/portacaramañola.jpg" alt="Image 3"></li>
+                        <li><img src="../TiendaDumar/static/imagenes/manillar-blanco-giant.jpg" alt="Image 4"></li>
+                        <li><img src="../TiendaDumar/static/imagenes/portacaramañola-metalica-black.jpeg" alt="Image 5"></li>
+                        <li><img src="../TiendaDumar/static/imagenes/portacaramanola-gris-pasta.jpg" alt="Image 6"></li>
                     </ul>
                 </div>
 
@@ -66,50 +69,51 @@
                 <p class="jcarousel-pagination"></p>
             </div>
         </div>
+
         <h2>Productos Destacados</h2>
        	<article class="items">
        		<figure class="image_producto">
-        		<img src="../VentasMercadoLibre/static/imagenes/luzGiantAzul.jpg" alt="luces-numem-Giant">
+        		<img src="../TiendaDumar/static/imagenes/luzGiantAzul.jpg" alt="luces-numem-Giant">
         		<p>
-		        	<a href="../VentasMercadoLibre/template/LuzNumemGiant.html"><strong class="titulo_producto">Luz Numen Mini Azul, Morada/Luz Blanca y Roja</strong></a>        	
+		        	<a href="../TiendaDumar/template/LuzNumemGiant.html"><strong class="titulo_producto">Luz Numen Mini Azul, Morada/Luz Blanca y Roja</strong></a>        	
 		        	<span class="precio_producto">$7.000</span>
 	        	</p>   
         	</figure>
 	                 
 	        <figure class="image_producto">
-	        	<img src="../VentasMercadoLibre/static/imagenes/AIRLOCK DOUBLE LOOP -BLANC.jpg" alt="guaya-Giant">
+	        	<img src="../TiendaDumar/static/imagenes/AIRLOCK DOUBLE LOOP -BLANC.jpg" alt="guaya-Giant">
 	        	<p>
-		        	<a href="../VentasMercadoLibre/template/GuayaGiant.html"><strong class="titulo_producto">Candado AirLock Double Loop</strong></a>
+		        	<a href="../TiendaDumar/template/GuayaGiant.html"><strong class="titulo_producto">Candado AirLock Double Loop</strong></a>
 		        	<span class="precio_producto">$30.000</span>
 	       		</p>
 	        </figure>
 	                    
 	        <figure class="image_producto">
-	        	<img src="../VentasMercadoLibre/static/imagenes/portacaramañola.jpg" alt="portacaramanolas-Giant">
+	        	<img src="../TiendaDumar/static/imagenes/portacaramañola.jpg" alt="portacaramanolas-Giant">
 	        	 <p>        	        
-		        	<a href="../VentasMercadoLibre/template/PortaCaramanolaRaceAzul.html"><strong class="titulo_producto">PortaCaramañola Race Azul</strong></a>
+		        	<a href="../TiendaDumar/template/PortaCaramanolaRaceAzul.html"><strong class="titulo_producto">PortaCaramañola Race Azul</strong></a>
 		        	<span class="precio_producto">$8.000</span>
 	        	</p>
 	        </figure>            
 	       
 	        <figure class="image_producto">
-	        	<img src="../VentasMercadoLibre/static/imagenes/manillar-blanco-giant.jpg" alt="manillar-Giant">
+	        	<img src="../TiendaDumar/static/imagenes/manillar-blanco-giant.jpg" alt="manillar-Giant">
 	        	 <p>
-		        	<a href="../VentasMercadoLibre/template/ManillarBlanco.html"><strong class="titulo_producto">Manillar Blanco Sole-O Lock-On</strong></a>
+		        	<a href="../TiendaDumar/template/ManillarBlanco.html"><strong class="titulo_producto">Manillar Blanco Sole-O Lock-On</strong></a>
 		        	<span class="precio_producto">$19.000</span>
 	       		</p>
 	        </figure>	                   
 	        <figure class="image_producto">
-	        	<img src="../VentasMercadoLibre/static/imagenes/portacaramañola-metalica-black.jpeg" alt="portacaramanolas-metalica-Giant">
+	        	<img src="../TiendaDumar/static/imagenes/portacaramañola-metalica-black.jpeg" alt="portacaramanolas-metalica-Giant">
 	        	<p>        	
-		        	<a href="../VentasMercadoLibre/template/Portacaramanolametalica.html"><strong class="titulo_producto">PortaCaramañola Metalica Negra</strong></a>
+		        	<a href="../TiendaDumar/template/Portacaramanolametalica.html"><strong class="titulo_producto">PortaCaramañola Metalica Negra</strong></a>
 		        	<span class="precio_producto">$9.000</span>
 	        	</p>
 	        </figure>	                    
 	        <figure class="image_producto">
-	        	<img src="../VentasMercadoLibre/static/imagenes/portacaramanola-gris-pasta.jpg" alt="portacaramanola-silver-Giant">
+	        	<img src="../TiendaDumar/static/imagenes/portacaramanola-gris-pasta.jpg" alt="portacaramanola-silver-Giant">
 	        	<p>
-		        	<a href="../VentasMercadoLibre/template/PortaCaramanolaPastaLateralGris.html"><strong class="titulo_producto">PortaCaramañola Lateral Pasta Dura Gris</strong></a>
+		        	<a href="../TiendaDumar/template/PortaCaramanolaPastaLateralGris.html"><strong class="titulo_producto">PortaCaramañola Lateral Pasta Dura Gris</strong></a>
 		        	<span class="precio_producto">$8.000</span>
 	        	</p>
 	        </figure>	              
@@ -119,11 +123,11 @@
 		<div class="footer-container">
 			<div class="footer-column">
 				<ul class="footer-contactList">
-					<li class="footer-contactInfo"><a href="skype:dumarbikesstore?call"><img src="../VentasMercadoLibre/static/imagenes/Skype.png">dumarbikesstore</a></li>
-					<li class="footer-contactInfo"><a href="callto://+(4) 7776819"><img src="../VentasMercadoLibre/static/imagenes/phone.png">(4) 7776819</a></li>
-					<li class="footer-contactInfo"><a href="callto://+3015363012"><img src="../VentasMercadoLibre/static/imagenes/cell-iphone.png">3015363012</a></li>
-					<li class="footer-contactInfo"><a target="_blank" href="//twitter.com/dumarbikesstore"><img src="../VentasMercadoLibre/static/imagenes/twitter.png">@dumarbikesstore</a></li>
-					<li class="footer-contactInfo"><a target="_blank" href="//facebook.com/dumarbikesstore"><img src="../VentasMercadoLibre/static/imagenes/facebook.png">/dumarbikesstore</a></li>		
+					<li class="footer-contactInfo"><a href="skype:dumarbikesstore?call"><img src="../TiendaDumar/static/imagenes/Skype.png">dumarbikesstore</a></li>
+					<li class="footer-contactInfo"><a href="callto://+(4) 7776819"><img src="../TiendaDumar/static/imagenes/phone.png">(4) 7776819</a></li>
+					<li class="footer-contactInfo"><a href="callto://+3015363012"><img src="../TiendaDumar/static/imagenes/cell-iphone.png">3015363012</a></li>
+					<li class="footer-contactInfo"><a target="_blank" href="http://twitter.com/dumarbikesstore"><img src="../TiendaDumar/static/imagenes/twitter.png">@dumarbikesstore</a></li>
+					<li class="footer-contactInfo"><a target="_blank" href="//facebook.com/dumarbikesstore"><img src="../TiendaDumar/static/imagenes/facebook.png">/dumarbikesstore</a></li>		
 				</ul>
 			</div>
 			<div class="footer-column">
@@ -140,5 +144,39 @@
 			</div>
 		</div>	
 	</footer>
+
+	<script src="../TiendaDumar/static/js/hammer.min.js"></script>
+	<script>
+	$(function() {		
+		if (window.matchMedia("(max-width: 480px)").matches) {
+			var $buttonShowMenu = document.getElementById('showMenu');
+			var $buttonHideMenu = document.getElementById('hideMenu');
+			var $menu = document.getElementById('menu');
+
+			var $body = document.querySelector('body');
+
+			var body = new Hammer($body);
+
+			var showMenu = function() {
+				$buttonShowMenu.classList.remove('is-active');
+				$buttonHideMenu.classList.add('is-active');
+				$menu.classList.add('is-active');
+			};
+
+			var hideMenu = function() {
+				$buttonShowMenu.classList.add('is-active');
+				$buttonHideMenu.classList.remove('is-active');
+				$menu.classList.remove('is-active');
+			};
+
+			$buttonShowMenu.addEventListener("click", showMenu);
+			$buttonHideMenu.addEventListener("click", hideMenu);
+
+			body.on('panright', showMenu);
+			body.on('panleft', hideMenu);
+
+		};
+	});
+	</script>
 </body>
 </html>

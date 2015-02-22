@@ -144,7 +144,7 @@ nav #logo img
 }
 nav #search-left span:before
 {
-	content: "\e600";
+	content: "\e601";
 }
 nav #search-left
 {
@@ -306,7 +306,7 @@ nav #opt_login
 	padding: 0.5em 0.2em;
 	text-align: right;
 	display: block;
-	background: #DCDCDC;
+	background: #B1C6D9;
 }
 .icon-busqueda
 {
@@ -398,7 +398,7 @@ nav #opt_login
 	}
 	.mainMenu
 	{
-		background: slategrey;
+		background: darkgoldenrod;
 		left: -140px;
 		padding: 0;
 		padding: 10px 10px 0 10px;
@@ -406,6 +406,7 @@ nav #opt_login
 		top: 70px;
 		transition: .3s;
 		z-index: 2;
+		border-radius: 3%;
 	}
 	#contenido .is-active
 	{
@@ -435,6 +436,14 @@ nav #opt_login
 	}
 	#detallesGenerales, #especificaciones
 	{
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		padding: 0;
 		width: 19em;
+	}
+	#especificaciones
+	{
+		border: none;
 	}
 }
