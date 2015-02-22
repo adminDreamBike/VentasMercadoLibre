@@ -132,6 +132,7 @@ nav #search-left
 	display: inline-block;
 	position: absolute;
 	top: .6em;
+	right: 15em;
 }
 nav ul 
 {
@@ -161,7 +162,7 @@ nav #busqueda
 	padding: 0 1em 0 2em;
 	position: relative;
 	width: 200px;
-	height: 2.5em;
+	height: 2.2em;
 }
 nav #logo img
 {

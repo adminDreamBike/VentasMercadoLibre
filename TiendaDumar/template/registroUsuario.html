@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Registro de Usuarios para DumarBikesStore</title>
+		<link rel="stylesheet" href="../TiendaDumar/static/css/normalize.css">
+	</head>
+	<body>
+		<header>
+			<nav>
+				<figure id="logo">
+					<a href="index.html"><img src="../TiendaDumar/static/imagenes/logo.png"></a>
+				</figure>
+				<ul class="mainMenu" id="menu">
+					<li><a href="../TiendaDumar/template/LuzNumemGiant.html">Luces</a></li>
+					<li><a href="../TiendaDumar/PortaCaramanolaRaceAzul.html">PortaCaramañolas</a></li>
+					<li><a href="../TiendaDumar/template/GuayaGiant.html">Guayas</a></li>
+					<li><a href="../TiendaDumar/template/ManillarBlanco.html">Manillares</a></li>
+				</ul>			
+				<div id="search-left">
+					<form action="" method="get" class="search-input" id="search">			
+						<input data-helper-text="Encuentra los accesorios para tu bibicleta" class="input_search" id="busqueda" type="search" name="q" placeholder="buscar">
+						<span class="icon-busqueda"></span>
+					</form>
+				</div>
+				<a href="" id="avatar">
+					<img src="../TiendaDumar/static/imagenes/avatar.png" alt="">
+				</a>
+				<div id="opt_login">
+					<a href="" class="login" id="login_ingresar">Ingresar</a>
+					<a href="" class="login" id="login_reg">Registrame</a>
+				</div>
+			</nav>
+		</header>
+		<section class="registro">
+			<form id="registrarUsuario" method="post">
+				<fieldset class="datosUsuario">
+					<legend>Datos Usuario</legend>
+					<div class="container_nombreUsuario">
+						<label class="nombreUsuario">Nombre Usuario:</label>
+						<div>
+							<input type="text" placeholder="username">
+						</div>
+					</div>
+					<div class="container_passwordUsuario">
+						<label class="passwordUsuario">Password</label>
+						<div>
+							<input type="text" placeholder="Password">
+						</div>
+					</div>				
+				</fieldset>
+				<fieldset class="datosPersonales">
+					<legend>Datos Personales</legend>
+					<div class="continer_nombre">
+						<label class="nombre">Nombre:</label>
+						<div>
+							<input type="text" placeholder="Primer y Segundo nombre">
+						</div>
+					</div>
+					<div class="container_apellidos">
+						<label class="apellidos">Apellidos:</label>
+						<div>
+							<input type="text" placeholder="Apellidos">
+						</div>
+					</div>					
+					<div class="container_telefono">
+						<label class="telefono">Telefono:</label>
+						<div>
+							<input type="text" placeholder="Telefono">
+						</div>
+					</div>
+					<div class="container_email">
+						<label class="email">Email:</label>
+						<div>
+							<input type="text" placeholder="Email">
+						</div>
+					</div>
+					<div class="container_ciudad">
+						<label class="ciudad">Ciudad:</label>
+						<div>
+							<input type="text" placeholder="Ciudad">
+						</div>
+					</div>
+					<div class="container_tipoIdentificacion">
+						<label class="tipoIdentificacion">Tipo de Identifación</label>
+						<div>
+							<select name="tipoIdentifacion" id="">
+								<option value="1">C.C.</option>
+								<option value="2">C.E.</option>
+								<option value="3">T.I.</option>
+								<option value="4">Pasaporte</option>
+							</select>
+						</div>	
+					</div>
+					<div class="container_identificacion">
+						<label class="identifacion">Identifación:</label>
+						<div>
+							<input type="text" placeholder="Identificacion">
+						</div>
+					</div>
+					<div class="container_ocupacion">
+						<label class="ocupacion">Ocupación:</label>
+						<div>
+							<input type="text" placeholder="ocupacion">
+						</div>
+					</div>
+					<input type="submit" value="Registrar" /></p>
+				</fieldset>
+			</form>			
+		</section>
+		<footer>
+			<div class="footer-container">
+				<div class="footer-column">
+					<ul class="footer-contactList">
+						<li class="footer-contactInfo"><a href="skype:dumarbikesstore?call"><img src="../TiendaDumar/static/imagenes/Skype.png">dumarbikesstore</a></li>
+						<li class="footer-contactInfo"><a href="callto://+(4) 7776819"><img src="../TiendaDumar/static/imagenes/phone.png">(4) 4234898</a></li>
+						<li class="footer-contactInfo"><a href="callto://+3015363012"><img src="../TiendaDumar/static/imagenes/cell-iphone.png">3015363012</a></li>
+						<li class="footer-contactInfo"><a target="_blank" href="http://twitter.com/dumarbikesstore"><img src="../TiendaDumar/static/imagenes/twitter.png">@dumarbikesstore</a></li>
+						<li class="footer-contactInfo"><a target="_blank" href="//facebook.com/dumarbikesstore"><img src="../TiendaDumar/static/imagenes/facebook.png">/dumarbikesstore</a></li>		
+					</ul>
+				</div>
+				<div class="footer-column">
+					<p class="footer-infoAuthor">
+						<strong>Powered by Carlos Andrés Rodriguez</strong>
+					</p>
+					<p class="footer-infoAuthor">
+						carlosdumar4@gmail.com
+					</p>
+				</div>
+				<div class="footer-column" id="descripcion">
+					<p>Tienda Online de ventas <br> de articulos electronicos y <br>deportivos. Contamos con<br> personal capacitado para <br>atenderlo de la mejor manera.
+					</p>
+				</div>
+			</div>	
+		</footer>
+	</body>
+</html>
