@@ -1,0 +1,233 @@
+@font-face
+  font-family 'icomoon'
+  src url('../fonts/icomoon.eot')
+  font-weight normal
+  font-style normal
+
+[class^="icon-"], [class*=" icon-"]
+  font-family 'icomoon'
+  speak none
+  font-style normal
+  font-weight normal
+  font-variant normal
+  text-transform none
+  line-height 1
+  -webkit-font-smoothing antialiased
+  -moz-osx-font-smoothing grayscale
+
+body
+  font-family 'Lato', sans-serif
+  font-size 16px
+
+footer
+  background #202020
+  color rgba(255,255,255,0.7)
+  ul
+    display inline-block
+    li
+      list-style none
+      margin-bottom 5px
+      a
+        text-decoration none
+        color #20B2AA
+  .footer-container
+    text-align center
+  .footer-column
+    display inline-block
+    margin-bottom 1em
+    p
+      margin 0
+  .footer-contactList
+    text-align left
+  p
+    &:first-child
+      margin-bottom 0
+    &:last-child
+      margin-top 0
+  #descripcion
+    display inline-block
+    margin-left 35px
+    p
+      text-align left
+
+nav
+  background #32c7c6
+  border-bottom 3px solid gold
+  font-size 1em
+  padding 0
+  position fixed
+  width 100%
+  z-index 10
+  top 0px
+  figure
+  #logo
+    border-right 1px solid lightblue
+    margin 0.2em 0 0 2em
+    padding-right 0.5em
+    margin 0 1em 0 0
+    border-right 0
+    img
+      border-radius 30px 5px 5px 5px
+      overflow hidden
+      margin 0
+      width 70px
+      border-right 1px solid lightblue
+      padding-top 0.1em
+  #avatar
+    float right
+    margin 0
+    position relative
+    right 190px
+    top 10px
+    right 10px
+    img
+      opacity 0.4
+  #search-left
+    display inline-block
+    position absolute
+    top .6em
+    right 15em
+    right 14%
+    span
+      &:before
+        content "\e601"
+  ul
+    margin 0
+    display inline-block
+    padding-top 1em
+    vertical-align top
+    li
+      display inline-block
+      list-style none
+      margin-right 4em
+      display block
+      margin 0
+      padding-bottom 10px
+      a
+        border-right 1px solid white
+        color white
+        text-decoration none
+        padding-right 3em
+        border-right none
+        padding-right 0
+  #busqueda
+    border 1px solid lightgray
+    font-family 'Lato', sans-serif
+    padding 0 1em 0 2em
+    position relative
+    width 200px
+    height 2.2em
+  #login_ingresar
+    border-right 1px solid white
+    padding-right 1em
+    text-decoration none
+  #login_reg
+    padding-left 1em
+    color #fc0
+  #opt_login
+    display inline-block
+    font-family 'Lato', sans-serif
+    float right
+    font-size 0.8em
+    padding-top 1.5em
+    display none
+  .is-active
+    left 0
+
+#contenido
+  h2
+    margin-bottom 2em
+  .items
+    margin-left 6em
+    margin 0
+    .image_producto
+      a
+        text-decoration none
+        padding-top 1em
+      p
+        margin-top 1em
+        font-size 22px
+        text-align center
+        width 200px
+      .precio_producto
+        display block
+        margin-top 0.5em
+      img
+        border-bottom 2px dotted #DCDCDC
+        padding-bottom 2em
+        width 200px
+        padding-bottom 0
+        width 200px
+  .image_producto
+    display inline-block
+    margin 0 2em 1em 4em
+    padding 0.5em 0.5em 0 0.5em
+    width 250px
+    height 300px
+    display block
+    margin-bottom 5em
+    margin-left auto
+    margin-right auto
+    &:hover
+      box-shadow rgba(0,0,0,0.2) 5px 5px 20px
+  .is-active
+    display block
+  .icon-hideMenu
+    &:before
+      content "\e605"
+  .icon-shonMenu
+    &:before
+      content "\e606"
+
+.footer-contactInfo
+  a
+    text-decoration none
+
+.footer-infoAuthor
+  &:last-child
+    &:after
+      content " -"
+    &:before
+      content "- "
+
+.icon-busqueda
+  position absolute
+  left .5em
+  top .6em
+
+.jcarousel-wrapper
+  top 3em
+
+.search-input
+  position relative
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px)
+
+footer
+  margin-top 2em
+
+.contenido-button
+  background transparent
+  border-radius 50%
+  border solid 1px gold
+  display none
+  height 30px
+  line-height 30px
+  outline 0
+  position fixed
+  right .5em
+  top 6em
+  width 30px
+  z-index 3
+
+.mainMenu
+  background darkgoldenrod
+  left -140px
+  padding 0
+  padding 10px 10px 0 10px
+  position fixed
+  top 70px
+  transition .3s
+  z-index 2
+  border-radius 3%
+
