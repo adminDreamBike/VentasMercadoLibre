@@ -2,7 +2,10 @@
 @import "normalize.styl"
 
 gris_claro = #eee
+gris_oscuro = darkcyan
 azul_oscuro = #333333
+dorado = #fc0
+
 
 @font-face
   font-family 'icomoon'
@@ -34,26 +37,64 @@ nav
 	background azul_oscuro
 	position fixed
 	width 100%
+	height 3.5em
+	border-bottom 2px solid dorado
 	.logo
-		margin 0
+		margin 0 2em
 		display inline-block
+		
 	.mainMenu
+		top 1em
 		margin 0
 		display inline-block
 		position absolute
-		top 50%
 		left 10em
 		li
-			padding-right 3em
-			display inline-block			
+			padding-right 4em
+			display inline-block
+			a
+				padding-right 3em
+				text-decoration none
+				border-right 1px solid white
+				color white
+							
 	.search-left
 		position absolute
-		top 0
+		top .8em			
+		right 12.5em
 		display inline-block
+		.search-input
+			.input_search
+				    border-radius 5px
+				    border 1px solid lightblue
+				    font-family 'Lato', sans-serif
+				    padding 0 1em 0 2em
+				    width 180px
+				    height 2.2em
+			.icon-busqueda
+				right 12.5em
+				top .6em
+				position absolute
+				&:before
+				  content "\e601"
 	.container_login
 		position absolute
-		top 0
-		display inline-block	
+		top 1.1em
+		right .6em
+		display inline-block
+		font-size .9em
+		.ingresarUsuario
+			padding-right .5em
+			border-right 1px solid white
+			color gris_oscuro
+		.hacerIngresoUsuario
+			padding-left .5em
+			color dorado
+	.avatar
+		position absolute
+		right 10em
+		top .6em
+		opacity .4	
 	
 ul
 	list-style none
