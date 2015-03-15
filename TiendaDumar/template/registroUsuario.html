@@ -5,12 +5,14 @@
 		<title>Registro de Usuarios para DumarBikesStore</title>
 		<link rel="stylesheet" href="../static/css/estilosRegistroUsuario.css">
 		<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="../TiendaDumar/static/css/normalize.css">
+		<script type="text/javascript" src="../TiendaDumar/static/js/jquery.jcarousel.min.js"></script>
 	</head>
 	<body>
 		<header>
 			<nav>
 				<figure class="logo">
-					<a href="index.html"><img src="../static/imagenes/logo.png" width="80px"></a>
+					<a href="../index.html"><img src="../static/imagenes/logo.png" width="80px"></a>
 				</figure>
 				<ul class="mainMenu" id="menu">
 					<li><a href="../TiendaDumar/template/LuzNumemGiant.html">Luces</a></li>
@@ -25,7 +27,7 @@
 					</form>
 				</div>
 				<a href="#" class="avatar">
-					<img src="../TiendaDumar/static/imagenes/avatar.png" alt="">
+					<img src="../static/imagenes/avatar.png" alt="">
 				</a>
 				<div id="opt_login" class="container_login">
 					<a href="" class="login ingresarUsuario" id="login_ingresar">Ingresar</a>
@@ -34,6 +36,9 @@
 			</nav>
 		</header>
 		<section class="registro">
+			<div class="info_registroUsuario">
+				<h2>Ingreso Usuarios</h2>
+			</div>
 			<form id="registrarUsuario" method="post">
 				<fieldset class="datosPersonales">
 					<legend>Datos Personales</legend>
@@ -131,9 +136,9 @@
 					</ul>
 				</div>
 				<figure class="logo-footer">
-					<img src="../static/imagenes/logo.png" width="130px">
+					<img src="../static/imagenes/logo.png" width="230px">
 				</figure>
-				<div class="footer-column">
+				<div class="footer-column author">
 					<p class="footer-infoAuthor">
 						<strong>Powered by Carlos Andrés Rodriguez</strong>
 					</p>
@@ -141,7 +146,7 @@
 						carlosdumar4@gmail.com
 					</p>
 				</div>
-				<div class="footer-column" id="descripcion">
+				<div class="footer-column descripcion" id="descripcion">
 					<p>Tienda Online de ventas <br> de articulos electronicos y <br>deportivos. Contamos con<br> personal capacitado para <br>atenderlo de la mejor manera.
 					</p>
 				</div>

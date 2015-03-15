@@ -1,4 +1,5 @@
 @import "normalize.styl"
+@import "style.styl"
 
 @font-face
   font-family 'icomoon'
@@ -31,33 +32,39 @@ body
 	background gris_claro
 	font-size 16px
 	font-family 'Raleway', sans-serif
+	
 footer
-	background #202020
-	color rgba(255,255,255,0.7)
-	padding 1em
-	display relative
-	.footer-contactList
-		display inline-block
-		margin-right 2em
-		.footer-contactInfo
-			margin-bottom .3em
-			a
-				text-decoration none
-				color #20B2AA
-	.footer-container
-		text-align center
-	.footer-column
-		display inline-block
-		margin 0 4em
-		.footer-infoAuthor
-		    margin 0
-		    font-size 0.8em
-	.logo-footer
-	  display inline-block
-	  margin 0
-	  position absolute
-	  left 0
-	  right 0
+  background #202020
+  color rgba(255,255,255,0.7)
+  padding 1em
+  display relative
+  .footer-contactList
+    display inline-block
+    margin-right 2em
+    .footer-contactInfo
+      margin-bottom .3em
+      text-align left
+      a
+        text-decoration none
+        color #20B2AA
+  .footer-container
+      text-align center
+      position relative
+  .footer-column
+      display inline-block
+      margin 0 4em
+      &.description
+        color white
+      .footer-infoAuthor
+          margin 0
+          font-size 0.8em        
+  .logo-footer
+    display inline-block
+    margin 0
+    position absolute
+    left 0
+    right 0
+    top -40px
 nav
 	background azul_oscuro
 	border-bottom 2px solid dorado
@@ -82,8 +89,11 @@ nav
 			a
 				border-right 1px solid white
 				color white
+				font-size .8em
 				padding-right 3em
 				text-decoration none
+				text-transform uppercase		
+			
 							
 	.search-left
 		display inline-block
@@ -94,7 +104,7 @@ nav
 			.input_search
 				    border 1px solid lightblue
 				    border-radius 5px
-				    font-family 'Lato', sans-serif
+				    font-family 'Raleway', sans-serif
 				    height 2.2em
 				    padding 0 1em 0 2em
 				    width 180px
@@ -121,13 +131,21 @@ nav
 		opacity .4
 		position absolute
 		right 10em
-		top .6em
+		top .6em		
 
 ul
 	list-style none	
 	
 .registro
 	margin-top 3.5em
+	.info_registroUsuario
+		height 2em
+		background #5f9ea0
+		padding 1em 0
+		h2
+			margin 0
+			color white 
+			font-weight bold
 	#registrarUsuario
 		background white
 		display block
@@ -192,7 +210,7 @@ ul
 				bottom 4em
 				right 9em
 				opacity .4
-				z-index 3
+				z-index 1
 				&:before
 					content "\e607"
 			.miembro

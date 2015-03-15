@@ -7,14 +7,14 @@
 	<link rel="stylesheet" href="../static/css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="../static/css/estilosPbAccesorios.css">
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-	<link href='http://fonts.googleapis.com/css?family=Lato:400,700,300italic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 	
 </head>
 <body>
 	<header>
 		<nav>
-			<figure id="logo">
-				<a href="../index.html"><img src="../static/imagenes/logo.png"></a>
+			<figure class="logo">
+				<a href="../index.html"><img src="../static/imagenes/logo.png" width="80px"></a>
 			</figure>
 			<ul class="mainMenu" id="menu">
 				<li><a href="LuzNumemGiant.html">Luces</a></li>
@@ -22,29 +22,29 @@
 				<li><a href="GuayaGiant.html">Guayas</a></li>
 				<li><a href="ManillarBlanco.html">Manillares</a></li>
 			</ul>			
-			<div id="search-left">
-				<form action="" method="get" class="search-input">			
+			<div class="search-left">
+				<form action="" method="get" class="search-input" id="search">			
 					<input data-helper-text="Encuentra los accesorios para tu bibicleta" class="input_search" id="busqueda" type="search" name="q" placeholder="buscar">
 					<span class="icon-busqueda"></span>
 				</form>
 			</div>
-			<a href="" id="avatar">
+			<a href="#" class="avatar">
 				<img src="../static/imagenes/avatar.png" alt="">
 			</a>
-			<div id="opt_login">
-				<a href="" class="login" id="login_ingresar">Ingresar</a>
-				<a href="" class="login" id="login_reg">Registrame</a>
+			<div id="opt_login" class="container_login">
+				<a href="" class="login ingresarUsuario" id="login_ingresar">Ingresar</a>
+				<a href="../TiendaDumar/template/registroUsuario.html" class="login hacerIngresoUsuario" id="login_reg">Registrame</a>
 			</div>
 		</nav>
 	</header>	
 	<section id="contenido">
 		<button class="contenido-button icon-shonMenu is-active" id="showMenu"></button>
 		<button class="contenido-button icon-hideMenu" id="hideMenu"></button>
-		<div>
+		<div class="titulo_Producto">
 			<h2>Manillar Blanco Sole-O Lock-On</h2>
 		</div>
-		<article id="detallesGenerales">
-			<figure class="imagen-Item" id="imagen_detalles" >
+		<article class="detallesGenerales">
+			<figure class="img_principal" id="imagen_detalles" >
 				<img src="../static/imagenes/manillar-blanco-giant.jpg" height="220px">
 			</figure>			
 			<ul class="info_Producto">
@@ -69,9 +69,9 @@
 					<span class="detalle_Producto">Grips</span>
 				</li>
 			</ul>
-			<span id="precio">Precio:  $19.000</span>				
+			<span class="precio_Producto">Precio:  $19.000</span>				
 		</article>
-		<article id="especificaciones">
+		<article class="especificaciones">
 			<h2>Especificaciones Técnicas</h2>
 			<ul>
 				<li>Custom-waved, raised Kraton rubber surface</li>
@@ -88,11 +88,14 @@
 				<ul class="footer-contactList">
 					<li class="footer-contactInfo"><a href="skype:dumarbikesstore?call"><img src="../static/imagenes/Skype.png">dumarbikesstore</a></li>
 					<li class="footer-contactInfo"><a href="callto://+(4) 4234898"><img src="../static/imagenes/phone.png">(4) 4234898</a></li>
-					<li class="footer-contactInfo"><a href="callto://+3015363012"><img src="../static/imagenes/cell-iphone.png">3015363012</a></li>
+					<li class="footer-contactInfo"><a href="callto://+3015363012"><img src="../static/imagenes/cell-iphone.png">301-5363012</a></li>
 					<li class="footer-contactInfo"><a target="_blank" href="//twitter.com/dumarbikesstore"><img src="../static/imagenes/twitter.png">@dumarbikesstore</a></li>
 					<li class="footer-contactInfo"><a target="_blank" href="//facebook.com/dumarbikesstore"><img src="../static/imagenes/facebook.png">/dumarbikesstore</a></li>		
 				</ul>
 			</div>
+			<figure class="logo-footer">
+				<img src="../static/imagenes/logo.png" width="230px">
+			</figure>
 			<div class="footer-column">
 				<p class="footer-infoAuthor">
 					<strong>Powered by Carlos Andrés Rodriguez</strong>
