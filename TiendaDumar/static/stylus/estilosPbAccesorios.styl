@@ -1,6 +1,13 @@
+@import "normalize.styl"
+@import "style.styl"
+
 @font-face
   font-family 'icomoon'
   src url('../fonts/icomoon.eot')
+  src url('../fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/icomoon.woff') format('woff'),
+	  url('../fonts/icomoon.ttf') format('truetype'),
+	   url('../fonts/icomoon.svg#icomoon') format('svg')
   font-weight normal
   font-style normal
 
@@ -15,291 +22,169 @@
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
 
-article
-  margin 0.5em 1.5em 0 1em
-  padding 0 0.5em 0 0
-  margin 0
-  padding 0
-
+gris_claro = #eee
+gris_oscuro = darkcyan
+azul_oscuro = #333333
+dorado = #fc0
+  
 body
-  font-family 'Lato', sans-serif
+  font-family 'Raleway', sans-serif
   font-size 16px
-  margin 0
-  padding 0
 
+footer
+  background #202020
+  color rgba(255,255,255,0.7)
+  padding 1em
+  display relative
+  .footer-contactList
+    display inline-block
+    margin-right 2em
+    list-style none
+    .footer-contactInfo
+      margin-bottom .3em
+      text-align left
+      a
+        text-decoration none
+        color #20B2AA
+  .footer-container
+      text-align center
+      position relative
+  .footer-column
+      display inline-block
+      margin 0 4em
+      &.description
+        color white
+      .footer-infoAuthor
+          margin 0
+          font-size 0.8em        
+  .logo-footer
+    display inline-block
+    margin 0
+    position absolute
+    left 0
+    right 0
+    top -40px
+
+nav
+  background azul_oscuro
+  border-bottom 2px solid dorado
+  height 3.5em
+  position fixed
+  width 100%
+  z-index 2
+  .logo
+    margin 0 2em
+    display inline-block
+    
+  .mainMenu
+    display inline-block
+    left 10em
+    margin 0
+    position absolute
+    top 1em
+    li
+      padding-right 4em
+      display inline-block
+      a
+        border-right 1px solid white
+        color white
+        font-size .8em        
+        padding-right 3em
+        text-decoration none
+        text-transform uppercase
+              
+  .search-left
+    position absolute
+    top .8em      
+    right 12.5em
+    display inline-block
+    .search-input
+      .input_search
+            border-radius 5px
+            border 1px solid lightblue
+            font-family 'Raleway', sans-serif
+            padding 0 1em 0 2em
+            width 180px
+            height 2.2em
+            font-size .8em
+      .icon-busqueda
+        right 12.5em
+        top .6em
+        position absolute
+        &:before
+          content "\e601"
+  .container_login
+    position absolute
+    top 1.1em
+    right .6em
+    display inline-block
+    font-size .8em
+    .ingresarUsuario
+      padding-right .5em
+      border-right 1px solid white
+      color gris_oscuro
+    .hacerIngresoUsuario
+      padding-left .5em
+      color dorado
+  .avatar
+    opacity .4
+    position absolute
+    right 10em
+    top .6em   
+      
 h2
   font-size 1.3em
   font-weight bold
   margin-top 1em
   padding-left 1em
-  text-align center
-  padding 0
-  margin-top 0
-
-figure
-  display inline-block
-  margin 0
-  padding 0
-
-footer
-  background #202020
-  color rgba(255,255,255,0.7)
-  ul
-    display inline-block
-    li
-      list-style none
-      margin-bottom 5px
-      a
-        text-decoration none
-        color #20B2AA
-  .footer-contactList
-    text-align left
-    text-align left
-  .footer-container
-    text-align center
-  .footer-column
-    display inline-block
-    margin-bottom 1em
-    p
-      margin 0
-  #descripcion
-    display inline-block
-    margin-left 35px
-  p
-    &:first-child
-      margin-bottom 0
-    &:last-child
-      margin-top 0
-
-nav
-  background #32c7c6
-  border-bottom 3px solid gold
-  font-size 1em
-  padding 0
-  position fixed
-  width 100%
-  z-index 10
-  top 0px
-  figure
-  #logo
-    border-right 1px solid lightblue
-    margin 0.2em 0 0 2em
-    padding-right 0.5em
-    margin 0 1em 0 0
-    border-right 0
-    img
-      border-radius 30px 5px 5px 5px
-      overflow hidden
-      margin 0
-      width 70px
-      border-right 1px solid lightblue
-      padding-top 0.1em
-  #avatar
-    float right
-    margin 0
-    position relative
-    right 190px
-    top 10px
-    right 10px
-    img
-      opacity 0.4
-  #search-left
-    display inline-block
-    position absolute
-    top .6em
-    right 15em
-    right 14%
-    span
-      &:before
-        content "\e601"
-  ul
-    display inline-block
-    margin 0
-    padding-top 1em
-    vertical-align top
-    li
-      display inline-block
-      list-style none
-      margin-right 4em
-      display block
-      margin 0
-      padding-bottom 10px
-      a
-        border-right 1px solid white
-        color white
-        text-decoration none
-        padding-right 3em
-        border-right none
-        padding-right 0
-  #busqueda
-    border 1px solid lightgray
-    font-family 'Lato', sans-serif
-    height 2.2em
-    padding 0 1em 0 2em
-    position relative
-    width 200px
-  #login_ingresar
-    border-right 1px solid white
-    padding-right 1em
-    text-decoration none
-  #login_reg
-    padding-left 1em
-    color #fc0
-  #opt_login
-    display inline-block
-    font-family 'Lato', sans-serif
-    float right
-    font-size 0.8em
-    padding-top 1.5em
-    display none
-  .is-active
-    left 0
-
+  
+h2, h1
+  text-align left
+    
 #contenido
-  div
-    margin-top 5em
-  .info_Producto
+  .titulo_Producto
+    margin-top 5em  
+  .detallesGenerales
     display inline-block
-    list-style none
-    margin 0 0 0 3em
-    padding 0
-    position absolute
-    top 4em
-    width 300px
-    display block
-    width 250px
-    top 0
     position relative
-    li
-      border-bottom 1px dotted #ccc
-      &:before
-        content ""
-        display table
-        line-height 0
-      &:after
-        display table
-        line-height 0
-      .detalle_Producto
-        float right
-        font-weight bold
-  .is-active
-    display block
-  .icon-hideMenu
-    &:before
-      content "\e605"
-  .items
-    margin 0
-  .icon-shonMenu
-    &:before
-      content "\e606"
-
-#detallesGenerales, #especificaciones
-  display inline-block
-  position relative
-  width 38em
-  display block
-  margin-left auto
-  margin-right auto
-  padding 0
-  width 19em
-
-#detallesGenerales
-  figure
-    img
-      width 250px
+    width 38em
+    .img_principal
       display inline-block
-      width 200px
-
-#especificaciones
-  border-left 1px solid #DCDCDC
-  margin-top 2em
-  padding-left 1em
-  vertical-align top
-  border none
-  ul
-    margin 0.5em 0 0 0
-    li
-      margin-bottom 0.3em
-
-#galeriaImagenes
-  margin 1em 0 0 5em
-  display block
-  figure
-    margin-right 1.5em
-  img
-    width 250px
-
-#logoTienda
-  border-right 1.4px solid white
-  margin-top 1em
-
-#tituloImagenes
-  padding 0.4em 0
-  margin-top 2em
-  background #5E5A80
-  span
-    font-size 1.5em
-    font-weight bold
-    margin-left 0.5em
-    color white
-
-#precio
-  font-size 1.2em
-  margin 1em 0 0.2em 2em
-  padding 0.5em 0.2em
-  text-align right
-  display block
-  background #B1C6D9
-
-.icon-busqueda
-  position absolute
-  left .5em
-  top .6em
-
-.search-input
-  position relative
-
-@media
-  only
-    screen
-      and
-        (min-device-width
-          :
-            320px)
-              and
-                (max-device-width
-                  :
-                    480px)
-                      footer	{		margin-top 2em
-
-.contenido-button
-  background transparent
-  border-radius 50%
-  border solid 1px gold
-  display none
-  height 30px
-  line-height 30px
-  outline 0
-  position fixed
-  right .5em
-  top 6em
-  width 30px
-  z-index 3
-
-.imagen-Item
-  display block
-  margin-left auto
-  margin-right auto
-  width 200px
-
-.mainMenu
-  background darkgoldenrod
-  left -140px
-  padding 0
-  padding 10px 10px 0 10px
-  position fixed
-  top 70px
-  transition .3s
-  z-index 2
-  border-radius 3%
-
+      margin 0
+      padding 0
+      img
+        width 250px
+        display inline-block
+    .info_Producto
+      display inline-block
+      list-style none
+      margin 0 0 0 3em
+      padding 0
+      position absolute
+      top 4em
+      width 300px
+      li
+        margin-bottom .5em
+        border-bottom 1px dotted #ccc
+        .detalle_Producto
+          float right
+          font-weight bold
+    .precio_Producto
+      font-size 1.2em
+      margin 1em 0 3em 2em
+      padding .5em .2em
+      text-align right
+      display block
+      background #B1C6D9
+  .especificaciones
+    border-left 1px solid #DCDCDC
+    margin-top 2em
+    padding-left 1em
+    vertical-align top
+    display inline-block
+    position relative
+    width  38em
+    ul
+      margin .5em 0 0 0
+      li
+        margin-bottom .3em

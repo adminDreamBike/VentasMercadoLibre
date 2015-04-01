@@ -12,20 +12,16 @@
 	<link rel="stylesheet" href="../static/css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="../static/css/jcarousel.responsive.css">
 	<link rel="stylesheet" href="../static/css/styleTiendaDumar.css">
-	<link rel="stylesheet" type="text/css" href="../static/css/style.css">
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript" src="../static/js/jquery.jcarousel.min.js"></script>
 	<script type="text/javascript" src="../static/js/jcarousel.responsive.js"></script>
-	<link href='http://fonts.googleapis.com/css?family=Lato:400,700,300italic' rel='stylesheet' type='text/css'>
-	
-
-
+	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 </head>
 <body>
 	<header>
 		<nav>
-			<figure id="logo">
-				<a href="index.html"><img src="../static/imagenes/logo.png"></a>
+			<figure class="logo">
+				<a href="index.html"><img src="../static/imagenes/logo.png" width="80px"></a>
 			</figure>
 			<ul class="mainMenu" id="menu">
 				<li><a href="LuzNumemGiant.html">Luces</a></li>
@@ -33,18 +29,18 @@
 				<li><a href="GuayaGiant.html">Guayas</a></li>
 				<li><a href="ManillarBlanco.html">Manillares</a></li>
 			</ul>			
-			<div id="search-left">
+			<div class="search-left">
 				<form action="" method="get" class="search-input" id="search">			
 					<input data-helper-text="Encuentra los accesorios para tu bibicleta" class="input_search" id="busqueda" type="search" name="q" placeholder="buscar">
 					<span class="icon-busqueda"></span>
 				</form>
 			</div>
-			<a href="" id="avatar">
+			<a href="#" class="avatar">
 				<img src="../static/imagenes/avatar.png" alt="">
 			</a>
-			<div id="opt_login">
-				<a href="" class="login" id="login_ingresar">Ingresar</a>
-				<a href="" class="login" id="login_reg">Registrame</a>
+			<div id="opt_login" class="container_login">
+				<a href="" class="login ingresarUsuario" id="login_ingresar">Ingresar</a>
+				<a href="../template/registroUsuario.html" class="login hacerIngresoUsuario" id="login_reg">Registrame</a>
 			</div>
 		</nav>		
 	</header>
@@ -118,7 +114,8 @@
 		        	<span class="precio_producto">$8.000</span>
 	        	</p>
 	        </figure>	              
-       	</article>              
+       	</article>
+       	
 	</section>
 	<footer>
 		<div class="footer-container">
@@ -131,6 +128,9 @@
 					<li class="footer-contactInfo"><a target="_blank" href="//facebook.com/dumarbikesstore"><img src="../static/imagenes/facebook.png">/dumarbikesstore</a></li>		
 				</ul>
 			</div>
+			<figure class="logo-footer">
+				<img src="../static/imagenes/logo.png" width="230px">
+			</figure>
 			<div class="footer-column">
 				<p class="footer-infoAuthor">
 					<strong>Powered by Carlos Andrés Rodriguez</strong>
