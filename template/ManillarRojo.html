@@ -20,8 +20,8 @@
 				<li><a href="LuzNumemGiant.html">Luces</a></li>
 				<li><a href="PortaCaramanolaRaceAzul.html">PortaCaramañolas</a></li>
 				<li><a href="GuayaGiant.html">Guayas</a></li>
-				<li><a href="ManillarBlanco.html">Manillares</a></li>
-			</ul>
+				<li><a href="ManillarRojo.html">Manillares</a></li>
+			</ul>			
 			<div class="search-left">
 				<form action="" method="get" class="search-input" id="search">			
 					<input data-helper-text="Encuentra los accesorios para tu bibicleta" class="input_search" id="busqueda" type="search" name="q" placeholder="buscar">
@@ -41,16 +41,24 @@
 		<button class="contenido-button icon-shonMenu is-active" id="showMenu"></button>
 		<button class="contenido-button icon-hideMenu" id="hideMenu"></button>
 		<div class="titulo_Producto">
-			<h2>PortaCaramañola Metalica Plateada</h2>
+			<h2>Manillar Bartape Giant</h2>
 		</div>
 		<article class="detallesGenerales">
-			<figure class="img_principal" id="imagen_detalles">
-				<img src="../static/imagenes/portacaramanola-metalica-gris2.jpg" height="300px">
+			<div class="selector_images">
+				<div class="item_selector" id="div_image">
+					<a href=""><img src="../static/imagenes/manillar-negro-giant.jpg" alt="" height="50px" width="50px"></a>			
+				</div>
+				<div class="item_selector" id="div_image">
+					<a href=""><img src="../static/imagenes/manillar-red-giant.jpeg" alt="" height="50px" width="50px"></a>
+				</div>
+			</div>
+			<figure class="img_principal" id="imagen_detalles" >
+				<img src="../static/imagenes/manillar-negro-giant.jpg" id="image_item" height="220px">
 			</figure>			
 			<ul class="info_Producto">
 				<li>
 					<span class="descripcionLuz">Código:</span>
-					<span class="detalle_Producto">B6843</span>
+					<span class="detalle_Producto">B3468</span>
 				</li>
 				<li>
 					<span class="descripcionLuz">Marca:</span>
@@ -58,7 +66,7 @@
 				</li>
 				<li>
 					<span class="descripcionLuz">Modelo:</span>
-					<span class="detalle_Producto">GateWay 4MM Silver</span>
+					<span class="detalle_Producto">Bartape</span>
 				</li>
 				<li>
 					<span class="descripcionLuz">Categoría:</span>
@@ -66,19 +74,22 @@
 				</li>
 				<li>
 					<span class="descripcionLuz">Subcategoria:</span>
-					<span class="detalle_Producto">Bottle Cages</span>
+					<span class="detalle_Producto">Grips</span>
 				</li>
 			</ul>
-			<span class="precio_Producto">Precio: $ 10.000</span>				
+			<span class="precio_Producto">Precio:  $24.000</span>				
 		</article>
 		<article class="especificaciones">
 			<h2>Especificaciones Técnicas</h2>
 			<ul>
-				<li>Alloy bottle cage</li>
-				<li>4mm alloy rod</li>
-				<li>Tough still flexible</li>
-				<li>Compatible con varias botellas de agua</li>
-			</ul>			
+				<li>Embossed with GIANT logo</li>
+				<li>Non-slip suede effect surface</li>
+				<li>Has a lock-on screw</li>
+				<li>Provides the feel of cushioned wrap tape found on road bikes. </li>
+				<li>Durable all-conditions perforated surface for ventilation</li>
+			</ul>
+			<h3>Colores Disponibles:</h3>
+			<div class="item-color item-color-red"></div>			
 		</article>
 			
 	</section>
@@ -88,7 +99,7 @@
 				<ul class="footer-contactList">
 					<li class="footer-contactInfo"><a href="skype:dumarbikesstore?call"><img src="../static/imagenes/Skype.png">dumarbikesstore</a></li>
 					<li class="footer-contactInfo"><a href="callto://+(4) 4234898"><img src="../static/imagenes/phone.png">(4) 4234898</a></li>
-					<li class="footer-contactInfo"><a href="callto://+3015363012"><img src="../static/imagenes/cell-iphone.png">3015363012</a></li>
+					<li class="footer-contactInfo"><a href="callto://+3015363012"><img src="../static/imagenes/cell-iphone.png">301-5363012</a></li>
 					<li class="footer-contactInfo"><a target="_blank" href="//twitter.com/dumarbikesstore"><img src="../static/imagenes/twitter.png">@dumarbikesstore</a></li>
 					<li class="footer-contactInfo"><a target="_blank" href="//facebook.com/dumarbikesstore"><img src="../static/imagenes/facebook.png">/dumarbikesstore</a></li>		
 				</ul>
@@ -108,10 +119,10 @@
 				<p>Tienda Online de ventas <br> de articulos electronicos y <br>deportivos. Contamos con<br> personal capacitado para <br>atenderlo de la mejor manera.
 				</p>
 			</div>
-		</div>
+		</div>	
 	</footer>
 	<script src="../static/js/hammer.min.js"></script>
-	<script>
+	<script>	
 	$(function() {		
 		if (window.matchMedia("(max-width: 480px)").matches) {
 			var $buttonShowMenu = document.getElementById('showMenu');
@@ -139,9 +150,9 @@
 
 			body.on('panright', showMenu);
 			body.on('panleft', hideMenu);
-
 		};
-	});
+	});	
 	</script>
+	<script src="../static/js/utilities.js"></script>
 </body>
 </html>

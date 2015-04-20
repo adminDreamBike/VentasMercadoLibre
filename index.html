@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" ng-app="bikesStore">
 <head>
 	<!--Atributo: Codificación-->
 	<meta charset="utf-8"/>
@@ -16,6 +16,7 @@
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript" src="static/js/jquery.jcarousel.min.js"></script>
 	<script type="text/javascript" src="static/js/jcarousel.responsive.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 </head>
 <body>
@@ -28,7 +29,7 @@
 				<li><a href="template/LuzNumemGiant.html">Luces</a></li>
 				<li><a href="template/PortaCaramanolaRaceAzul.html">PortaCaramañolas</a></li>
 				<li><a href="template/GuayaGiant.html">Guayas</a></li>
-				<li><a href="template/ManillarBlanco.html">Manillares</a></li>
+				<li><a href="template/ManillarRojo.html">Manillares</a></li>
 			</ul>			
 			<div class="search-left">
 				<form action="" method="get" class="search-input" id="search">			
@@ -55,8 +56,8 @@
                         <li><img src="static/imagenes/numen_mini-lockup.jpg" alt="Image 1"></li>
                         <li><img src="static/imagenes/AIRLOCK DOUBLE LOOP -BLANC.jpg" alt="Image 2"></li>
                         <li><img src="static/imagenes/portacaramañola.jpg" alt="Image 3"></li>
-                        <li><img src="static/imagenes/manillar-blanco-giant.jpg" alt="Image 4"></li>
-                        <li><img src="static/imagenes/portacaramañola-metalica-black.jpeg" alt="Image 5"></li>
+                        <li><img src="static/imagenes/manillar-negro-giant.jpg" alt="Image 4"></li>
+                        <li><img src="static/imagenes/portacaramanola-metalica-gris2.jpg" alt="Image 5"></li>
                         <li><img src="static/imagenes/portacaramanola-gris-pasta.jpg" alt="Image 6"></li>
                     </ul>
                 </div>
@@ -94,18 +95,25 @@
 	        	</p>
 	        </figure>            
 	       
-	        <figure class="image_producto">
+	        <!-- <figure class="image_producto">
 	        	<img src="static/imagenes/manillar-blanco-giant.jpg" alt="manillar-Giant">
 	        	 <p>
 		        	<a href="template/ManillarBlanco.html"><strong class="titulo_producto">Manillar Blanco Sole-O Lock-On</strong></a>
 		        	<span class="precio_producto">$19.000</span>
 	       		</p>
+	        </figure> -->
+	        <figure class="image_producto">
+	        	<img src="static/imagenes/manillar-negro-giant.jpg" alt="manillar-Giant">
+	        	 <p>
+		        	<a href="template/ManillarRojo.html"><strong class="titulo_producto">Manillar Bartape Giant</strong></a>
+		        	<span class="precio_producto">$24.000</span>
+	       		</p>
 	        </figure>	                   
 	        <figure class="image_producto">
-	        	<img src="static/imagenes/portacaramañola-metalica-black.jpeg" alt="portacaramanolas-metalica-Giant">
+	        	<img src="static/imagenes/portacaramanola-metalica-gris2.jpg" alt="portacaramanolas-metalica-Giant" height="250px">
 	        	<p>        	
-		        	<a href="template/Portacaramanolametalica.html"><strong class="titulo_producto">PortaCaramañola Metalica Negra</strong></a>
-		        	<span class="precio_producto">$9.000</span>
+		        	<a href="template/Portacaramanolametalica.html"><strong class="titulo_producto">PortaCaramañola Metalica Plata</strong></a>
+		        	<span class="precio_producto">$10.000</span>
 	        	</p>
 	        </figure>	                    
 	        <figure class="image_producto">
@@ -179,5 +187,6 @@
 		};
 	});
 	</script>
+	<script src="static/js/app.js"></script>
 </body>
 </html>
