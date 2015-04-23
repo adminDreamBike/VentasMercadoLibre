@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" ng-app="bikesStore">
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" name="description" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -8,20 +8,22 @@
 	<link rel="stylesheet" type="text/css" href="../static/css/estilosPbAccesorios.css">
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
 	
 </head>
 <body>
-	<header>
-		<nav>
-			<figure class="logo">
-				<a href="../index.html"><img src="../static/imagenes/logo.png" width="80px"></a>
+	<header ng-controller="NavController as navCtrl">
+		<nav ng-repeat="nav in navCtrl.navs">
+			<figure class="logo" ng-repeat="logo in nav.logos">
+				<a href="../index.html">
+					<img ng-src="../{{logo.urlLogo}}" width="80px">
+				</a>
 			</figure>
 			<ul class="mainMenu" id="menu">
-				<li><a href="LuzNumemGiant.html">Luces</a></li>
-				<li><a href="PortaCaramanolaRaceAzul.html">PortaCaramañolas</a></li>
-				<li><a href="GuayaGiant.html">Guayas</a></li>
-				<li><a href="ManillarRojo.html">Manillares</a></li>
-			</ul>
+				<li ng-repeat="menu in nav.menus">
+					<a href="../{{menu.urlSubMenu}}">{{menu.titleSubMenu}}</a>
+				</li>				
+			</ul>			
 			<div class="search-left">
 				<form action="" method="get" class="search-input" id="search">			
 					<input data-helper-text="Encuentra los accesorios para tu bibicleta" class="input_search" id="busqueda" type="search" name="q" placeholder="buscar">
@@ -31,11 +33,11 @@
 			<a href="#" class="avatar">
 				<img src="../static/imagenes/avatar.png" alt="">
 			</a>
-			<div id="opt_login" class="container_login">
-				<a href="" class="login ingresarUsuario" id="login_ingresar">Ingresar</a>
-				<a href="../TiendaDumar/template/registroUsuario.html" class="login hacerIngresoUsuario" id="login_reg">Registrame</a>
+			<div id="opt_login" class="container_login" ng-repeat="log in nav.logins">
+				<a href="../{{log.urlPageIng}}" class="login ingresarUsuario" id="login_ingresar">{{log.nameIngresar}}</a>
+				<a href="../{{log.urlPageReg}}" class="login hacerIngresoUsuario" id="login_reg">{{log.nameRegistro}}</a>
 			</div>
-		</nav>
+		</nav>		
 	</header>	
 	<section id="contenido">
 		<button class="contenido-button icon-shonMenu is-active" id="showMenu"></button>
@@ -81,32 +83,33 @@
 			</ul>			
 		</article>				
 	</section>	
-	<footer>
-		<div class="footer-container">
+	<footer ng-controller="FooterController as footerCrtl">
+		<div class="footer-container" ng-repeat="footer in footerCrtl.footers">
 			<div class="footer-column">
 				<ul class="footer-contactList">
-					<li class="footer-contactInfo"><a href="skype:dumarbikesstore?call"><img src="../static/imagenes/Skype.png">dumarbikesstore</a></li>
-					<li class="footer-contactInfo"><a href="callto://+(4) 4234898"><img src="../static/imagenes/phone.png">(4) 4234898</a></li>
-					<li class="footer-contactInfo"><a href="callto://+3015363012"><img src="../static/imagenes/cell-iphone.png">301-5363012</a></li>
-					<li class="footer-contactInfo"><a target="_blank" href="//twitter.com/dumarbikesstore"><img src="../static/imagenes/twitter.png">@dumarbikesstore</a></li>
-					<li class="footer-contactInfo"><a target="_blank" href="//facebook.com/dumarbikesstore"><img src="../static/imagenes/facebook.png">/dumarbikesstore</a></li>		
+					<li class="footer-contactInfo" ng-repeat="contact in footer.contacts">
+						<a href="../{{contact.url}}">
+							<img ng-src="../{{contact.image}}">{{contact.name}}
+						</a>
+					</li>							
 				</ul>
 			</div>
 			<figure class="logo-footer">
-				<img src="../static/imagenes/logo.png" width="230px">
+				<img ng-src="../{{footer.urlLogo}}" width="230px">
 			</figure>
-			<div class="footer-column">
+			<div class="footer-column author" ng-repeat="author in footer.authors">
 				<p class="footer-infoAuthor">
-					<strong>Powered by Carlos Andrés Rodriguez</strong>
+					<strong>{{author.name}}</strong>
 				</p>
 				<p class="footer-infoAuthor">
-					carlosdumar4@gmail.com
+					{{author.email}}
 				</p>
 			</div>
 			<div class="footer-column description" id="descripcion">
-				<p>Tienda Online de ventas <br> de articulos electronicos y <br>deportivos. Contamos con<br> personal capacitado para <br>atenderlo de la mejor manera.
+				<p>{{footer.description}}
 				</p>
 			</div>
+		</div>	
 	</footer>
 	<script src="../static/js/hammer.min.js"></script>
 	<script>
@@ -137,9 +140,19 @@
 
 			body.on('panright', showMenu);
 			body.on('panleft', hideMenu);
-
 		};
 	});
 	</script>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-62147564-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+	<script src="../static/js/app.js"></script>
 </body>
 </html>
