@@ -1,0 +1,2314 @@
+[1mdiff --git a/index.html b/index.html[m
+[1mindex 6280522..1e2a92d 100644[m
+[1m--- a/index.html[m
+[1m+++ b/index.html[m
+[36m@@ -41,14 +41,16 @@[m
+ 			<a href="#" class="avatar">[m
+ 				<img src="static/imagenes/avatar.png" alt="">[m
+ 			</a>[m
+[31m-			<div id="opt_login" class="container_login" ng-repeat="log in nav.logins">[m
+[32m+[m			[32m<div id="opt_login" class="container_login"  ng-repeat="log in nav.logins">[m
+ 				<a href="{{log.urlPageIng}}" class="login ingresarUsuario" id="login_ingresar">{{log.nameIngresar}}</a>[m
+[31m-				<a href="{{log.urlPageReg}}" class="login hacerIngresoUsuario" id="login_reg">{{log.nameRegistro}}</a>[m
+[32m+[m				[32m<a href="{{log.urlPageReg}}" class="login hacerIngresoUsuario" id="login_reg">{{log.nameRegistro}}</a>[m[41m				[m
+ 			</div>[m
+[32m+[m			[32m<a href=""><span class="icon-bars si-active" id="barMenu"></span></a>[m
+[32m+[m			[32m<a href=""><span class="icon-bars no-active" id="barMenuHide"></span></a>[m
+ 		</nav>		[m
+ 	</header>[m
+ 	<section id="contenido" ng-controller="BikesController as bikes">[m
+[31m-		<button class="contenido-button icon-shonMenu is-active" id="showMenu"></button>[m
+[32m+[m		[32m<button class="contenido-button is-active icon-shonMenu" id="showMenu"></button>[m
+ 		<button class="contenido-button icon-hideMenu" id="hideMenu"></button>[m
+ 		<div class="wrapper"> [m
+             <div class="jcarousel-wrapper">[m
+[36m@@ -83,7 +85,10 @@[m
+ 	</section>[m
+ 	<footer ng-controller="FooterController as footerCrtl">[m
+ 		<div class="footer-container" ng-repeat="footer in footerCrtl.footers">[m
+[31m-			<div class="footer-column">[m
+[32m+[m			[32m<figure class="logo-footer">[m
+[32m+[m				[32m<img ng-src="{{footer.urlLogo}}" width="230px">[m
+[32m+[m			[32m</figure>[m
+[32m+[m			[32m<div class="footer-column contacts">[m
+ 				<ul class="footer-contactList">[m
+ 					<li class="footer-contactInfo" ng-repeat="contact in footer.contacts">[m
+ 						<a href="{{contact.url}}">[m
+[36m@@ -91,10 +96,7 @@[m
+ 						</a>[m
+ 					</li>							[m
+ 				</ul>[m
+[31m-			</div>[m
+[31m-			<figure class="logo-footer">[m
+[31m-				<img ng-src="{{footer.urlLogo}}" width="230px">[m
+[31m-			</figure>[m
+[32m+[m			[32m</div>[m[41m			[m
+ 			<div class="footer-column author" ng-repeat="author in footer.authors">[m
+ 				<p class="footer-infoAuthor">[m
+ 					<strong>{{author.name}}</strong>[m
+[36m@@ -113,9 +115,12 @@[m
+ 	<script src="static/js/hammer.min.js"></script>[m
+ 	<script>[m
+ 	$(function() {		[m
+[31m-		if (window.matchMedia("(max-width: 480px)").matches) {[m
+[32m+[m		[32mif (window.matchMedia("(max-width: 480px)").matches || window.matchMedia("(max-width: 768px)").matches) {[m
+ 			var $buttonShowMenu = document.getElementById('showMenu');[m
+ 			var $buttonHideMenu = document.getElementById('hideMenu');[m
+[32m+[m			[32mvar $barraMenuShow = document.getElementById('barMenu');[m
+[32m+[m			[32mvar $barraMenuHide = document.getElementById('barMenuHide');[m
+[32m+[m			[32mvar $menuList	= document.getElementById('opt_login');[m
+ 			var $menu = document.getElementById('menu');[m
+ [m
+ 			var $body = document.querySelector('body');[m
+[36m@@ -134,12 +139,28 @@[m
+ 				$menu.classList.remove('is-active');[m
+ 			};[m
+ [m
+[32m+[m			[32mvar barMenu = function() {[m[41m				[m
+[32m+[m				[32m$menuList.classList.add('is-active');[m
+[32m+[m				[32m$barraMenuShow.classList.remove('si-active');[m
+[32m+[m				[32m$barraMenuShow.classList.add('no-active');[m
+[32m+[m				[32m$barraMenuHide.classList.add('si-active');[m
+[32m+[m				[32m$barraMenuHide.classList.remove('no-active');[m
+[32m+[m			[32m};[m
+[32m+[m			[32mvar barMenuHide = function() {[m[41m	[m
+[32m+[m				[32m$menuList.classList.remove('is-active');[m
+[32m+[m				[32m$barraMenuShow.classList.add('si-active');[m
+[32m+[m				[32m$barraMenuShow.classList.remove('no-active');[m
+[32m+[m				[32m$barraMenuHide.classList.remove('si-active');[m
+[32m+[m				[32m$barraMenuHide.classList.add('no-active');[m
+[32m+[m			[32m};[m
+[32m+[m
+ 			$buttonShowMenu.addEventListener("click", showMenu);[m
+ 			$buttonHideMenu.addEventListener("click", hideMenu);[m
+[32m+[m			[32m$barraMenuShow.addEventListener("click", barMenu);[m
+[32m+[m			[32m$barraMenuHide.addEventListener("click", barMenuHide);[m
+ [m
+ 			body.on('panright', showMenu);[m
+[31m-			body.on('panleft', hideMenu)[m
+[31m-[m
+[32m+[m			[32mbody.on('panleft', hideMenu);[m
+ 		};[m
+ 	});[m
+ 	</script>[m
+[1mdiff --git a/static/css/estilosPbAccesorios.css b/static/css/estilosPbAccesorios.css[m
+[1mindex 9664ef7..623e9a4 100644[m
+[1m--- a/static/css/estilosPbAccesorios.css[m
+[1m+++ b/static/css/estilosPbAccesorios.css[m
+[36m@@ -1 +1 @@[m
+[31m-html,body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio:not([controls]),canvas:not([controls]),progress:not([controls]),video:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"],button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type="checkbox"],input[type="radio"],input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-moz-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:.35em .625em .75em}legend,textarea{overflow:auto}optgroup{font-weight:bold}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}body{margin:0;padding:0}h1,h2,h3,h4,h5,h6{text-align:center;font-weight:normal;text-rendering:optimizelegibility}h1{color:#4e443c;font-size:36px;font-weight:bold}pre{border:1px solid #000;overflow-x:auto;background:#222;color:#fff;text-shadow:none}.wrapper{max-width:750px;padding:0 20px 40px 20px;margin:auto}@font-face{font-family:'icomoon';src:url("../fonts/icomoon.eot");src:url("../fonts/icomoon.eot?#iefix") format('embedded-opentype'),url("../fonts/icomoon.woff") format('woff'),url("../fonts/icomoon.ttf") format('truetype'),url("../fonts/icomoon.svg#icomoon") format('svg');font-weight:normal;font-style:normal}[class^="icon-"],[class*=" icon-"]{font-family:'icomoon';speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}body{font-family:'Raleway',sans-serif;font-size:16px}footer{background:#202020;color:rgba(255,255,255,0.7);padding:1em;display:relative;margin-top:2em;}footer .footer-contactList{display:inline-block;margin-right:2em;list-style:none;}footer .footer-contactList .footer-contactInfo{margin-bottom:.3em;text-align:left;}footer .footer-contactList .footer-contactInfo a{text-decoration:none;color:#20b2aa}footer .footer-container{text-align:center;position:relative}footer .footer-column{display:inline-block;margin:0 4em;}footer .footer-column.description{color:#fff;text-align:justify;width:222px}footer .footer-column .footer-infoAuthor{margin:0;font-size:.8em}footer .logo-footer{display:inline-block;margin:0;position:absolute;left:0;right:0;top:-40px}nav{background:#333;border-bottom:2px solid #fc0;height:3.5em;position:fixed;width:100%;z-index:2;}nav .logo{margin:0 2em;display:inline-block}nav .mainMenu{display:inline-block;left:10em;margin:0;position:absolute;top:1em;}nav .mainMenu li{padding-right:4em;display:inline-block;}nav .mainMenu li a{border-right:1px solid #fff;color:#fff;font-size:.8em;padding-right:3em;text-decoration:none;text-transform:uppercase}nav .search-left{position:absolute;top:.8em;right:12.5em;display:inline-block;}nav .search-left .search-input .input_search{border-radius:5px;border:1px solid #add8e6;font-family:'Raleway',sans-serif;padding:0 1em 0 2em;width:180px;height:2.2em;font-size:.8em}nav .search-left .search-input .icon-busqueda{right:12.5em;top:.6em;position:absolute;}nav .search-left .search-input .icon-busqueda:before{content:"\e601"}nav .container_login{position:absolute;top:1.1em;right:.6em;display:inline-block;font-size:.8em;}nav .container_login .ingresarUsuario{padding-right:.5em;border-right:1px solid #fff;color:#008b8b}nav .container_login .hacerIngresoUsuario{padding-left:.5em;color:#fc0}nav .avatar{opacity:.4;position:absolute;right:10em;top:.6em}h2{font-size:1.3em;font-weight:bold;margin-top:1em;padding-left:1em}h2,h1,h3{text-align:left}h3{font-size:1em;padding-left:1em;font-weight:bold}#contenido .titulo_Producto{margin-top:5em}#contenido .detallesGenerales{display:inline-block;position:relative;width:50em;}#contenido .detallesGenerales .selector_images{display:inline-block;margin:0 3em 0 1em;vertical-align:top}#contenido .detallesGenerales .img_principal{display:inline-block;margin:0;padding:0;}#contenido .detallesGenerales .img_principal img{width:250px;display:inline-block}#contenido .detallesGenerales .info_Producto{display:inline-block;list-style:none;margin:0 0 0 8em;padding:0;position:absolute;top:4em;width:300px;}#contenido .detallesGenerales .info_Producto li{margin-bottom:.5em;border-bottom:1px dotted #ccc;}#contenido .detallesGenerales .info_Producto li .detalle_Producto{float:right;font-weight:bold}#contenido .detallesGenerales .precio_Producto{font-size:1.2em;margin:1em 0 3em 2em;padding:.5em .2em;text-align:right;display:block;background:#b1c6d9}#contenido .especificaciones{border-left:1px solid #dcdcdc;display:inline-block;margin-top:2em;padding-left:1em;position:absolute;right:.5em;vertical-align:top;width:32em;font-size:.9em;}#contenido .especificaciones ul{margin:.5em 0 2em 0;}#contenido .especificaciones ul li{margin-bottom:.3em}#contenido .especificaciones .item-color{height:2.5em;width:2.5em;margin-left:1em;}#contenido .especificaciones .item-color.item-color-red{background:#f00}#contenido .especificaciones .item-color.item-color-orange{background:DarkOrange}[m
+\ No newline at end of file[m
+[32m+[m[32mhtml,body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio:not([controls]),canvas:not([controls]),progress:not([controls]),video:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"],button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type="checkbox"],input[type="radio"],input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-moz-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:.35em .625em .75em}legend,textarea{overflow:auto}optgroup{font-weight:bold}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}body{margin:0;padding:0}h1,h2,h3,h4,h5,h6{text-align:center;font-weight:normal;text-rendering:optimizelegibility}h1{color:#4e443c;font-size:36px;font-weight:bold}pre{border:1px solid #000;overflow-x:auto;background:#222;color:#fff;text-shadow:none}.wrapper{max-width:750px;padding:0 20px 40px 20px;margin:auto}@font-face{font-family:'icomoon';src:url("../fonts/icomoon.eot");src:url("../fonts/icomoon.eot?#iefix") format('embedded-opentype'),url("../fonts/icomoon.woff") format('woff'),url("../fonts/icomoon.ttf") format('truetype'),url("../fonts/icomoon.svg#icomoon") format('svg');font-weight:normal;font-style:normal}[class^="icon-"],[class*=" icon-"]{font-family:'icomoon';speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}body{font-family:'Raleway',sans-serif;font-size:16px}footer{background:#202020;color:rgba(255,255,255,0.7);padding:1em;display:relative;margin-top:2em;}footer .footer-contactList{display:inline-block;margin-right:2em;list-style:none;}footer .footer-contactList .footer-contactInfo{margin-bottom:.3em;text-align:left;}footer .footer-contactList .footer-contactInfo a{text-decoration:none;color:#20b2aa}footer .footer-container{text-align:center;position:relative}footer .footer-column{display:inline-block;margin:0 4em;}footer .footer-column.description{color:#fff;text-align:justify;width:222px}footer .footer-column .footer-infoAuthor{margin:0;font-size:.8em}footer .logo-footer{display:inline-block;margin:0;position:absolute;left:0;right:0;top:-40px}nav{background:#333;border-bottom:2px solid #fc0;height:3.5em;position:fixed;width:100%;z-index:2;}nav .logo{margin:0 2em;display:inline-block}nav .mainMenu{display:inline-block;left:10em;margin:0;position:absolute;top:1em;}nav .mainMenu li{padding-right:4em;display:inline-block;}nav .mainMenu li a{border-right:1px solid #fff;color:#fff;font-size:.8em;padding-right:3em;text-decoration:none;text-transform:uppercase}nav .search-left{position:absolute;top:.8em;right:12.5em;display:inline-block;}nav .search-left .search-input .input_search{border-radius:5px;border:1px solid #add8e6;font-family:'Raleway',sans-serif;padding:0 1em 0 2em;width:180px;height:2.2em;font-size:.8em}nav .search-left .search-input .icon-busqueda{right:12.5em;top:.6em;position:absolute;}nav .search-left .search-input .icon-busqueda:before{content:"\e600"}nav .container_login{position:absolute;top:1.1em;right:.6em;display:inline-block;font-size:.8em;}nav .container_login .ingresarUsuario{padding-right:.5em;border-right:1px solid #fff;color:#008b8b}nav .container_login .hacerIngresoUsuario{padding-left:.5em;color:#fc0}nav .avatar{opacity:.4;position:absolute;right:10em;top:.6em}h2{font-size:1.3em;font-weight:bold;margin-top:1em;padding-left:1em}h2,h1,h3{text-align:left}h3{font-size:1em;padding-left:1em;font-weight:bold}#contenido .titulo_Producto{margin-top:5em}#contenido .detallesGenerales{display:inline-block;position:relative;width:50em;}#contenido .detallesGenerales .selector_images{display:inline-block;margin:0 3em 0 1em;vertical-align:top}#contenido .detallesGenerales .img_principal{display:inline-block;margin:0;padding:0;}#contenido .detallesGenerales .img_principal img{width:250px;display:inline-block}#contenido .detallesGenerales .info_Producto{display:inline-block;list-style:none;margin:0 0 0 8em;padding:0;position:absolute;top:4em;width:300px;}#contenido .detallesGenerales .info_Producto li{margin-bottom:.5em;border-bottom:1px dotted #ccc;}#contenido .detallesGenerales .info_Producto li .detalle_Producto{float:right;font-weight:bold}#contenido .detallesGenerales .precio_Producto{font-size:1.2em;margin:1em 0 3em 2em;padding:.5em .2em;text-align:right;display:block;background:#b1c6d9}#contenido .especificaciones{border-left:1px solid #dcdcdc;display:inline-block;margin-top:2em;padding-left:1em;position:absolute;right:.5em;vertical-align:top;width:32em;font-size:.9em;}#contenido .especificaciones ul{margin:.5em 0 2em 0;}#contenido .especificaciones ul li{margin-bottom:.3em}#contenido .especificaciones .item-color{height:2.5em;width:2.5em;margin-left:1em;}#contenido .especificaciones .item-color.item-color-red{background:#f00}#contenido .especificaciones .item-color.item-color-orange{background:DarkOrange}#contenido .is-active{display:block}#contenido .icon-hideMenu:before{content:"\f03b"}#contenido .icon-shonMenu:before{content:"\f03c"}@media screen and (max-width:480px){nav{position:relative;}nav .avatar{display:none}nav .logo{margin:0}nav .mainMenu{position:fixed;top:4em;transition:.3s;background:#009688;left:-205px;border-radius:2%;}nav .mainMenu.is-active{left:0}nav .mainMenu li{padding:0;display:block;margin-bottom:1em;margin-right:1em;margin-top:.5em;font-weight:bold;}nav .mainMenu li a{border:none;padding-right:0}nav .container_login{background:#add8e6;float:right;padding:1em 2em;right:0;text-align:center;transition:.3s;width:100%;top:-6em;}nav .container_login.is-active{top:4.5em}nav .container_login a{margin-bottom:1em;text-decoration:none}nav .container_login .ingresarUsuario{border:0;color:#fff;display:block;padding-right:0}nav .container_login .hacerIngresoUsuario{padding:0;color:#fff}nav .icon-bars{color:#fff;outline:0;position:absolute;right:1em;top:1.2em;}nav .icon-bars:before{content:"\f0c9"}nav .icon-bars.is-active{top:4em}nav .icon-bars.no-active{display:none}nav .icon-bars.si-active{display:block}nav .search-left{left:55%;}nav .search-left .search-input{position:absolute;right:-100px;}nav .search-left .search-input .input_search{width:12em}nav .search-left .search-input .icon-busqueda{right:10.5em}#contenido .image_producto{margin-left:0;margin-right:0}#contenido .contenido-button{background:#fff;border:none;border-radius:40px;height:40px;line-height:40px;outline:0;position:fixed;right:1em;top:4em;width:40px;z-index:3;display:none;background:#ff8c00;outline:0;}#contenido .contenido-button.is-active{display:block}#contenido .detallesGenerales{width:100%;}#contenido .detallesGenerales .img_principal{display:block;text-align:center}#contenido .detallesGenerales .info_Producto{display:block;margin:0;position:relative;top:0;width:85%;margin-left:15%}#contenido .detallesGenerales .precio_Producto{margin:0;margin-left:1em;width:90%}#contenido .detallesGenerales .selector_images{margin:0 3em 1em 1em;}#contenido .detallesGenerales .selector_images .item_selector{display:inline-block}#contenido .especificaciones{display:block;position:relative;width:90%}#contenido .titulo_Producto{margin-top:1em;}#contenido .titulo_Producto h2{text-align:center}footer .footer-container .footer-column{margin:0;}footer .footer-container .footer-column.contacts{margin-top:6em}}@media handheld,only screen and (max-width:767px){nav{position:relative;}nav .avatar{right:3.5em;display:none}nav .logo{margin:0}nav .mainMenu{position:fixed;top:4em;transition:.3s;background:#009688;left:-205px;border-radius:2%;}nav .mainMenu.is-active{left:0}nav .mainMenu li{padding:0;display:block;margin-bottom:1em;margin-right:1em;margin-top:.5em;font-weight:bold;}nav .mainMenu li a{border:none;padding-right:0}nav .container_login{background:#add8e6;float:right;padding:1em 2em;right:0;text-align:center;transition:.3s;width:100%;top:-6em;}nav .container_login.is-active{top:4.5em}nav .container_login a{margin-bottom:1em;text-decoration:none}nav .container_login .ingresarUsuario{border:0;color:#fff;display:block;padding-right:0}nav .container_login .hacerIngresoUsuario{padding:0;color:#fff}nav .icon-bars{color:#fff;outline:0;position:absolute;right:1em;top:1.2em;}nav .icon-bars:before{content:"\f0c9"}nav .icon-bars.is-active{top:4em}nav .icon-bars.no-active{display:none}nav .icon-bars.si-active{display:block}nav .search-left{left:55%;}nav .search-left .search-input{position:absolute;right:-100px;}nav .search-left .search-input .input_search{width:12em}nav .search-left .search-input .icon-busqueda{right:11em;opacity:.5}#contenido .contenido-button{background:#ff8c00;border:none;border-radius:40px;display:none;height:40px;line-height:40px;outline:0;outline:0;position:fixed;right:1em;top:4em;width:40px;z-index:3;}#contenido .contenido-button.is-active{display:block}#contenido .detallesGenerales{width:100%;}#contenido .detallesGenerales .info_Producto{display:block;margin:1em;position:relative;top:0;width:85%}#contenido .detallesGenerales .precio_Producto{margin:1em 0 1em .5em;width:90%}#contenido .especificaciones{position:relative}footer .footer-container .logo-footer{position:relative;display:block}footer .footer-container .footer-column{margin-left:auto;margin-right:auto;display:block;}footer .footer-container .footer-column .description{display:block}footer .footer-container .footer-column.contacts{display:block;margin:0;}footer .footer-container .footer-column.contacts .footer-contactList{margin:0 0 1em 0}}@media screen and (min-width:768px) and (max-width:1024px){nav{position:relative;}nav .avatar{right:3.5em;display:none}nav .mainMenu{background:#009688;border-radius:2%;left:-205px;position:fixed;top:4em;transition:.3s;}nav .mainMenu.is-active{left:0}nav .mainMenu li{padding:0;display:block;margin-bottom:1em;margin-right:1em;margin-top:.5em;font-weight:bold;}nav .mainMenu li a{border:none;padding-right:0}nav .container_login{background:#add8e6;float:right;padding:1em 2em;right:0;text-align:center;transition:.3s;width:100%;top:-6em;}nav .container_login.is-active{top:4.5em}nav .container_login a{margin-bottom:1em;text-decoration:none}nav .container_login .ingresarUsuario{border:0;color:#fff;display:block;padding-right:0}nav .container_login .hacerIngresoUsuario{padding:0;color:#fff}nav .icon-bars{color:#fff;outline:0;position:absolute;right:1em;top:1.2em;}nav .icon-bars:before{content:"\f0c9"}nav .icon-bars.is-active{top:4em}nav .icon-bars.no-active{display:none}nav .icon-bars.si-active{display:block}nav .search-left{right:11em;}nav .search-left .search-input{position:absolute;right:-100px;}nav .search-left .search-input .input_search{width:12em}nav .search-left .search-input .icon-busqueda{right:11em;opacity:.5}footer .footer-column.contacts{margin:0}footer .footer-column.description{margin:0}#contenido .contenido-button{background:#ff8c00;border:none;border-radius:40px;display:none;height:40px;line-height:40px;outline:0;position:fixed;right:1em;top:3.6em;width:40px;z-index:3;}#contenido .contenido-button.is-active{display:block}#contenido .detallesGenerales{width:40em}#contenido .especificaciones{display:block;position:relative}}[m
+\ No newline at end of file[m
+[1mdiff --git a/static/css/estilosPbAccesorios.styl b/static/css/estilosPbAccesorios.styl[m
+[1mindex 138bf52..94a1a0c 100644[m
+[1m--- a/static/css/estilosPbAccesorios.styl[m
+[1m+++ b/static/css/estilosPbAccesorios.styl[m
+[36m@@ -115,7 +115,7 @@[m [mnav[m
+         top .6em[m
+         position absolute[m
+         &:before[m
+[31m-          content "\e601"[m
+[32m+[m[32m          content "\e600"[m
+   .container_login[m
+     position absolute[m
+     top 1.1em[m
+[36m@@ -209,4 +209,358 @@[m [mh3[m
+         background red[m
+       &.item-color-orange[m
+         background DarkOrange[m
+[31m-      [m
+\ No newline at end of file[m
+[32m+[m[32m  .is-active[m
+[32m+[m[32m    display block[m
+[32m+[m[32m  .icon-hideMenu[m
+[32m+[m[32m    &:before[m
+[32m+[m[32m      content "\f03b"[m
+[32m+[m[32m  .icon-shonMenu[m
+[32m+[m[32m    &:before[m
+[32m+[m[32m      content "\f03c"[m
+[32m+[m[32m@media screen and (max-width: 480px)[m
+[32m+[m[32m  nav[m
+[32m+[m[32m    position relative[m
+[32m+[m[32m    .avatar[m
+[32m+[m[32m      display none[m
+[32m+[m[32m    .logo[m
+[32m+[m[32m      margin 0[m
+[32m+[m[32m    .mainMenu[m
+[32m+[m[32m      position fixed[m
+[32m+[m[32m      top 4em[m
+[32m+[m[32m      transition .3s[m
+[32m+[m[32m      background #009688[m
+[32m+[m[32m      left -205px[m
+[32m+[m[32m      border-radius 2%[m
+[32m+[m[32m      &.is-active[m
+[32m+[m[32m        left 0[m
+[32m+[m[32m      li[m
+[32m+[m[32m        padding 0[m
+[32m+[m[32m        display block[m
+[32m+[m[32m        margin-bottom 1em[m
+[32m+[m[32m        margin-right 1em[m
+[32m+[m[32m        margin-top .5em[m
+[32m+[m[32m        font-weight bold[m
+[32m+[m[32m        a[m
+[32m+[m[32m          border none[m
+[32m+[m[32m          padding-right 0[m
+[32m+[m[32m    .container_login[m
+[32m+[m[32m      background lightblue[m
+[32m+[m[32m      float right[m
+[32m+[m[32m      padding 1em 2em[m[41m      [m
+[32m+[m[32m      right 0[m
+[32m+[m[32m      text-align center[m
+[32m+[m[32m      transition .3s[m
+[32m+[m[32m      width 100%[m
+[32m+[m[32m      top -6em[m
+[32m+[m[32m      &.is-active[m
+[32m+[m[32m        top 4.5em[m[41m   [m
+[32m+[m[32m      a[m
+[32m+[m[32m        margin-bottom 1em[m
+[32m+[m[32m        text-decoration none[m[41m      [m
+[32m+[m[32m      .ingresarUsuario[m
+[32m+[m[32m        border 0[m
+[32m+[m[32m        color white[m
+[32m+[m[32m        display block[m
+[32m+[m[32m        padding-right 0[m
+[32m+[m[32m      .hacerIngresoUsuario[m
+[32m+[m[32m        padding 0[m
+[32m+[m[32m        color white[m
+[32m+[m[32m    .icon-bars[m
+[32m+[m[32m      color white[m
+[32m+[m[32m      outline 0[m
+[32m+[m[32m      position absolute[m
+[32m+[m[32m      right 1em[m
+[32m+[m[32m      top 1.2em[m
+[32m+[m[32m      &:before[m
+[32m+[m[32m        content "\f0c9"[m
+[32m+[m[32m      &.is-active[m
+[32m+[m[32m        top 4em[m
+[32m+[m[32m      &.no-active[m
+[32m+[m[32m        display none[m
+[32m+[m[32m      &.si-active[m
+[32m+[m[32m        display block[m
+[32m+[m[32m    .search-left[m
+[32m+[m[32m      left 55%[m
+[32m+[m[32m      .search-input[m
+[32m+[m[32m        position absolute[m
+[32m+[m[32m        right -100px[m
+[32m+[m[32m        .input_search[m
+[32m+[m[32m          width 12em[m
+[32m+[m[32m        .icon-busqueda[m
+[32m+[m[32m          right 10.5em[m[41m  [m
+[32m+[m[32m  #contenido[m
+[32m+[m[32m    .image_producto[m
+[32m+[m[32m      margin-left 0[m
+[32m+[m[32m      margin-right 0[m
+[32m+[m[32m    .contenido[m[41m        [m
+[32m+[m[32m      &-button[m
+[32m+[m[32m        background white[m
+[32m+[m[32m        border none[m
+[32m+[m[32m        border-radius 40px[m
+[32m+[m[32m        height 40px[m
+[32m+[m[32m        line-height 40px[m
+[32m+[m[32m        outline 0[m
+[32m+[m[32m        position fixed[m
+[32m+[m[32m        right 1em[m
+[32m+[m[32m        top 4em[m
+[32m+[m[32m        width 40px[m
+[32m+[m[32m        z-index 3[m
+[32m+[m[32m        display none[m
+[32m+[m[32m        background #FF8C00[m
+[32m+[m[32m        outline 0[m
+[32m+[m[32m        &.is-active[m
+[32m+[m[32m          display block[m
+[32m+[m[32m    .detallesGenerales[m
+[32m+[m[32m      width 100%[m
+[32m+[m[32m      .img_principal[m
+[32m+[m[32m        display block[m
+[32m+[m[32m        text-align center[m
+[32m+[m[32m      .info_Producto[m
+[32m+[m[32m        display block[m
+[32m+[m[32m        margin 0[m
+[32m+[m[32m        position relative[m
+[32m+[m[32m        top 0[m
+[32m+[m[32m        width 85%[m
+[32m+[m[32m        margin-left 15%[m
+[32m+[m[32m      .precio_Producto[m
+[32m+[m[32m        margin 0[m
+[32m+[m[32m        margin-left 1em[m
+[32m+[m[32m        width 90%[m
+[32m+[m[32m      .selector_images[m
+[32m+[m[32m        margin 0 3em 1em 1em[m
+[32m+[m[32m        .item_selector[m
+[32m+[m[32m          display inline-block[m
+[32m+[m[32m    .especificaciones[m
+[32m+[m[32m      display block[m
+[32m+[m[32m      position relative[m
+[32m+[m[32m      width 90%[m
+[32m+[m[32m    .titulo_Producto[m
+[32m+[m[32m      margin-top 1em[m
+[32m+[m[32m      h2[m
+[32m+[m[32m        text-align center[m
+[32m+[m[32m  footer[m
+[32m+[m[32m    .footer-container[m
+[32m+[m[32m      .footer-column[m
+[32m+[m[32m        margin 0[m
+[32m+[m[32m        &.contacts[m
+[32m+[m[32m          margin-top 6em[m
+[32m+[m[32m@media handheld, only screen and (max-width: 767px)[m
+[32m+[m[32m  nav[m
+[32m+[m[32m    position relative[m
+[32m+[m[32m    .avatar[m
+[32m+[m[32m      right 3.5em[m
+[32m+[m[32m      display none[m
+[32m+[m[32m    .logo[m
+[32m+[m[32m      margin 0[m
+[32m+[m[32m    .mainMenu[m
+[32m+[m[32m      position fixed[m
+[32m+[m[32m      top 4em[m
+[32m+[m[32m      transition .3s[m
+[32m+[m[32m      background #009688[m
+[32m+[m[32m      left -205px[m
+[32m+[m[32m      border-radius 2%[m
+[32m+[m[32m      &.is-active[m
+[32m+[m[32m        left 0[m
+[32m+[m[32m      li[m
+[32m+[m[32m        padding 0[m
+[32m+[m[32m        display block[m
+[32m+[m[32m        margin-bottom 1em[m
+[32m+[m[32m        margin-right 1em[m
+[32m+[m[32m        margin-top .5em[m
+[32m+[m[32m        font-weight bold[m
+[32m+[m[32m        a[m
+[32m+[m[32m          border none[m
+[32m+[m[32m          padding-right 0[m
+[32m+[m[32m    .container_login[m
+[32m+[m[32m      background lightblue[m
+[32m+[m[32m      float right[m
+[32m+[m[32m      padding 1em 2em[m[41m      [m
+[32m+[m[32m      right 0[m
+[32m+[m[32m      text-align center[m
+[32m+[m[32m      transition .3s[m
+[32m+[m[32m      width 100%[m
+[32m+[m[32m      top -6em[m
+[32m+[m[32m      &.is-active[m
+[32m+[m[32m        top 4.5em[m[41m   [m
+[32m+[m[32m      a[m
+[32m+[m[32m        margin-bottom 1em[m
+[32m+[m[32m        text-decoration none[m[41m      [m
+[32m+[m[32m      .ingresarUsuario[m
+[32m+[m[32m        border 0[m
+[32m+[m[32m        color white[m
+[32m+[m[32m        display block[m
+[32m+[m[32m        padding-right 0[m
+[32m+[m[32m      .hacerIngresoUsuario[m
+[32m+[m[32m        padding 0[m
+[32m+[m[32m        color white[m
+[32m+[m[32m    .icon-bars[m
+[32m+[m[32m      color white[m
+[32m+[m[32m      outline 0[m
+[32m+[m[32m      position absolute[m
+[32m+[m[32m      right 1em[m
+[32m+[m[32m      top 1.2em[m
+[32m+[m[32m      &:before[m
+[32m+[m[32m        content "\f0c9"[m
+[32m+[m[32m      &.is-active[m
+[32m+[m[32m        top 4em[m
+[32m+[m[32m      &.no-active[m
+[32m+[m[32m        display none[m
+[32m+[m[32m      &.si-active[m
+[32m+[m[32m        display block[m
+[32m+[m[41m        [m
+[32m+[m[32m    .search-left[m
+[32m+[m[32m      left 55%[m
+[32m+[m[32m      .search-input[m
+[32m+[m[32m        position absolute[m
+[32m+[m[32m        right -100px[m
+[32m+[m[32m        .input_search[m
+[32m+[m[32m          width 12em[m
+[32m+[m[32m        .icon-busqueda[m
+[32m+[m[32m          right 11em[m
+[32m+[m[32m          opacity .5[m
+[32m+[m[32m  #contenido[m
+[32m+[m[32m    .contenido[m[41m        [m
+[32m+[m[32m      &-button[m
+[32m+[m[32m        background #FF8C00[m
+[32m+[m[32m        border none[m
+[32m+[m[32m        border-radius 40px[m
+[32m+[m[32m        display none[m
+[32m+[m[32m        height 40px[m
+[32m+[m[32m        line-height 40px[m
+[32m+[m[32m        outline 0[m
+[32m+[m[32m        outline 0[m
+[32m+[m[32m        position fixed[m
+[32m+[m[32m        right 1em[m
+[32m+[m[32m        top 4em[m
+[32m+[m[32m        width 40px[m
+[32m+[m[32m        z-index 3[m
+[32m+[m[32m        &.is-active[m
+[32m+[m[32m          display block[m
+[32m+[m[32m    .detallesGenerales[m
+[32m+[m[32m      width 100%[m
+[32m+[m[32m      .info_Producto[m
+[32m+[m[32m        display block[m
+[32m+[m[32m        margin 1em[m
+[32m+[m[32m        position relative[m
+[32m+[m[32m        top 0[m
+[32m+[m[32m        width 85%[m
+[32m+[m[32m      .precio_Producto[m
+[32m+[m[32m        margin 1em 0 1em .5em[m
+[32m+[m[32m        width 90%[m
+[32m+[m[32m    .especificaciones[m
+[32m+[m[32m      position relative[m
+[32m+[m[32m  footer[m
+[32m+[m[32m    .footer-container[m
+[32m+[m[32m      .logo-footer[m
+[32m+[m[32m        position relative[m
+[32m+[m[32m        display block[m
+[32m+[m[32m      .footer-column[m
+[32m+[m[32m        margin-left auto[m
+[32m+[m[32m        margin-right auto[m
+[32m+[m[32m        display block[m
+[32m+[m[32m        .description[m
+[32m+[m[32m          display block[m
+[32m+[m[32m        &.contacts[m
+[32m+[m[32m          display block[m
+[32m+[m[32m          margin 0[m
+[32m+[m[32m          .footer-contactList[m
+[32m+[m[32m            margin 0 0 1em 0[m[41m  [m
+[32m+[m[32m@media screen and (min-width: 768px) and (max-width: 1024px)[m
+[32m+[m[32m  nav[m
+[32m+[m[32m    position relative[m
+[32m+[m[32m    .avatar[m
+[32m+[m[32m      right 3.5em[m
+[32m+[m[32m      display none[m
+[32m+[m[32m    .mainMenu[m
+[32m+[m[32m      background #009688[m
+[32m+[m[32m      border-radius 2%[m
+[32m+[m[32m      left -205px[m
+[32m+[m[32m      position fixed[m
+[32m+[m[32m      top 4em[m
+[32m+[m[32m      transition .3s[m
+[32m+[m[32m      &.is-active[m
+[32m+[m[32m        left 0[m
+[32m+[m[32m      li[m
+[32m+[m[32m        padding 0[m
+[32m+[m[32m        display block[m
+[32m+[m[32m        margin-bottom 1em[m
+[32m+[m[32m        margin-right 1em[m
+[32m+[m[32m        margin-top .5em[m
+[32m+[m[32m        font-weight bold[m
+[32m+[m[32m        a[m
+[32m+[m[32m          border none[m
+[32m+[m[32m          padding-right 0[m
+[32m+[m[32m    .container_login[m
+[32m+[m[32m      background lightblue[m
+[32m+[m[32m      float right[m
+[32m+[m[32m      padding 1em 2em[m[41m      [m
+[32m+[m[32m      right 0[m
+[32m+[m[32m      text-align center[m
+[32m+[m[32m      transition .3s[m
+[32m+[m[32m      width 100%[m
+[32m+[m[32m      top -6em[m
+[32m+[m[32m      &.is-active[m
+[32m+[m[32m        top 4.5em[m[41m   [m
+[32m+[m[32m      a[m
+[32m+[m[32m        margin-bottom 1em[m
+[32m+[m[32m        text-decoration none[m[41m      [m
+[32m+[m[32m      .ingresarUsuario[m
+[32m+[m[32m        border 0[m
+[32m+[m[32m        color white[m
+[32m+[m[32m        display block[m
+[32m+[m[32m        padding-right 0[m
+[32m+[m[32m      .hacerIngresoUsuario[m
+[32m+[m[32m        padding 0[m
+[32m+[m[32m        color white[m
+[32m+[m[32m    .icon-bars[m
+[32m+[m[32m      color white[m
+[32m+[m[32m      outline 0[m
+[32m+[m[32m      position absolute[m
+[32m+[m[32m      right 1em[m
+[32m+[m[32m      top 1.2em[m
+[32m+[m[32m      &:before[m
+[32m+[m[32m        content "\f0c9"[m
+[32m+[m[32m      &.is-active[m
+[32m+[m[32m        top 4em[m
+[32m+[m[32m      &.no-active[m
+[32m+[m[32m        display none[m
+[32m+[m[32m      &.si-active[m
+[32m+[m[32m        display block[m
+[32m+[m[32m    .search-left[m
+[32m+[m[32m      right 11em[m
+[32m+[m[32m      .search-input[m
+[32m+[m[32m        position absolute[m
+[32m+[m[32m        right -100px[m
+[32m+[m[32m        .input_search[m
+[32m+[m[32m          width 12em[m
+[32m+[m[32m        .icon-busqueda[m
+[32m+[m[32m          right 11em[m
+[32m+[m[32m          opacity .5[m
+[32m+[m[32m  footer[m
+[32m+[m[32m    .footer-column[m
+[32m+[m[32m      &.contacts[m
+[32m+[m[32m        margin 0[m
+[32m+[m[32m      &.description[m
+[32m+[m[32m        margin 0[m[41m    [m
+[32m+[m[32m  #contenido[m
+[32m+[m[32m    .contenido[m[41m        [m
+[32m+[m[32m      &-button[m
+[32m+[m[32m        background #FF8C00[m
+[32m+[m[32m        border none[m
+[32m+[m[32m        border-radius 40px[m
+[32m+[m[32m        display none[m
+[32m+[m[32m        height 40px[m
+[32m+[m[32m        line-height 40px[m
+[32m+[m[32m        outline 0[m
+[32m+[m[32m        position fixed[m
+[32m+[m[32m        right 1em[m
+[32m+[m[32m        top 3.6em[m
+[32m+[m[32m        width 40px[m
+[32m+[m[32m        z-index 3[m
+[32m+[m[32m        &.is-active[m
+[32m+[m[32m          display block[m
+[32m+[m[32m    .detallesGenerales[m
+[32m+[m[32m      width 40em[m
+[32m+[m[32m    .especificaciones[m
+[32m+[m[32m      display block[m
+[32m+[m[32m      position relative[m
+\ No newline at end of file[m
+[1mdiff --git a/static/css/estilosRegistroUsuario.css b/static/css/estilosRegistroUsuario.css[m
+[1mindex 157105e..67b395e 100644[m
+[1m--- a/static/css/estilosRegistroUsuario.css[m
+[1m+++ b/static/css/estilosRegistroUsuario.css[m
+[36m@@ -1 +1 @@[m
+[31m-html,body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio:not([controls]),canvas:not([controls]),progress:not([controls]),video:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"],button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type="checkbox"],input[type="radio"],input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-moz-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:.35em .625em .75em}legend,textarea{overflow:auto}optgroup{font-weight:bold}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}body{margin:0;padding:0}h1,h2,h3,h4,h5,h6{text-align:center;font-weight:normal;text-rendering:optimizelegibility}h1{color:#4e443c;font-size:36px;font-weight:bold}pre{border:1px solid #000;overflow-x:auto;background:#222;color:#fff;text-shadow:none}.wrapper{max-width:750px;padding:0 20px 40px 20px;margin:auto}@font-face{font-family:'icomoon';src:url("../fonts/icomoon.eot");src:url("../fonts/icomoon.eot?#iefix") format('embedded-opentype'),url("../fonts/icomoon.woff") format('woff'),url("../fonts/icomoon.ttf") format('truetype'),url("../fonts/icomoon.svg#icomoon") format('svg');font-weight:normal;font-style:normal}[class^="icon-"],[class*=" icon-"]{font-family:'icomoon';speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}body{background:#eee;font-size:16px;font-family:'Raleway',sans-serif}footer{background:#202020;color:rgba(255,255,255,0.7);padding:1em;display:relative;}footer .footer-contactList{display:inline-block;margin-right:2em;}footer .footer-contactList .footer-contactInfo{margin-bottom:.3em;text-align:left;}footer .footer-contactList .footer-contactInfo a{text-decoration:none;color:#20b2aa}footer .footer-container{text-align:center;position:relative}footer .footer-column{display:inline-block;margin:0 4em;}footer .footer-column.description{color:#fff;text-align:justify;width:222px}footer .footer-column .footer-infoAuthor{margin:0;font-size:.8em}footer .logo-footer{display:inline-block;margin:0;position:absolute;left:0;right:0;top:-40px}nav{background:#333;border-bottom:2px solid #fc0;height:3.5em;position:fixed;top:0;width:100%;z-index:2;}nav .logo{display:inline-block;margin:0 2em}nav .mainMenu{display:inline-block;left:10em;margin:0;position:absolute;top:1em;}nav .mainMenu li{padding-right:4em;display:inline-block;}nav .mainMenu li a{border-right:1px solid #fff;color:#fff;font-size:.8em;padding-right:3em;text-decoration:none;text-transform:uppercase}nav .search-left{display:inline-block;position:absolute;right:12.5em;top:.8em;}nav .search-left .search-input .input_search{border:1px solid #add8e6;border-radius:5px;font-family:'Raleway',sans-serif;height:2.2em;padding:0 1em 0 2em;width:180px}nav .search-left .search-input .icon-busqueda{right:12.5em;top:.6em;position:absolute;}nav .search-left .search-input .icon-busqueda:before{content:"\e601"}nav .container_login{display:inline-block;font-size:.8em;position:absolute;right:.6em;top:1.1em;}nav .container_login .ingresarUsuario{border-right:1px solid #fff;color:#008b8b;padding-right:.5em}nav .container_login .hacerIngresoUsuario{color:#fc0;padding-left:.5em}nav .avatar{opacity:.4;position:absolute;right:10em;top:.6em}ul{list-style:none}.registro{margin-top:3.5em;}.registro .info_registroUsuario{height:2em;background:#5f9ea0;padding:1em 0;}.registro .info_registroUsuario h2{margin:0;color:#fff;font-weight:bold}.registro #registrarUsuario{background:#fff;display:block;margin:0 auto auto;position:relative;width:90%;}.registro #registrarUsuario .datosPersonales{border:none;display:inline-block;left:4em;position:relative;width:32em;}.registro #registrarUsuario .datosPersonales .container .input{border:none;height:2em;margin:.5em 0 1em 0;outline:5px solid #eee;padding-left:.2em;width:390px}.registro #registrarUsuario .datosPersonales legend{font-size:1.5em;width:80%;border-bottom:1px solid #808080;padding-bottom:10px;margin-bottom:1.5em}.registro #registrarUsuario .datosUsuario{border:none;display:inline-block;height:532px;position:absolute;right:10em;top:0;}.registro #registrarUsuario .datosUsuario .container .input{border:none;height:2em;margin:.5em 0 1em 0;outline:3px solid #eee;padding-left:.2em;width:390px}.registro #registrarUsuario .datosUsuario legend{font-size:1.5em;border-bottom:1px solid #808080;margin-bottom:1.5em;padding-bottom:10px;width:100%}.registro #registrarUsuario .datosUsuario .inputRegistrar{background:#5f9ea0;border:none;border-radius:50px;bottom:4em;color:#fff;font-weight:bold;height:2.5em;position:absolute;right:2em;width:150px}.registro #registrarUsuario .datosUsuario .icon-registrar{position:absolute;bottom:4em;right:9em;opacity:.4;z-index:1;}.registro #registrarUsuario .datosUsuario .icon-registrar:before{content:"\e607"}.registro #registrarUsuario .datosUsuario .miembro{position:absolute;bottom:1em;right:1em}[m
+\ No newline at end of file[m
+[32m+[m[32mhtml,body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio:not([controls]),canvas:not([controls]),progress:not([controls]),video:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"],button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type="checkbox"],input[type="radio"],input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-moz-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:.35em .625em .75em}legend,textarea{overflow:auto}optgroup{font-weight:bold}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}body{margin:0;padding:0}h1,h2,h3,h4,h5,h6{text-align:center;font-weight:normal;text-rendering:optimizelegibility}h1{color:#4e443c;font-size:36px;font-weight:bold}pre{border:1px solid #000;overflow-x:auto;background:#222;color:#fff;text-shadow:none}.wrapper{max-width:750px;padding:0 20px 40px 20px;margin:auto}@font-face{font-family:'icomoon';src:url("../fonts/icomoon.eot");src:url("../fonts/icomoon.eot?#iefix") format('embedded-opentype'),url("../fonts/icomoon.woff") format('woff'),url("../fonts/icomoon.ttf") format('truetype'),url("../fonts/icomoon.svg#icomoon") format('svg');font-weight:normal;font-style:normal}[class^="icon-"],[class*=" icon-"]{font-family:'icomoon';speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}body{background:#eee;font-size:16px;font-family:'Raleway',sans-serif}footer{background:#202020;color:rgba(255,255,255,0.7);padding:1em;display:relative;}footer .footer-contactList{display:inline-block;margin-right:2em;}footer .footer-contactList .footer-contactInfo{margin-bottom:.3em;text-align:left;}footer .footer-contactList .footer-contactInfo a{text-decoration:none;color:#20b2aa}footer .footer-container{text-align:center;position:relative}footer .footer-column{display:inline-block;margin:0 4em;}footer .footer-column.description{color:#fff;text-align:justify;width:222px}footer .footer-column .footer-infoAuthor{margin:0;font-size:.8em}footer .logo-footer{display:inline-block;margin:0;position:absolute;left:0;right:0;top:-40px}nav{background:#333;border-bottom:2px solid #fc0;height:3.5em;position:fixed;top:0;width:100%;z-index:2;}nav .logo{display:inline-block;margin:0 2em}nav .mainMenu{display:inline-block;left:10em;margin:0;position:absolute;top:1em;}nav .mainMenu li{padding-right:4em;display:inline-block;}nav .mainMenu li a{border-right:1px solid #fff;color:#fff;font-size:.8em;padding-right:3em;text-decoration:none;text-transform:uppercase}nav .search-left{display:inline-block;position:absolute;right:12.5em;top:.8em;}nav .search-left .search-input .input_search{border:1px solid #add8e6;border-radius:5px;font-family:'Raleway',sans-serif;height:2.2em;padding:0 1em 0 2em;width:180px}nav .search-left .search-input .icon-busqueda{right:12.5em;top:.6em;position:absolute;}nav .search-left .search-input .icon-busqueda:before{content:"\e600"}nav .container_login{display:inline-block;font-size:.8em;position:absolute;right:.6em;top:1.1em;}nav .container_login .ingresarUsuario{border-right:1px solid #fff;color:#008b8b;padding-right:.5em}nav .container_login .hacerIngresoUsuario{color:#fc0;padding-left:.5em}nav .avatar{opacity:.4;position:absolute;right:10em;top:.6em}ul{list-style:none}.registro{margin-top:3.5em;}.registro .info_registroUsuario{height:2em;background:#5f9ea0;padding:1em 0;}.registro .info_registroUsuario h2{margin:0;color:#fff;font-weight:bold}.registro #registrarUsuario{background:#fff;display:block;margin:0 auto auto;position:relative;width:90%;}.registro #registrarUsuario .datosPersonales{border:none;display:inline-block;left:4em;position:relative;width:32em;}.registro #registrarUsuario .datosPersonales .container .input{border:none;height:2em;margin:.5em 0 1em 0;outline:5px solid #eee;padding-left:.2em;width:390px}.registro #registrarUsuario .datosPersonales legend{font-size:1.5em;width:80%;border-bottom:1px solid #808080;padding-bottom:10px;margin-bottom:1.5em}.registro #registrarUsuario .datosUsuario{border:none;display:inline-block;height:532px;position:absolute;right:10em;top:0;}.registro #registrarUsuario .datosUsuario .container .input{border:none;height:2em;margin:.5em 0 1em 0;outline:3px solid #eee;padding-left:.2em;width:390px}.registro #registrarUsuario .datosUsuario legend{font-size:1.5em;border-bottom:1px solid #808080;margin-bottom:1.5em;padding-bottom:10px;width:100%}.registro #registrarUsuario .datosUsuario .inputRegistrar{background:#5f9ea0;border:none;border-radius:50px;bottom:4em;color:#fff;font-weight:bold;height:2.5em;position:absolute;right:2em;width:150px}.registro #registrarUsuario .datosUsuario .icon-registrar{position:absolute;bottom:4em;right:9em;opacity:.4;z-index:1;}.registro #registrarUsuario .datosUsuario .icon-registrar:before{content:"\e607"}.registro #registrarUsuario .datosUsuario .miembro{position:absolute;bottom:1em;right:1em}.registro .is-active{display:block}.registro .icon-hideMenu:before{content:"\f03b"}.registro .icon-shonMenu:before{content:"\f03c"}@media screen and (max-width:480px){nav{position:relative;}nav .avatar{display:none}nav .logo{margin:0}nav .mainMenu{position:fixed;top:4em;transition:.3s;background:#009688;left:-205px;border-radius:2%;}nav .mainMenu.is-active{left:0}nav .mainMenu li{padding:0;display:block;margin-bottom:1em;margin-right:1em;margin-top:.5em;font-weight:bold;}nav .mainMenu li a{border:none;padding-right:0}nav .container_login{background:#add8e6;float:right;padding:1em 2em;right:0;text-align:center;transition:.3s;width:100%;top:-6em;}nav .container_login.is-active{top:4.5em}nav .container_login a{margin-bottom:1em;text-decoration:none}nav .container_login .ingresarUsuario{border:0;color:#fff;display:block;padding-right:0}nav .container_login .hacerIngresoUsuario{padding:0;color:#fff}nav .icon-bars{color:#fff;outline:0;position:absolute;right:1em;top:1.2em;}nav .icon-bars:before{content:"\f0c9"}nav .icon-bars.is-active{top:4em}nav .icon-bars.no-active{display:none}nav .icon-bars.si-active{display:block}nav .search-left{left:55%;}nav .search-left .search-input{position:absolute;right:-100px;}nav .search-left .search-input .input_search{width:9em;height:1.8em}nav .search-left .search-input .icon-busqueda{right:10.5em}.registro .contenido-button{background:#ff8c00;border:none;border-radius:40px;display:none;height:40px;line-height:40px;outline:0;outline:0;position:fixed;right:1em;top:4em;width:40px;z-index:3;}.registro .contenido-button.is-active{display:block}.registro #registrarUsuario{margin:0;width:100%;}.registro #registrarUsuario .datosPersonales{width:0;left:0;}.registro #registrarUsuario .datosPersonales .legend{width:0}.registro #registrarUsuario .datosPersonales .container .input{width:17em}.registro #registrarUsuario .datosUsuario{height:auto;position:relative;right:0;padding-bottom:2em;}.registro #registrarUsuario .datosUsuario .container .input{width:17em}.registro #registrarUsuario .datosUsuario .inputRegistrar{bottom:0;display:block;left:30%;margin-bottom:2em;position:relative}.registro #registrarUsuario .datosUsuario .miembro{bottom:0;left:20%;position:relative}.registro #registrarUsuario .datosUsuario .icon-registrar{position:relative}.registro #registrarUsuario .datosUsuario .botonRegistrar .icon-registrar{left:32%;bottom:-2em}footer .footer-container .footer-column{margin:0;}footer .footer-container .footer-column.contacts{margin-top:6em}}@media handheld,only screen and (max-width:767px){nav{position:relative;}nav .avatar{right:3.5em;display:none}nav .logo{margin:0}nav .mainMenu{position:fixed;top:4em;transition:.3s;background:#009688;left:-205px;border-radius:2%;}nav .mainMenu.is-active{left:0}nav .mainMenu li{padding:0;display:block;margin-bottom:1em;margin-right:1em;margin-top:.5em;font-weight:bold;}nav .mainMenu li a{border:none;padding-right:0}nav .container_login{background:#add8e6;float:right;padding:1em 2em;right:0;text-align:center;transition:.3s;width:100%;top:-6em;}nav .container_login.is-active{top:4.5em}nav .container_login a{margin-bottom:1em;text-decoration:none}nav .container_login .ingresarUsuario{border:0;color:#fff;display:block;padding-right:0}nav .container_login .hacerIngresoUsuario{padding:0;color:#fff}nav .icon-bars{color:#fff;outline:0;position:absolute;right:1em;top:1.2em;}nav .icon-bars:before{content:"\f0c9"}nav .icon-bars.is-active{top:4em}nav .icon-bars.no-active{display:none}nav .icon-bars.si-active{display:block}nav .search-left{left:55%;}nav .search-left .search-input{position:absolute;right:-100px;}nav .search-left .search-input .input_search{width:9em;height:1.8em}nav .search-left .search-input .icon-busqueda{right:10.5em;opacity:.5}}.registro .contenido-button{background:#ff8c00;border:none;border-radius:40px;display:none;height:40px;line-height:40px;outline:0;outline:0;position:fixed;right:1em;top:4em;width:40px;z-index:3;}.registro .contenido-button.is-active{display:block}.registro #registrarUsuario .datosPersonales{left:0}.registro #registrarUsuario .datosUsuario{position:relative;display:block;right:0;height:auto;}.registro #registrarUsuario .datosUsuario .botonRegistrar .inputRegistrar{position:relative;bottom:0;right:0}.registro #registrarUsuario .datosUsuario .botonRegistrar .miembro{display:block;position:relative;bottom:0;margin:1em 1em}.registro #registrarUsuario .datosUsuario .icon-registrar{right:0;left:1.5em;bottom:4.5em}footer .footer-container .logo-footer{position:relative;display:block}footer .footer-container .footer-column{margin-left:auto;margin-right:auto;display:block;}footer .footer-container .footer-column .description{display:block}footer .footer-container .footer-column.contacts{display:block;margin:0;}footer .footer-container .footer-column.contacts .footer-contactList{margin:0 0 1em 0}@media screen and (min-width:768px) and (max-width:1024px){nav{position:relative;}nav .avatar{right:3.5em;display:none}nav .mainMenu{background:#f00;position:fixed;top:4em;transition:.3s;background:#009688;left:-205px;border-radius:2%;}nav .mainMenu.is-active{left:0}nav .mainMenu li{padding:0;display:block;margin-bottom:1em;margin-right:1em;margin-top:.5em;font-weight:bold;}nav .mainMenu li a{border:none;padding-right:0}nav .container_login{background:#add8e6;float:right;padding:1em 2em;right:0;text-align:center;transition:.3s;width:100%;top:-6em;}nav .container_login.is-active{top:4.5em}nav .container_login a{margin-bottom:1em;text-decoration:none}nav .icon-bars{color:#fff;outline:0;position:absolute;right:1em;top:1.2em;}nav .icon-bars:before{content:"\f0c9"}nav .icon-bars.is-active{top:4em}nav .icon-bars.no-active{display:none}nav .icon-bars.si-active{display:block}nav .search-left{left:55%;right:10em;}nav .search-left .search-input{position:absolute;right:-100px;}nav .search-left .search-input .input_search{width:20em}nav .search-left .search-input .icon-busqueda{right:21.5em;opacity:.5}footer .footer-container .logo-footer{position:relative;display:block}footer .footer-container .footer-column{margin-left:auto;margin-right:auto;display:block;}footer .footer-container .footer-column .description{display:block}footer .footer-container .footer-column.contacts{display:block;margin:0;}footer .footer-container .footer-column.contacts .footer-contactList{margin:0 0 1em 0}}[m
+\ No newline at end of file[m
+[1mdiff --git a/static/css/estilosRegistroUsuario.styl b/static/css/estilosRegistroUsuario.styl[m
+[1mindex 0595a7a..7ec8402 100644[m
+[1m--- a/static/css/estilosRegistroUsuario.styl[m
+[1m+++ b/static/css/estilosRegistroUsuario.styl[m
+[36m@@ -115,7 +115,7 @@[m [mnav[m
+ 				top .6em[m
+ 				position absolute[m
+ 				&:before[m
+[31m-				  content "\e601"[m
+[32m+[m				[32m  content "\e600"[m
+ 	.container_login[m
+ 		display inline-block[m
+ 		font-size .8em[m
+[36m@@ -219,5 +219,358 @@[m [mul[m
+ 				position absolute[m
+ 				bottom 1em[m
+ 				right 1em[m
+[32m+[m	[32m.is-active[m
+[32m+[m	[32m  display block[m
+[32m+[m	[32m.icon-hideMenu[m
+[32m+[m	[32m  &:before[m
+[32m+[m	[32m    content "\f03b"[m
+[32m+[m	[32m.icon-shonMenu[m
+[32m+[m	[32m  &:before[m
+[32m+[m	[32m    content "\f03c"[m
+[32m+[m[32m@media screen and (max-width: 480px)[m
+[32m+[m	[32mnav[m
+[32m+[m	[32m  position relative[m
+[32m+[m	[32m  .avatar[m
+[32m+[m	[32m    display none[m
+[32m+[m	[32m  .logo[m
+[32m+[m	[32m    margin 0[m
+[32m+[m	[32m  .mainMenu[m
+[32m+[m	[32m    position fixed[m
+[32m+[m	[32m    top 4em[m
+[32m+[m	[32m    transition .3s[m
+[32m+[m	[32m    background #009688[m
+[32m+[m	[32m    left -205px[m
+[32m+[m	[32m    border-radius 2%[m
+[32m+[m	[32m    &.is-active[m
+[32m+[m	[32m      left 0[m
+[32m+[m	[32m    li[m
+[32m+[m	[32m      padding 0[m
+[32m+[m	[32m      display block[m
+[32m+[m	[32m      margin-bottom 1em[m
+[32m+[m	[32m      margin-right 1em[m
+[32m+[m	[32m      margin-top .5em[m
+[32m+[m	[32m      font-weight bold[m
+[32m+[m	[32m      a[m
+[32m+[m	[32m        border none[m
+[32m+[m	[32m        padding-right 0[m
+[32m+[m	[32m  .container_login[m
+[32m+[m	[32m    background lightblue[m
+[32m+[m	[32m    float right[m
+[32m+[m	[32m    padding 1em 2em[m[41m      [m
+[32m+[m	[32m    right 0[m
+[32m+[m	[32m    text-align center[m
+[32m+[m	[32m    transition .3s[m
+[32m+[m	[32m    width 100%[m
+[32m+[m	[32m    top -6em[m
+[32m+[m	[32m    &.is-active[m
+[32m+[m	[32m      top 4.5em[m[41m   [m
+[32m+[m	[32m    a[m
+[32m+[m	[32m      margin-bottom 1em[m
+[32m+[m	[32m      text-decoration none[m[41m      [m
+[32m+[m	[32m    .ingresarUsuario[m
+[32m+[m	[32m      border 0[m
+[32m+[m	[32m      color white[m
+[32m+[m	[32m      display block[m
+[32m+[m	[32m      padding-right 0[m
+[32m+[m	[32m    .hacerIngresoUsuario[m
+[32m+[m	[32m      padding 0[m
+[32m+[m	[32m      color white[m
+[32m+[m	[32m  .icon-bars[m
+[32m+[m	[32m    color white[m
+[32m+[m	[32m    outline 0[m
+[32m+[m	[32m    position absolute[m
+[32m+[m	[32m    right 1em[m
+[32m+[m	[32m    top 1.2em[m
+[32m+[m	[32m    &:before[m
+[32m+[m	[32m      content "\f0c9"[m
+[32m+[m	[32m    &.is-active[m
+[32m+[m	[32m      top 4em[m
+[32m+[m	[32m    &.no-active[m
+[32m+[m	[32m      display none[m
+[32m+[m	[32m    &.si-active[m
+[32m+[m	[32m      display block[m
+[32m+[m	[32m  .search-left[m
+[32m+[m	[32m    left 55%[m
+[32m+[m	[32m    .search-input[m
+[32m+[m	[32m      position absolute[m
+[32m+[m	[32m      right -100px[m
+[32m+[m	[32m      .input_search[m
+[32m+[m	[32m        width 9em[m
+[32m+[m	[32m        height 1.8em[m
+[32m+[m	[32m      .icon-busqueda[m
+[32m+[m	[32m        right 10.5em[m
+[32m+[m	[32m.registro[m
+[32m+[m		[32m.contenido[m[41m        [m
+[32m+[m		[32m  &-button[m
+[32m+[m		[32m    background #FF8C00[m
+[32m+[m		[32m    border none[m
+[32m+[m		[32m    border-radius 40px[m
+[32m+[m		[32m    display none[m
+[32m+[m		[32m    height 40px[m
+[32m+[m		[32m    line-height 40px[m
+[32m+[m		[32m    outline 0[m
+[32m+[m		[32m    outline 0[m
+[32m+[m		[32m    position fixed[m
+[32m+[m		[32m    right 1em[m
+[32m+[m		[32m    top 4em[m
+[32m+[m		[32m    width 40px[m
+[32m+[m		[32m    z-index 3[m
+[32m+[m		[32m    &.is-active[m
+[32m+[m		[32m      display block[m
+[32m+[m		[32m#registrarUsuario[m
+[32m+[m			[32mmargin 0[m
+[32m+[m			[32mwidth 100%[m
+[32m+[m			[32m.datosPersonales[m
+[32m+[m				[32mwidth 0[m
+[32m+[m				[32mleft 0[m
+[32m+[m				[32m.legend[m
+[32m+[m					[32mwidth 0[m
+[32m+[m				[32m.container[m
+[32m+[m					[32m.input[m
+[32m+[m						[32mwidth 17em[m[41m [m
+[32m+[m			[32m.datosUsuario[m
+[32m+[m				[32mheight auto[m
+[32m+[m				[32mposition relative[m
+[32m+[m				[32mright 0[m
+[32m+[m				[32mpadding-bottom 2em[m
+[32m+[m				[32m.container[m
+[32m+[m					[32m.input[m
+[32m+[m						[32mwidth 17em[m
+[32m+[m				[32m.inputRegistrar[m
+[32m+[m					[32mbottom 0[m
+[32m+[m					[32mdisplay block[m
+[32m+[m					[32mleft 30%[m
+[32m+[m					[32mmargin-bottom 2em[m
+[32m+[m					[32mposition relative[m
+[32m+[m				[32m.miembro[m
+[32m+[m					[32mbottom 0[m
+[32m+[m					[32mleft 20%[m
+[32m+[m					[32mposition relative[m
+[32m+[m				[32m.icon-registrar[m
+[32m+[m					[32mposition relative[m
+[32m+[m				[32m.botonRegistrar[m
+[32m+[m					[32m.icon-registrar[m
+[32m+[m						[32mleft 32%[m
+[32m+[m						[32mbottom -2em[m
+ 				[m
+[31m-			[m
+\ No newline at end of file[m
+[32m+[m	[32mfooter[m
+[32m+[m	[32m  .footer-container[m
+[32m+[m	[32m    .footer-column[m
+[32m+[m	[32m      margin 0[m
+[32m+[m	[32m      &.contacts[m
+[32m+[m	[32m        margin-top 6em[m
+[32m+[m[32m/* ========================================= */[m
+[32m+[m[32m/* ! All smartphone specific CSS goes here   */[m
+[32m+[m[32m/* ========================================= */[m
+[32m+[m[32m@media handheld, only screen and (max-width: 767px)[m[41m	[m
+[32m+[m[41m  [m	[32mnav[m
+[32m+[m	[32m    position relative[m
+[32m+[m	[32m    .avatar[m
+[32m+[m	[32m      right 3.5em[m
+[32m+[m	[32m      display none[m
+[32m+[m	[32m    .logo[m
+[32m+[m	[32m      margin 0[m
+[32m+[m	[32m    .mainMenu[m
+[32m+[m	[32m      position fixed[m
+[32m+[m	[32m      top 4em[m
+[32m+[m	[32m      transition .3s[m
+[32m+[m	[32m      background #009688[m
+[32m+[m	[32m      left -205px[m
+[32m+[m	[32m      border-radius 2%[m
+[32m+[m	[32m      &.is-active[m
+[32m+[m	[32m        left 0[m
+[32m+[m	[32m      li[m
+[32m+[m	[32m        padding 0[m
+[32m+[m	[32m        display block[m
+[32m+[m	[32m        margin-bottom 1em[m
+[32m+[m	[32m        margin-right 1em[m
+[32m+[m	[32m        margin-top .5em[m
+[32m+[m	[32m        font-weight bold[m
+[32m+[m	[32m        a[m
+[32m+[m	[32m          border none[m
+[32m+[m	[32m          padding-right 0[m
+[32m+[m	[32m    .container_login[m
+[32m+[m	[32m      background lightblue[m
+[32m+[m	[32m      float right[m
+[32m+[m	[32m      padding 1em 2em[m[41m      [m
+[32m+[m	[32m      right 0[m
+[32m+[m	[32m      text-align center[m
+[32m+[m	[32m      transition .3s[m
+[32m+[m	[32m      width 100%[m
+[32m+[m	[32m      top -6em[m
+[32m+[m	[32m      &.is-active[m
+[32m+[m	[32m        top 4.5em[m[41m   [m
+[32m+[m	[32m      a[m
+[32m+[m	[32m        margin-bottom 1em[m
+[32m+[m	[32m        text-decoration none[m[41m      [m
+[32m+[m	[32m      .ingresarUsuario[m
+[32m+[m	[32m        border 0[m
+[32m+[m	[32m        color white[m
+[32m+[m	[32m        display block[m
+[32m+[m	[32m        padding-right 0[m
+[32m+[m	[32m      .hacerIngresoUsuario[m
+[32m+[m	[32m        padding 0[m
+[32m+[m	[32m        color white[m
+[32m+[m	[32m    .icon-bars[m
+[32m+[m	[32m      color white[m
+[32m+[m	[32m      outline 0[m
+[32m+[m	[32m      position absolute[m
+[32m+[m	[32m      right 1em[m
+[32m+[m	[32m      top 1.2em[m
+[32m+[m	[32m      &:before[m
+[32m+[m	[32m        content "\f0c9"[m
+[32m+[m	[32m      &.is-active[m
+[32m+[m	[32m        top 4em[m
+[32m+[m	[32m      &.no-active[m
+[32m+[m	[32m        display none[m
+[32m+[m	[32m      &.si-active[m
+[32m+[m	[32m        display block[m
+[32m+[m[41m	        [m
+[32m+[m	[32m    .search-left[m
+[32m+[m	[32m      left 55%[m
+[32m+[m	[32m      .search-input[m
+[32m+[m	[32m        position absolute[m
+[32m+[m	[32m        right -100px[m
+[32m+[m	[32m        .input_search[m
+[32m+[m	[41m        [m	[32mwidth 9em[m
+[32m+[m	[41m        [m	[32mheight 1.8em[m[41m	        		        [m
+[32m+[m	[32m        .icon-busqueda[m
+[32m+[m	[32m          right 10.5em[m
+[32m+[m	[32m          opacity .5[m
+[32m+[m		[32m.registro[m
+[32m+[m			[32m.contenido[m[41m        [m
+[32m+[m			[32m  &-button[m
+[32m+[m			[32m    background #FF8C00[m
+[32m+[m			[32m    border none[m
+[32m+[m			[32m    border-radius 40px[m
+[32m+[m			[32m    display none[m
+[32m+[m			[32m    height 40px[m
+[32m+[m			[32m    line-height 40px[m
+[32m+[m			[32m    outline 0[m
+[32m+[m			[32m    outline 0[m
+[32m+[m			[32m    position fixed[m
+[32m+[m			[32m    right 1em[m
+[32m+[m			[32m    top 4em[m
+[32m+[m			[32m    width 40px[m
+[32m+[m			[32m    z-index 3[m
+[32m+[m			[32m    &.is-active[m
+[32m+[m			[32m      display block[m
+[32m+[m			[32m#registrarUsuario[m
+[32m+[m				[32m.datosPersonales[m
+[32m+[m					[32mleft 0[m
+[32m+[m				[32m.datosUsuario[m
+[32m+[m					[32mposition relative[m
+[32m+[m					[32mdisplay block[m
+[32m+[m					[32mright 0[m
+[32m+[m					[32mheight auto[m
+[32m+[m					[32m.botonRegistrar[m
+[32m+[m						[32m.inputRegistrar[m
+[32m+[m							[32mposition relative[m
+[32m+[m							[32mbottom 0[m
+[32m+[m							[32mright 0[m
+[32m+[m						[32m.miembro[m
+[32m+[m							[32mdisplay block[m
+[32m+[m							[32mposition relative[m
+[32m+[m							[32mbottom 0[m
+[32m+[m							[32mmargin 1em 1em[m
+[32m+[m					[32m.icon-registrar[m
+[32m+[m						[32mright 0[m
+[32m+[m						[32mleft 1.5em[m
+[32m+[m						[32mbottom 4.5em[m[41m    [m
+[32m+[m	[32mfooter[m
+[32m+[m	[32m  .footer-container[m
+[32m+[m	[32m    .logo-footer[m
+[32m+[m	[32m      position relative[m
+[32m+[m	[32m      display block[m
+[32m+[m	[32m    .footer-column[m
+[32m+[m	[32m      margin-left auto[m
+[32m+[m	[32m      margin-right auto[m
+[32m+[m	[32m      display block[m
+[32m+[m	[32m      .description[m
+[32m+[m	[32m        display block[m
+[32m+[m	[32m      &.contacts[m
+[32m+[m	[32m        display block[m
+[32m+[m	[32m        margin 0[m
+[32m+[m	[32m        .footer-contactList[m
+[32m+[m	[32m          margin 0 0 1em 0[m
+[32m+[m[32m@media screen and (min-width: 768px) and (max-width: 1024px)[m
+[32m+[m	[32mnav[m
+[32m+[m	[32m  position relative[m
+[32m+[m	[32m  .avatar[m
+[32m+[m	[32m    right 3.5em[m
+[32m+[m	[32m    display none[m
+[32m+[m	[32m  .mainMenu[m
+[32m+[m	[32m    background red[m
+[32m+[m	[32m    position fixed[m
+[32m+[m	[32m    top 4em[m
+[32m+[m	[32m    transition .3s[m
+[32m+[m	[32m    background #009688[m
+[32m+[m	[32m    left -205px[m
+[32m+[m	[32m    border-radius 2%[m
+[32m+[m	[32m    &.is-active[m
+[32m+[m	[32m      left 0[m
+[32m+[m	[32m    li[m
+[32m+[m	[32m      padding 0[m
+[32m+[m	[32m      display block[m
+[32m+[m	[32m      margin-bottom 1em[m
+[32m+[m	[32m      margin-right 1em[m
+[32m+[m	[32m      margin-top .5em[m
+[32m+[m	[32m      font-weight bold[m
+[32m+[m	[32m      a[m
+[32m+[m	[32m        border none[m
+[32m+[m	[32m        padding-right 0[m
+[32m+[m	[32m  .container_login[m
+[32m+[m	[32m    background lightblue[m
+[32m+[m	[32m    float right[m
+[32m+[m	[32m    padding 1em 2em[m[41m      [m
+[32m+[m	[32m    right 0[m
+[32m+[m	[32m    text-align center[m
+[32m+[m	[32m    transition .3s[m
+[32m+[m	[32m    width 100%[m
+[32m+[m	[32m    top -6em[m
+[32m+[m	[32m    &.is-active[m
+[32m+[m	[32m      top 4.5em[m
+[32m+[m	[32m    a[m
+[32m+[m	[32m      margin-bottom 1em[m
+[32m+[m	[32m      text-decoration none[m[41m      [m
+[32m+[m	[32m  .icon-bars[m
+[32m+[m	[32m    color white[m
+[32m+[m	[32m    outline 0[m
+[32m+[m	[32m    position absolute[m
+[32m+[m	[32m    right 1em[m
+[32m+[m	[32m    top 1.2em[m
+[32m+[m	[32m    &:before[m
+[32m+[m	[32m      content "\f0c9"[m
+[32m+[m	[32m    &.is-active[m
+[32m+[m	[32m      top 4em[m
+[32m+[m	[32m    &.no-active[m
+[32m+[m	[32m      display none[m
+[32m+[m	[32m    &.si-active[m
+[32m+[m	[32m      display block[m[41m      [m
+[32m+[m	[32m  .search-left[m
+[32m+[m	[32m      left 55%[m
+[32m+[m	[32m      right 10em[m
+[32m+[m	[32m      .search-input[m
+[32m+[m	[32m        position absolute[m
+[32m+[m	[32m        right -100px[m
+[32m+[m	[32m        .input_search[m
+[32m+[m	[32m          width 20em[m
+[32m+[m	[32m        .icon-busqueda[m
+[32m+[m	[32m          right 21.5em[m
+[32m+[m	[32m          opacity .5[m[41m     [m
+[32m+[m	[32mfooter[m
+[32m+[m	[32m  .footer-container[m
+[32m+[m	[32m    .logo-footer[m
+[32m+[m	[32m      position relative[m
+[32m+[m	[32m      display block[m
+[32m+[m	[32m    .footer-column[m
+[32m+[m	[32m      margin-left auto[m
+[32m+[m	[32m      margin-right auto[m
+[32m+[m	[32m      display block[m
+[32m+[m	[32m      .description[m
+[32m+[m	[32m        display block[m
+[32m+[m	[32m      &.contacts[m
+[32m+[m	[32m        display block[m
+[32m+[m	[32m        margin 0[m
+[32m+[m	[32m        .footer-contactList[m
+[32m+[m	[32m          margin 0 0 1em 0[m[41m	[m
+\ No newline at end of file[m
+[1mdiff --git a/static/css/styleTiendaDumar.css b/static/css/styleTiendaDumar.css[m
+[1mindex 7e6e899..9415c10 100644[m
+[1m--- a/static/css/styleTiendaDumar.css[m
+[1m+++ b/static/css/styleTiendaDumar.css[m
+[36m@@ -1 +1 @@[m
+[31m-html,body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio:not([controls]),canvas:not([controls]),progress:not([controls]),video:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"],button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type="checkbox"],input[type="radio"],input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-moz-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:.35em .625em .75em}legend,textarea{overflow:auto}optgroup{font-weight:bold}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}body{margin:0;padding:0}h1,h2,h3,h4,h5,h6{text-align:center;font-weight:normal;text-rendering:optimizelegibility}h1{color:#4e443c;font-size:36px;font-weight:bold}pre{border:1px solid #000;overflow-x:auto;background:#222;color:#fff;text-shadow:none}.wrapper{max-width:750px;padding:0 20px 40px 20px;margin:auto}@font-face{font-family:'icomoon';src:url("../fonts/icomoon.eot");src:url("../fonts/icomoon.eot?#iefix") format('embedded-opentype'),url("../fonts/icomoon.woff") format('woff'),url("../fonts/icomoon.ttf") format('truetype'),url("../fonts/icomoon.svg#icomoon") format('svg');font-weight:normal;font-style:normal}[class^="icon-"],[class*=" icon-"]{font-family:'icomoon';speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}body{font-family:'Raleway',sans-serif;font-size:16px}footer{background:#202020;color:rgba(255,255,255,0.7);padding:1em;display:relative;}footer .footer-contactList{display:inline-block;margin-right:2em;}footer .footer-contactList .footer-contactInfo{margin-bottom:.3em;text-align:left;}footer .footer-contactList .footer-contactInfo a{text-decoration:none;color:#20b2aa}footer .footer-container{text-align:center;position:relative}footer .footer-column{display:inline-block;margin:0 4em;}footer .footer-column.description{color:#fff;text-align:justify;width:222px}footer .footer-column .footer-infoAuthor{margin:0;font-size:.8em}footer .logo-footer{display:inline-block;margin:0;position:absolute;left:0;right:0;top:-40px}nav{background:#333;border-bottom:2px solid #fc0;height:3.5em;position:fixed;width:100%;z-index:2;}nav .logo{margin:0 2em;display:inline-block}nav .mainMenu{display:inline-block;left:10em;margin:0;position:absolute;top:1em;}nav .mainMenu li{padding-right:4em;display:inline-block;}nav .mainMenu li a{border-right:1px solid #fff;color:#fff;font-size:.8em;padding-right:3em;text-decoration:none;text-transform:uppercase}nav .search-left{position:absolute;top:.8em;right:12.5em;display:inline-block;}nav .search-left .search-input .input_search{border-radius:5px;border:1px solid #add8e6;font-family:'Raleway',sans-serif;padding:0 1em 0 2em;width:180px;height:2.2em;font-size:.8em}nav .search-left .search-input .icon-busqueda{right:12.5em;top:.6em;position:absolute;}nav .search-left .search-input .icon-busqueda:before{content:"\e601"}nav .container_login{position:absolute;top:1.1em;right:.6em;display:inline-block;font-size:.8em;}nav .container_login .ingresarUsuario{padding-right:.5em;border-right:1px solid #fff;color:#008b8b}nav .container_login .hacerIngresoUsuario{padding-left:.5em;color:#fc0}nav .avatar{position:absolute;right:10em;top:.6em;opacity:.4}ul{list-style:none}#contenido h2{margin-bottom:2em}#contenido .items{margin-left:6em;margin:0;text-align:center;}#contenido .items .image_producto a{text-decoration:none;padding-top:1em}#contenido .items .image_producto p{font-size:18px;margin-left:auto;margin-right:auto;margin-top:1em;text-align:center;width:200px}#contenido .items .image_producto .precio_producto{display:block;margin-top:.5em;font-size:.9em}#contenido .items .image_producto img{border-bottom:2px dotted #dcdcdc;padding-bottom:2em;width:200px;padding-bottom:0;width:200px}#contenido .image_producto{display:inline-block;margin:0 2em 1em 4em;padding:.5em .5em 0 .5em;width:250px;margin-bottom:5em;}#contenido .image_producto:hover{box-shadow:rgba(0,0,0,0.2) 5px 5px 20px}#contenido .is-active{display:block}#contenido .icon-hideMenu:before{content:"\e605"}#contenido .icon-shonMenu:before{content:"\e606"}.footer-contactInfo a{text-decoration:none}.footer-infoAuthor:last-child:after{content:" -"}.footer-infoAuthor:last-child:before{content:"- "}[m
+\ No newline at end of file[m
+[32m+[m[32mhtml,body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio:not([controls]),canvas:not([controls]),progress:not([controls]),video:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"],button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type="checkbox"],input[type="radio"],input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-moz-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:.35em .625em .75em}legend,textarea{overflow:auto}optgroup{font-weight:bold}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}body{margin:0;padding:0}h1,h2,h3,h4,h5,h6{text-align:center;font-weight:normal;text-rendering:optimizelegibility}h1{color:#4e443c;font-size:36px;font-weight:bold}pre{border:1px solid #000;overflow-x:auto;background:#222;color:#fff;text-shadow:none}.wrapper{max-width:750px;padding:0 20px 40px 20px;margin:auto}@font-face{font-family:'icomoon';src:url("../fonts/icomoon.eot");src:url("../fonts/icomoon.eot?#iefix") format('embedded-opentype'),url("../fonts/icomoon.woff") format('woff'),url("../fonts/icomoon.ttf") format('truetype'),url("../fonts/icomoon.svg#icomoon") format('svg');font-weight:normal;font-style:normal}[class^="icon-"],[class*=" icon-"]{font-family:'icomoon';speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}body{font-family:'Raleway',sans-serif;font-size:16px}footer{background:#202020;color:rgba(255,255,255,0.7);padding:1em;display:relative;}footer .footer-contactList{display:inline-block;margin-right:2em;}footer .footer-contactList .footer-contactInfo{margin-bottom:.3em;text-align:left;}footer .footer-contactList .footer-contactInfo a{text-decoration:none;color:#20b2aa}footer .footer-container{text-align:center;position:relative}footer .footer-column{display:inline-block;margin:0 4em;}footer .footer-column.description{color:#fff;text-align:justify;width:222px}footer .footer-column .footer-infoAuthor{margin:0;font-size:.8em}footer .logo-footer{display:inline-block;margin:0;position:absolute;left:0;right:0;top:-40px}nav{background:#333;border-bottom:2px solid #fc0;height:3.5em;position:fixed;width:100%;z-index:2;}nav .logo{margin:0 2em;display:inline-block}nav .mainMenu{display:inline-block;left:10em;margin:0;position:absolute;top:1em;}nav .mainMenu li{padding-right:4em;display:inline-block;}nav .mainMenu li a{border-right:1px solid #fff;color:#fff;font-size:.8em;padding-right:3em;text-decoration:none;text-transform:uppercase}nav .search-left{position:absolute;top:.8em;right:12.5em;display:inline-block;}nav .search-left .search-input .input_search{border-radius:5px;border:1px solid #add8e6;font-family:'Raleway',sans-serif;padding:0 1em 0 2em;width:180px;height:2.2em;font-size:.8em}nav .search-left .search-input .icon-busqueda{right:12.5em;top:.6em;position:absolute;}nav .search-left .search-input .icon-busqueda:before{content:"\e600"}nav .container_login{position:absolute;top:1.1em;right:.6em;display:inline-block;font-size:.8em;}nav .container_login .ingresarUsuario{padding-right:.5em;border-right:1px solid #fff;color:#008b8b}nav .container_login .hacerIngresoUsuario{padding-left:.5em;color:#fc0}nav .avatar{position:absolute;right:10em;top:.6em;opacity:.4}ul{list-style:none}#contenido h2{margin-bottom:2em}#contenido .items{margin-left:6em;margin:0;text-align:center;}#contenido .items .image_producto a{text-decoration:none;padding-top:1em}#contenido .items .image_producto p{font-size:18px;margin-left:auto;margin-right:auto;margin-top:1em;text-align:center;width:200px}#contenido .items .image_producto .precio_producto{display:block;margin-top:.5em;font-size:.9em}#contenido .items .image_producto img{border-bottom:2px dotted #dcdcdc;padding-bottom:2em;width:200px;padding-bottom:0;width:200px}#contenido .image_producto{display:inline-block;margin:0 2em 1em 4em;padding:.5em .5em 0 .5em;width:250px;margin-bottom:5em;}#contenido .image_producto:hover{box-shadow:rgba(0,0,0,0.2) 5px 5px 20px}#contenido .is-active{display:block}#contenido .icon-hideMenu:before{content:"\f03b"}#contenido .icon-shonMenu:before{content:"\f03c"}.footer-contactInfo a{text-decoration:none}.footer-infoAuthor:last-child:after{content:" -"}.footer-infoAuthor:last-child:before{content:"- "}@media screen and (max-width:480px){nav{position:relative;}nav .avatar{right:3.5em;display:none}nav .logo{margin:0}nav .mainMenu{position:fixed;top:4em;transition:.3s;background:#009688;left:-205px;border-radius:2%;}nav .mainMenu.is-active{left:0}nav .mainMenu li{padding:0;display:block;margin-bottom:1em;margin-right:1em;margin-top:.5em;font-weight:bold;}nav .mainMenu li a{border:none;padding-right:0}nav .container_login{background:#add8e6;float:right;padding:1em 2em;right:0;text-align:center;transition:.3s;width:100%;top:-6em;}nav .container_login.is-active{top:4.5em}nav .container_login a{margin-bottom:1em;text-decoration:none}nav .container_login .ingresarUsuario{border:0;color:#fff;display:block;padding-right:0}nav .container_login .hacerIngresoUsuario{padding:0;color:#fff}nav .icon-bars{color:#fff;outline:0;position:absolute;right:1em;top:1.2em;}nav .icon-bars:before{content:"\f0c9"}nav .icon-bars.is-active{top:4em}nav .icon-bars.no-active{display:none}nav .icon-bars.si-active{display:block}nav .search-left{left:55%;}nav .search-left .search-input{position:absolute;right:-100px;}nav .search-left .search-input .input_search{width:12em}nav .search-left .search-input .icon-busqueda{right:11em;opacity:.5}#contenido .image_producto{margin-left:0;margin-right:0}#contenido .contenido-button{background:#fff;border:none;border-radius:40px;height:40px;line-height:40px;outline:0;position:fixed;right:1em;top:4em;width:40px;z-index:3;display:none;background:#ff8c00;outline:0;}#contenido .contenido-button.is-active{display:block}footer .footer-container .footer-column{margin:0;}footer .footer-container .footer-column.contacts{margin-top:6em}}@media handheld,only screen and (max-width:767px){nav{position:relative;}nav .avatar{right:3.5em;display:none}nav .logo{margin:0}nav .mainMenu{position:fixed;top:4em;transition:.3s;background:#009688;left:-205px;border-radius:2%;}nav .mainMenu.is-active{left:0}nav .mainMenu li{padding:0;display:block;margin-bottom:1em;margin-right:1em;margin-top:.5em;font-weight:bold;}nav .mainMenu li a{border:none;padding-right:0}nav .container_login{background:#add8e6;float:right;padding:1em 2em;right:0;text-align:center;transition:.3s;width:100%;top:-6em;}nav .container_login.is-active{top:4.5em}nav .container_login a{margin-bottom:1em;text-decoration:none}nav .container_login .ingresarUsuario{border:0;color:#fff;display:block;padding-right:0}nav .container_login .hacerIngresoUsuario{padding:0;color:#fff}nav .icon-bars{color:#fff;outline:0;position:absolute;right:1em;top:1.2em;}nav .icon-bars:before{content:"\f0c9"}nav .icon-bars.is-active{top:4em}nav .icon-bars.no-active{display:none}nav .icon-bars.si-active{display:block}nav .search-left{left:55%;}nav .search-left .search-input{position:absolute;right:-100px;}nav .search-left .search-input .input_search{width:12em}nav .search-left .search-input .icon-busqueda{right:11em;opacity:.5}#contenido .contenido-button{background:#fff;border:none;border-radius:40px;height:40px;line-height:40px;outline:0;position:fixed;right:1em;top:4em;width:40px;z-index:3;display:none;background:#ff8c00;outline:0;}#contenido .contenido-button.is-active{display:block}footer .footer-container .logo-footer{position:relative;display:block}footer .footer-container .footer-column{margin-left:auto;margin-right:auto;display:block;}footer .footer-container .footer-column .description{display:block}footer .footer-container .footer-column.contacts{display:block;margin:0;}footer .footer-container .footer-column.contacts .footer-contactList{margin:0 0 1em 0}}@media screen and (min-width:768px) and (max-width:1024px){nav{position:relative;}nav .avatar{right:3.5em;display:none}nav .mainMenu{background:#f00;position:fixed;top:4em;transition:.3s;background:#009688;left:-205px;border-radius:2%;}nav .mainMenu.is-active{left:0}nav .mainMenu li{padding:0;display:block;margin-bottom:1em;margin-right:1em;margin-top:.5em;font-weight:bold;}nav .mainMenu li a{border:none;padding-right:0}nav .container_login{background:#add8e6;float:right;padding:1em 2em;right:0;text-align:center;transition:.3s;width:100%;top:-6em;}nav .container_login.is-active{top:4.5em}nav .container_login a{margin-bottom:1em;text-decoration:none}nav .icon-bars{color:#fff;outline:0;position:absolute;right:1em;top:1.2em;}nav .icon-bars:before{content:"\f0c9"}nav .icon-bars.is-active{top:4em}nav .icon-bars.no-active{display:none}nav .icon-bars.si-active{display:block}nav .search-left{left:55%;}nav .search-left .search-input{position:absolute;right:-100px;}nav .search-left .search-input .input_search{width:20em}nav .search-left .search-input .icon-busqueda{right:17em;opacity:.5}footer .footer-column.contacts{margin:0}footer .footer-column.description{margin:0}#contenido .contenido-button{background:#fff;border:none;border-radius:40px;height:40px;line-height:40px;outline:0;position:fixed;right:1em;top:4em;width:40px;z-index:3;display:none;background:#ff8c00;}#contenido .contenido-button.is-active{display:block}}[m
+\ No newline at end of file[m
+[1mdiff --git a/static/css/styleTiendaDumar.styl b/static/css/styleTiendaDumar.styl[m
+[1mindex cc83291..e140873 100644[m
+[1m--- a/static/css/styleTiendaDumar.styl[m
+[1m+++ b/static/css/styleTiendaDumar.styl[m
+[36m@@ -113,7 +113,7 @@[m [mnav[m
+         top .6em[m
+         position absolute[m
+         &:before[m
+[31m-          content "\e601"[m
+[32m+[m[32m          content "\e600"[m
+   .container_login[m
+     position absolute[m
+     top 1.1em[m
+[36m@@ -175,10 +175,10 @@[m [mul[m
+     display block[m
+   .icon-hideMenu[m
+     &:before[m
+[31m-      content "\e605"[m
+[32m+[m[32m      content "\f03b"[m
+   .icon-shonMenu[m
+     &:before[m
+[31m-      content "\e606"[m
+[32m+[m[32m      content "\f03c"[m
+ [m
+ .footer-contactInfo[m
+   a[m
+[36m@@ -189,4 +189,305 @@[m [mul[m
+     &:after[m
+       content " -"[m
+     &:before[m
+[31m-      content "- "[m
+\ No newline at end of file[m
+[32m+[m[32m      content "- "[m
+[32m+[m
+[32m+[m[32m@media screen and (max-width: 480px)[m
+[32m+[m[32m  nav[m
+[32m+[m[32m    position relative[m
+[32m+[m[32m    .avatar[m
+[32m+[m[32m      right 3.5em[m
+[32m+[m[32m      display none[m
+[32m+[m[32m    .logo[m
+[32m+[m[32m      margin 0[m
+[32m+[m[32m    .mainMenu[m
+[32m+[m[32m      position fixed[m
+[32m+[m[32m      top 4em[m
+[32m+[m[32m      transition .3s[m
+[32m+[m[32m      background #009688[m
+[32m+[m[32m      left -205px[m
+[32m+[m[32m      border-radius 2%[m
+[32m+[m[32m      &.is-active[m
+[32m+[m[32m        left 0[m
+[32m+[m[32m      li[m
+[32m+[m[32m        padding 0[m
+[32m+[m[32m        display block[m
+[32m+[m[32m        margin-bottom 1em[m
+[32m+[m[32m        margin-right 1em[m
+[32m+[m[32m        margin-top .5em[m
+[32m+[m[32m        font-weight bold[m
+[32m+[m[32m        a[m
+[32m+[m[32m          border none[m
+[32m+[m[32m          padding-right 0[m
+[32m+[m[32m    .container_login[m
+[32m+[m[32m      background lightblue[m
+[32m+[m[32m      float right[m
+[32m+[m[32m      padding 1em 2em[m[41m      [m
+[32m+[m[32m      right 0[m
+[32m+[m[32m      text-align center[m
+[32m+[m[32m      transition .3s[m
+[32m+[m[32m      width 100%[m
+[32m+[m[32m      top -6em[m
+[32m+[m[32m      &.is-active[m
+[32m+[m[32m        top 4.5em[m[41m   [m
+[32m+[m[32m      a[m
+[32m+[m[32m        margin-bottom 1em[m
+[32m+[m[32m        text-decoration none[m[41m      [m
+[32m+[m[32m      .ingresarUsuario[m
+[32m+[m[32m        border 0[m
+[32m+[m[32m        color white[m
+[32m+[m[32m        display block[m
+[32m+[m[32m        padding-right 0[m
+[32m+[m[32m      .hacerIngresoUsuario[m
+[32m+[m[32m        padding 0[m
+[32m+[m[32m        color white[m
+[32m+[m[32m    .icon-bars[m
+[32m+[m[32m      color white[m
+[32m+[m[32m      outline 0[m
+[32m+[m[32m      position absolute[m
+[32m+[m[32m      right 1em[m
+[32m+[m[32m      top 1.2em[m
+[32m+[m[32m      &:before[m
+[32m+[m[32m        content "\f0c9"[m
+[32m+[m[32m      &.is-active[m
+[32m+[m[32m        top 4em[m
+[32m+[m[32m      &.no-active[m
+[32m+[m[32m        display none[m
+[32m+[m[32m      &.si-active[m
+[32m+[m[32m        display block[m
+[32m+[m[41m        [m
+[32m+[m[32m    .search-left[m
+[32m+[m[32m      left 55%[m
+[32m+[m[32m      .search-input[m
+[32m+[m[32m        position absolute[m
+[32m+[m[32m        right -100px[m
+[32m+[m[32m        .input_search[m
+[32m+[m[32m          width 12em[m
+[32m+[m[32m        .icon-busqueda[m
+[32m+[m[32m          right 11em[m
+[32m+[m[32m          opacity .5[m
+[32m+[m[41m        [m
+[32m+[m[32m  #contenido[m
+[32m+[m[32m    .image_producto[m
+[32m+[m[32m      margin-left 0[m
+[32m+[m[32m      margin-right 0[m
+[32m+[m[32m    .contenido[m[41m        [m
+[32m+[m[32m      &-button[m
+[32m+[m[32m        background white[m
+[32m+[m[32m        border none[m
+[32m+[m[32m        border-radius 40px[m
+[32m+[m[32m        height 40px[m
+[32m+[m[32m        line-height 40px[m
+[32m+[m[32m        outline 0[m
+[32m+[m[32m        position fixed[m
+[32m+[m[32m        right 1em[m
+[32m+[m[32m        top 4em[m
+[32m+[m[32m        width 40px[m
+[32m+[m[32m        z-index 3[m
+[32m+[m[32m        display none[m
+[32m+[m[32m        background #FF8C00[m
+[32m+[m[32m        outline 0[m
+[32m+[m[32m        &.is-active[m
+[32m+[m[32m          display block[m
+[32m+[m[32m  footer[m
+[32m+[m[32m    .footer-container[m
+[32m+[m[32m      .footer-column[m
+[32m+[m[32m        margin 0[m
+[32m+[m[32m        &.contacts[m
+[32m+[m[32m          margin-top 6em[m
+[32m+[m[32m@media handheld, only screen and (max-width: 767px)[m
+[32m+[m[32m  nav[m
+[32m+[m[32m    position relative[m
+[32m+[m[32m    .avatar[m
+[32m+[m[32m      right 3.5em[m
+[32m+[m[32m      display none[m
+[32m+[m[32m    .logo[m
+[32m+[m[32m      margin 0[m
+[32m+[m[32m    .mainMenu[m
+[32m+[m[32m      position fixed[m
+[32m+[m[32m      top 4em[m
+[32m+[m[32m      transition .3s[m
+[32m+[m[32m      background #009688[m
+[32m+[m[32m      left -205px[m
+[32m+[m[32m      border-radius 2%[m
+[32m+[m[32m      &.is-active[m
+[32m+[m[32m        left 0[m
+[32m+[m[32m      li[m
+[32m+[m[32m        padding 0[m
+[32m+[m[32m        display block[m
+[32m+[m[32m        margin-bottom 1em[m
+[32m+[m[32m        margin-right 1em[m
+[32m+[m[32m        margin-top .5em[m
+[32m+[m[32m        font-weight bold[m
+[32m+[m[32m        a[m
+[32m+[m[32m          border none[m
+[32m+[m[32m          padding-right 0[m
+[32m+[m[32m    .container_login[m
+[32m+[m[32m      background lightblue[m
+[32m+[m[32m      float right[m
+[32m+[m[32m      padding 1em 2em[m[41m      [m
+[32m+[m[32m      right 0[m
+[32m+[m[32m      text-align center[m
+[32m+[m[32m      transition .3s[m
+[32m+[m[32m      width 100%[m
+[32m+[m[32m      top -6em[m
+[32m+[m[32m      &.is-active[m
+[32m+[m[32m        top 4.5em[m[41m   [m
+[32m+[m[32m      a[m
+[32m+[m[32m        margin-bottom 1em[m
+[32m+[m[32m        text-decoration none[m[41m      [m
+[32m+[m[32m      .ingresarUsuario[m
+[32m+[m[32m        border 0[m
+[32m+[m[32m        color white[m
+[32m+[m[32m        display block[m
+[32m+[m[32m        padding-right 0[m
+[32m+[m[32m      .hacerIngresoUsuario[m
+[32m+[m[32m        padding 0[m
+[32m+[m[32m        color white[m
+[32m+[m[32m    .icon-bars[m
+[32m+[m[32m      color white[m
+[32m+[m[32m      outline 0[m
+[32m+[m[32m      position absolute[m
+[32m+[m[32m      right 1em[m
+[32m+[m[32m      top 1.2em[m
+[32m+[m[32m      &:before[m
+[32m+[m[32m        content "\f0c9"[m
+[32m+[m[32m      &.is-active[m
+[32m+[m[32m        top 4em[m
+[32m+[m[32m      &.no-active[m
+[32m+[m[32m        display none[m
+[32m+[m[32m      &.si-active[m
+[32m+[m[32m        display block[m
+[32m+[m[41m        [m
+[32m+[m[32m    .search-left[m
+[32m+[m[32m      left 55%[m
+[32m+[m[32m      .search-input[m
+[32m+[m[32m        position absolute[m
+[32m+[m[32m        right -100px[m
+[32m+[m[32m        .input_search[m
+[32m+[m[32m          width 12em[m
+[32m+[m[32m        .icon-busqueda[m
+[32m+[m[32m          right 11em[m
+[32m+[m[32m          opacity .5[m
+[32m+[m[32m  #contenido[m
+[32m+[m[32m    .contenido[m[41m        [m
+[32m+[m[32m      &-button[m
+[32m+[m[32m        background white[m
+[32m+[m[32m        border none[m
+[32m+[m[32m        border-radius 40px[m
+[32m+[m[32m        height 40px[m
+[32m+[m[32m        line-height 40px[m
+[32m+[m[32m        outline 0[m
+[32m+[m[32m        position fixed[m
+[32m+[m[32m        right 1em[m
+[32m+[m[32m        top 4em[m
+[32m+[m[32m        width 40px[m
+[32m+[m[32m        z-index 3[m
+[32m+[m[32m        display none[m
+[32m+[m[32m        background #FF8C00[m
+[32m+[m[32m        outline 0[m
+[32m+[m[32m        &.is-active[m
+[32m+[m[32m          display block[m
+[32m+[m[32m  footer[m
+[32m+[m[32m    .footer-container[m
+[32m+[m[32m      .logo-footer[m
+[32m+[m[32m        position relative[m
+[32m+[m[32m        display block[m
+[32m+[m[32m      .footer-column[m
+[32m+[m[32m        margin-left auto[m
+[32m+[m[32m        margin-right auto[m
+[32m+[m[32m        display block[m
+[32m+[m[32m        .description[m
+[32m+[m[32m          display block[m
+[32m+[m[32m        &.contacts[m
+[32m+[m[32m          display block[m
+[32m+[m[32m          margin 0[m
+[32m+[m[32m          .footer-contactList[m
+[32m+[m[32m            margin 0 0 1em 0[m
+[32m+[m[32m@media screen and (min-width: 768px) and (max-width: 1024px)[m
+[32m+[m[32m  nav[m
+[32m+[m[32m    position relative[m
+[32m+[m[32m    .avatar[m
+[32m+[m[32m      right 3.5em[m
+[32m+[m[32m      display none[m
+[32m+[m[32m    .mainMenu[m
+[32m+[m[32m      background red[m
+[32m+[m[32m      position fixed[m
+[32m+[m[32m      top 4em[m
+[32m+[m[32m      transition .3s[m
+[32m+[m[32m      background #009688[m
+[32m+[m[32m      left -205px[m
+[32m+[m[32m      border-radius 2%[m
+[32m+[m[32m      &.is-active[m
+[32m+[m[32m        left 0[m
+[32m+[m[32m      li[m
+[32m+[m[32m        padding 0[m
+[32m+[m[32m        display block[m
+[32m+[m[32m        margin-bottom 1em[m
+[32m+[m[32m        margin-right 1em[m
+[32m+[m[32m        margin-top .5em[m
+[32m+[m[32m        font-weight bold[m
+[32m+[m[32m        a[m
+[32m+[m[32m          border none[m
+[32m+[m[32m          padding-right 0[m
+[32m+[m[32m    .container_login[m
+[32m+[m[32m      background lightblue[m
+[32m+[m[32m      float right[m
+[32m+[m[32m      padding 1em 2em[m[41m      [m
+[32m+[m[32m      right 0[m
+[32m+[m[32m      text-align center[m
+[32m+[m[32m      transition .3s[m
+[32m+[m[32m      width 100%[m
+[32m+[m[32m      top -6em[m
+[32m+[m[32m      &.is-active[m
+[32m+[m[32m        top 4.5em[m
+[32m+[m[32m      a[m
+[32m+[m[32m        margin-bottom 1em[m
+[32m+[m[32m        text-decoration none[m[41m      [m
+[32m+[m[32m    .icon-bars[m
+[32m+[m[32m      color white[m
+[32m+[m[32m      outline 0[m
+[32m+[m[32m      position absolute[m
+[32m+[m[32m      right 1em[m
+[32m+[m[32m      top 1.2em[m
+[32m+[m[32m      &:before[m
+[32m+[m[32m        content "\f0c9"[m
+[32m+[m[32m      &.is-active[m
+[32m+[m[32m        top 4em[m
+[32m+[m[32m      &.no-active[m
+[32m+[m[32m        display none[m
+[32m+[m[32m      &.si-active[m
+[32m+[m[32m        display block[m[41m      [m
+[32m+[m[32m    .search-left[m
+[32m+[m[32m        left 55%[m
+[32m+[m[32m        .search-input[m
+[32m+[m[32m          position absolute[m
+[32m+[m[32m          right -100px[m
+[32m+[m[32m          .input_search[m
+[32m+[m[32m            width 20em[m
+[32m+[m[32m          .icon-busqueda[m
+[32m+[m[32m            right 17em[m
+[32m+[m[32m            opacity .5[m[41m     [m
+[32m+[m[32m  footer[m
+[32m+[m[32m    .footer-column[m
+[32m+[m[32m      &.contacts[m
+[32m+[m[32m        margin 0[m
+[32m+[m[32m      &.description[m
+[32m+[m[32m        margin 0[m[41m      [m
+[32m+[m[32m  #contenido[m
+[32m+[m[32m    .contenido[m[41m        [m
+[32m+[m[32m      &-button[m
+[32m+[m[32m        background white[m
+[32m+[m[32m        border none[m
+[32m+[m[32m        border-radius 40px[m
+[32m+[m[32m        height 40px[m
+[32m+[m[32m        line-height 40px[m
+[32m+[m[32m        outline 0[m
+[32m+[m[32m        position fixed[m
+[32m+[m[32m        right 1em[m
+[32m+[m[32m        top 4em[m
+[32m+[m[32m        width 40px[m
+[32m+[m[32m        z-index 3[m
+[32m+[m[32m        display none[m
+[32m+[m[32m        background #FF8C00[m
+[32m+[m[32m        &.is-active[m
+[32m+[m[32m          display block[m
+\ No newline at end of file[m
+[1mdiff --git a/static/css/testStylus.css b/static/css/testStylus.css[m
+[1mdeleted file mode 100644[m
+[1mindex b394ffe..0000000[m
+[1m--- a/static/css/testStylus.css[m
+[1m+++ /dev/null[m
+[36m@@ -1 +0,0 @@[m
+[31m-body{margin:0;padding:0}h1,h2,h3,h4,h5,h6{text-align:center;font-weight:normal;text-rendering:optimizelegibility}h1{color:#4e443c;font-size:36px;font-weight:bold}pre{border:1px solid #000;overflow-x:auto;background:#222;color:#fff;text-shadow:none}.wrapper{max-width:750px;padding:0 20px 40px 20px;margin:auto}html,body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio:not([controls]),canvas:not([controls]),progress:not([controls]),video:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"],button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type="checkbox"],input[type="radio"],input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-moz-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:.35em .625em .75em}legend,textarea{overflow:auto}optgroup{font-weight:bold}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}@font-face{font-family:'icomoon';src:url("../fonts/icomoon.eot");src:url("../fonts/icomoon.eot?#iefix") format('embedded-opentype'),url("../fonts/icomoon.woff") format('woff'),url("../fonts/icomoon.ttf") format('truetype'),url("../fonts/icomoon.svg#icomoon") format('svg');font-weight:normal;font-style:normal}[class^="icon-"],[class*=" icon-"]{font-family:'icomoon';speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}body{background:#eee;font-size:16px;font-family:'Lato',sans-serif}nav{background:#333;position:fixed;width:100%;height:3.5em;border-bottom:2px solid #fc0;}nav .logo{margin:0 2em;display:inline-block}nav .mainMenu{top:1em;margin:0;display:inline-block;position:absolute;left:10em;}nav .mainMenu li{padding-right:4em;display:inline-block;}nav .mainMenu li a{padding-right:3em;text-decoration:none;border-right:1px solid #fff;color:#fff}nav .search-left{position:absolute;top:.8em;right:12.5em;display:inline-block;}nav .search-left .search-input .input_search{border-radius:5px;border:1px solid #add8e6;font-family:'Lato',sans-serif;padding:0 1em 0 2em;width:180px;height:2.2em}nav .search-left .search-input .icon-busqueda{right:12.5em;top:.6em;position:absolute;}nav .search-left .search-input .icon-busqueda:before{content:"\e601"}nav .container_login{position:absolute;top:1.1em;right:.6em;display:inline-block;font-size:.9em;}nav .container_login .ingresarUsuario{padding-right:.5em;border-right:1px solid #fff;color:#008b8b}nav .container_login .hacerIngresoUsuario{padding-left:.5em;color:#fc0}nav .avatar{position:absolute;right:10em;top:.6em;opacity:.4}ul{list-style:none}[m
+\ No newline at end of file[m
+[1mdiff --git a/static/css/testStylus.styl b/static/css/testStylus.styl[m
+[1mdeleted file mode 100644[m
+[1mindex b851391..0000000[m
+[1m--- a/static/css/testStylus.styl[m
+[1m+++ /dev/null[m
+[36m@@ -1,106 +0,0 @@[m
+[31m-@import "style.styl"[m
+[31m-@import "normalize.styl"[m
+[31m-[m
+[31m-gris_claro = #eee[m
+[31m-gris_oscuro = darkcyan[m
+[31m-azul_oscuro = #333333[m
+[31m-dorado = #fc0[m
+[31m-[m
+[31m-[m
+[31m-@font-face[m
+[31m-  font-family 'icomoon'[m
+[31m-  src url('../fonts/icomoon.eot')[m
+[31m-  src url('../fonts/icomoon.eot?#iefix') format('embedded-opentype'),[m
+[31m- url('../fonts/icomoon.woff') format('woff'),[m
+[31m-		url('../fonts/icomoon.ttf') format('truetype'),[m
+[31m-		url('../fonts/icomoon.svg#icomoon') format('svg')[m
+[31m-  font-weight normal[m
+[31m-  font-style normal[m
+[31m-[m
+[31m-[class^="icon-"], [class*=" icon-"][m
+[31m-  font-family 'icomoon'[m
+[31m-  speak none[m
+[31m-  font-style normal[m
+[31m-  font-weight normal[m
+[31m-  font-variant normal[m
+[31m-  text-transform none[m
+[31m-  line-height 1[m
+[31m-  -webkit-font-smoothing antialiased[m
+[31m-  -moz-osx-font-smoothing grayscale[m
+[31m-[m
+[31m-body[m
+[31m-	background gris_claro[m
+[31m-	font-size 16px[m
+[31m-	font-family 'Lato', sans-serif[m
+[31m-	[m
+[31m-nav[m
+[31m-	background azul_oscuro[m
+[31m-	position fixed[m
+[31m-	width 100%[m
+[31m-	height 3.5em[m
+[31m-	border-bottom 2px solid dorado[m
+[31m-	.logo[m
+[31m-		margin 0 2em[m
+[31m-		display inline-block[m
+[31m-		[m
+[31m-	.mainMenu[m
+[31m-		top 1em[m
+[31m-		margin 0[m
+[31m-		display inline-block[m
+[31m-		position absolute[m
+[31m-		left 10em[m
+[31m-		li[m
+[31m-			padding-right 4em[m
+[31m-			display inline-block[m
+[31m-			a[m
+[31m-				padding-right 3em[m
+[31m-				text-decoration none[m
+[31m-				border-right 1px solid white[m
+[31m-				color white[m
+[31m-							[m
+[31m-	.search-left[m
+[31m-		position absolute[m
+[31m-		top .8em			[m
+[31m-		right 12.5em[m
+[31m-		display inline-block[m
+[31m-		.search-input[m
+[31m-			.input_search[m
+[31m-				    border-radius 5px[m
+[31m-				    border 1px solid lightblue[m
+[31m-				    font-family 'Lato', sans-serif[m
+[31m-				    padding 0 1em 0 2em[m
+[31m-				    width 180px[m
+[31m-				    height 2.2em[m
+[31m-			.icon-busqueda[m
+[31m-				right 12.5em[m
+[31m-				top .6em[m
+[31m-				position absolute[m
+[31m-				&:before[m
+[31m-				  content "\e601"[m
+[31m-	.container_login[m
+[31m-		position absolute[m
+[31m-		top 1.1em[m
+[31m-		right .6em[m
+[31m-		display inline-block[m
+[31m-		font-size .9em[m
+[31m-		.ingresarUsuario[m
+[31m-			padding-right .5em[m
+[31m-			border-right 1px solid white[m
+[31m-			color gris_oscuro[m
+[31m-		.hacerIngresoUsuario[m
+[31m-			padding-left .5em[m
+[31m-			color dorado[m
+[31m-	.avatar[m
+[31m-		position absolute[m
+[31m-		right 10em[m
+[31m-		top .6em[m
+[31m-		opacity .4	[m
+[31m-	[m
+[31m-ul[m
+[31m-	list-style none[m
+[31m-	[m
+[31m-  		[m
+[31m-  		  	[m
+[31m-  		[m
+[31m-  	[m
+[31m-	[m
+\ No newline at end of file[m
+[1mdiff --git a/static/fonts/icomoon.eot b/static/fonts/icomoon.eot[m
+[1mindex cc299f2..2540bd1 100644[m
+Binary files a/static/fonts/icomoon.eot and b/static/fonts/icomoon.eot differ
+[1mdiff --git a/static/fonts/icomoon.svg b/static/fonts/icomoon.svg[m
+[1mindex 32e7898..d2470d4 100644[m
+[1m--- a/static/fonts/icomoon.svg[m
+[1m+++ b/static/fonts/icomoon.svg[m
+[36m@@ -3,16 +3,13 @@[m
+ <svg xmlns="http://www.w3.org/2000/svg">[m
+ <metadata>Generated by IcoMoon</metadata>[m
+ <defs>[m
+[31m-<font id="icomoon" horiz-adv-x="512">[m
+[31m-<font-face units-per-em="512" ascent="480" descent="-32" />[m
+[31m-<missing-glyph horiz-adv-x="512" />[m
+[31m-<glyph unicode="&#x20;" d="" horiz-adv-x="256" />[m
+[31m-<glyph unicode="&#xe600;" d="M311.413 128.632c-11.055 1.759-11.307 32.157-11.307 32.157s32.484 32.158 39.564 75.401c19.045 0 30.809 45.973 11.761 62.148 0.795 17.027 24.48 133.662-95.431 133.662s-96.225-116.635-95.432-133.662c-19.047-16.175-7.285-62.148 11.761-62.148 7.079-43.243 39.564-75.401 39.564-75.401s-0.252-30.398-11.307-32.157c-35.61-5.666-168.586-64.317-168.586-128.632h448c0 64.315-132.976 122.966-168.587 128.632z" />[m
+[31m-<glyph unicode="&#xe601;" d="M320 479.92c-106.032 0-192-85.968-192-192 0-32.416 8.112-62.928 22.32-89.728l-133.504-133.472 0.112-0.096c-10.432-10.256-16.928-24.464-16.928-40.256 0-31.184 25.28-56.464 56.464-56.464 15.76 0 29.984 6.496 40.24 16.944l-0.032 0.032 133.456 133.44c26.816-14.256 57.376-22.4 89.872-22.4 106.032 0 192 85.968 192 192s-85.968 192-192 192zM76.72 4.848c-5.152-5.344-12.288-8.688-20.256-8.688-15.6 0-28.24 12.624-28.24 28.224 0 7.968 3.36 15.088 8.688 20.256l-0.144 0.128 129.056 129.056c11.28-15.216 24.72-28.656 39.904-39.968l-129.008-129.008zM320 127.904c-88.352 0-160 71.664-160 160 0 88.352 71.648 160 160 160 88.336 0 160-71.648 160-160 0-88.336-71.664-160-160-160zM320 399.92c4.4 0 8-3.584 8-8s-3.6-8-8-8c-53.024 0-96-42.992-96-96 0-4.416-3.584-8-8-8s-8 3.584-8 8c0 61.856 50.128 112 112 112z" />[m
+[31m-<glyph unicode="&#xe602;" d="M64 149.333h384v42.666h-384v-42.666zM64 64h384v42.666h-384v-42.666zM64 234.667h384v42.667h-384v-42.667zM64 362.667v-42.666h384v42.666h-384z" />[m
+[31m-<glyph unicode="&#xe603;" d="M487.655 191.031c1.406 10.4 2.215 20.973 2.215 31.736 0 129.155-105.271 233.872-235.103 233.872-12.904 0-25.555-1.060-37.866-3.080-22.072 14.384-48.342 22.767-76.612 22.767-77.523 0-140.289-62.808-140.289-140.306 0-28.198 8.299-54.394 22.59-76.389-1.925-12.017-2.909-24.323-2.909-36.859 0-129.176 105.217-233.882 235.085-233.882 14.657 0 28.927 1.427 42.796 3.933 21.55-13.369 46.934-21.148 74.146-21.148 77.502-0.001 140.292 62.823 140.292 140.313-0.003 29.293-8.96 56.528-24.345 79.043zM276.74 50.404c-74.705-3.892-109.664 12.637-141.689 42.691-35.765 33.567-21.398 71.854 7.74 73.801 29.122 1.944 46.607-33.013 62.15-42.736 15.524-9.688 74.594-31.76 105.794 3.908 33.976 38.828-22.594 58.92-64.059 65.002-59.203 8.766-133.95 40.792-128.135 103.907 5.816 63.074 53.582 95.414 103.85 99.976 64.077 5.817 105.791-9.707 138.785-37.86 38.15-32.529 17.508-68.894-6.799-71.82-24.212-2.909-51.404 53.504-104.791 54.352-55.027 0.864-92.217-57.261-24.286-73.784 67.966-16.505 140.75-23.286 166.961-85.417 26.229-62.137-40.754-128.125-115.521-132.020z" />[m
+[31m-<glyph unicode="&#xe604;" d="M256 343.467c24.747 0 44.8-20.054 44.8-44.8s-20.053-44.8-44.8-44.8-44.8 20.054-44.8 44.8 20.053 44.8 44.8 44.8zM256 151.467c63.466 0 130.134-31.040 130.134-44.8v-23.466h-260.267v23.466c0 13.76 66.666 44.8 130.133 44.8zM256 384c-47.147 0-85.334-38.186-85.334-85.333 0-47.040 38.186-85.334 85.334-85.334s85.334 38.294 85.334 85.334c0 47.147-38.187 85.334-85.334 85.334zM256 192c-56.853 0-170.667-28.48-170.667-85.334v-64h341.334v64c0 56.853-113.813 85.334-170.667 85.334z" />[m
+[31m-<glyph unicode="&#xe605;" d="M0 448h512v-64h-512zM192 352h320v-64h-320zM192 256h320v-64h-320zM192 160h320v-64h-320zM0 64h512v-64h-512zM0 128v192l128-96z" />[m
+[31m-<glyph unicode="&#xe606;" d="M0 448h512v-64h-512zM192 352h320v-64h-320zM192 256h320v-64h-320zM192 160h320v-64h-320zM0 64h512v-64h-512zM128 320v-192l-128 96z" />[m
+[31m-<glyph unicode="&#xe607;" d="M432 480h-384c-26.4 0-48-21.6-48-48v-416c0-26.4 21.6-48 48-48h384c26.4 0 48 21.6 48 48v416c0 26.4-21.6 48-48 48zM416 32h-352v384h352v-384zM128 192h224v-32h-224zM128 128h224v-32h-224zM160 336c0 26.51 21.49 48 48 48s48-21.49 48-48c0-26.51-21.49-48-48-48s-48 21.49-48 48zM240 288h-64c-26.4 0-48-14.4-48-32v-32h160v32c0 17.6-21.6 32-48 32z" />[m
+[32m+[m[32m<font id="icomoon" horiz-adv-x="1024">[m
+[32m+[m[32m<font-face units-per-em="1024" ascent="960" descent="-64" />[m
+[32m+[m[32m<missing-glyph horiz-adv-x="1024" />[m
+[32m+[m[32m<glyph unicode="&#x20;" d="" horiz-adv-x="512" />[m
+[32m+[m[32m<glyph unicode="&#xe600;" d="M995.828-35.826c-37.566-37.564-98.45-37.564-136.016 0l-169.726 169.726c-69.776-44.764-152.26-71.434-241.318-71.434-247.83 0-448.768 200.908-448.768 448.768s200.938 448.766 448.768 448.766c247.862 0 448.768-200.904 448.768-448.766 0-89.028-26.704-171.542-71.436-241.352l169.728-169.726c37.562-37.564 37.562-98.418 0-135.982zM448.768 831.782c-177.022 0-320.548-143.494-320.548-320.546s143.526-320.548 320.548-320.548c177.052 0 320.548 143.496 320.548 320.548s-143.496 320.546-320.548 320.546z" />[m
+[32m+[m[32m<glyph unicode="&#xe923;" d="M864 960h-768c-52.8 0-96-43.2-96-96v-832c0-52.8 43.2-96 96-96h768c52.8 0 96 43.2 96 96v832c0 52.8-43.2 96-96 96zM832 64h-704v768h704v-768zM256 384h448v-64h-448zM256 256h448v-64h-448zM320 672c0 53.019 42.981 96 96 96s96-42.981 96-96c0-53.019-42.981-96-96-96s-96 42.981-96 96zM480 576h-128c-52.8 0-96-28.8-96-64v-64h320v64c0 35.2-43.2 64-96 64z" />[m
+[32m+[m[32m<glyph unicode="&#xf03b;" d="M219.429 640v-329.143q0-7.429-5.429-12.857t-12.857-5.429q-8 0-13.143 5.143l-164.571 164.571q-5.143 5.143-5.143 13.143t5.143 13.143l164.571 164.571q5.143 5.143 13.143 5.143 7.429 0 12.857-5.429t5.429-12.857zM1024 201.143v-109.714q0-7.429-5.429-12.857t-12.857-5.429h-987.429q-7.429 0-12.857 5.429t-5.429 12.857v109.714q0 7.429 5.429 12.857t12.857 5.429h987.429q7.429 0 12.857-5.429t5.429-12.857zM1024 420.571v-109.714q0-7.429-5.429-12.857t-12.857-5.429h-621.714q-7.429 0-12.857 5.429t-5.429 12.857v109.714q0 7.429 5.429 12.857t12.857 5.429h621.714q7.429 0 12.857-5.429t5.429-12.857zM1024 640v-109.714q0-7.429-5.429-12.857t-12.857-5.429h-621.714q-7.429 0-12.857 5.429t-5.429 12.857v109.714q0 7.429 5.429 12.857t12.857 5.429h621.714q7.429 0 12.857-5.429t5.429-12.857zM1024 859.428v-109.714q0-7.429-5.429-12.857t-12.857-5.429h-987.429q-7.429 0-12.857 5.429t-5.429 12.857v109.714q0 7.429 5.429 12.857t12.857 5.429h987.429q7.429 0 12.857-5.429t5.429-12.857z" />[m
+[32m+[m[32m<glyph unicode="&#xf03c;" d="M201.143 475.428q0-8-5.143-13.143l-164.571-164.571q-5.143-5.143-13.143-5.143-7.429 0-12.857 5.429t-5.429 12.857v329.143q0 7.429 5.429 12.857t12.857 5.429q8 0 13.143-5.143l164.571-164.571q5.143-5.143 5.143-13.143zM1024 201.143v-109.714q0-7.429-5.429-12.857t-12.857-5.429h-987.429q-7.429 0-12.857 5.429t-5.429 12.857v109.714q0 7.429 5.429 12.857t12.857 5.429h987.429q7.429 0 12.857-5.429t5.429-12.857zM1024 420.571v-109.714q0-7.429-5.429-12.857t-12.857-5.429h-621.714q-7.429 0-12.857 5.429t-5.429 12.857v109.714q0 7.429 5.429 12.857t12.857 5.429h621.714q7.429 0 12.857-5.429t5.429-12.857zM1024 640v-109.714q0-7.429-5.429-12.857t-12.857-5.429h-621.714q-7.429 0-12.857 5.429t-5.429 12.857v109.714q0 7.429 5.429 12.857t12.857 5.429h621.714q7.429 0 12.857-5.429t5.429-12.857zM1024 859.428v-109.714q0-7.429-5.429-12.857t-12.857-5.429h-987.429q-7.429 0-12.857 5.429t-5.429 12.857v109.714q0 7.429 5.429 12.857t12.857 5.429h987.429q7.429 0 12.857-5.429t5.429-12.857z" />[m
+[32m+[m[32m<glyph unicode="&#xf0c9;" d="M877.714 182.857v-73.143q0-14.857-10.857-25.714t-25.714-10.857h-804.571q-14.857 0-25.714 10.857t-10.857 25.714v73.143q0 14.857 10.857 25.714t25.714 10.857h804.571q14.857 0 25.714-10.857t10.857-25.714zM877.714 475.428v-73.143q0-14.857-10.857-25.714t-25.714-10.857h-804.571q-14.857 0-25.714 10.857t-10.857 25.714v73.143q0 14.857 10.857 25.714t25.714 10.857h804.571q14.857 0 25.714-10.857t10.857-25.714zM877.714 768v-73.143q0-14.857-10.857-25.714t-25.714-10.857h-804.571q-14.857 0-25.714 10.857t-10.857 25.714v73.143q0 14.857 10.857 25.714t25.714 10.857h804.571q14.857 0 25.714-10.857t10.857-25.714z" />[m
+ </font></defs></svg>[m
+\ No newline at end of file[m
+[1mdiff --git a/static/fonts/icomoon.ttf b/static/fonts/icomoon.ttf[m
+[1mindex 4c9f0d0..3e0033f 100644[m
+Binary files a/static/fonts/icomoon.ttf and b/static/fonts/icomoon.ttf differ
+[1mdiff --git a/static/fonts/icomoon.woff b/static/fonts/icomoon.woff[m
+[1mindex 84f6137..cf2f61d 100644[m
+Binary files a/static/fonts/icomoon.woff and b/static/fonts/icomoon.woff differ
+[1mdiff --git a/static/imagenes/portacaramanola-gris-pasta.JPG b/static/imagenes/portacaramanola-gris-pasta.JPG[m
+[1mdeleted file mode 100644[m
+[1mindex 88c018b..0000000[m
+Binary files a/static/imagenes/portacaramanola-gris-pasta.JPG and /dev/null differ
+[1mdiff --git a/static/stylus/estilosRegistroUsuario.styl b/static/stylus/estilosRegistroUsuario.styl[m
+[1mdeleted file mode 100644[m
+[1mindex 0595a7a..0000000[m
+[1m--- a/static/stylus/estilosRegistroUsuario.styl[m
+[1m+++ /dev/null[m
+[36m@@ -1,223 +0,0 @@[m
+[31m-@import "normalize.styl"[m
+[31m-@import "style.styl"[m
+[31m-[m
+[31m-@font-face[m
+[31m-  font-family 'icomoon'[m
+[31m-  src url('../fonts/icomoon.eot')[m
+[31m-  src url('../fonts/icomoon.eot?#iefix') format('embedded-opentype'),[m
+[31m-      url('../fonts/icomoon.woff') format('woff'),[m
+[31m-	  url('../fonts/icomoon.ttf') format('truetype'),[m
+[31m-	   url('../fonts/icomoon.svg#icomoon') format('svg')[m
+[31m-  font-weight normal[m
+[31m-  font-style normal[m
+[31m-[m
+[31m-[class^="icon-"], [class*=" icon-"][m
+[31m-  font-family 'icomoon'[m
+[31m-  speak none[m
+[31m-  font-style normal[m
+[31m-  font-weight normal[m
+[31m-  font-variant normal[m
+[31m-  text-transform none[m
+[31m-  line-height 1[m
+[31m-  -webkit-font-smoothing antialiased[m
+[31m-  -moz-osx-font-smoothing grayscale[m
+[31m-[m
+[31m-[m
+[31m-gris_claro = #eee[m
+[31m-gris_oscuro = darkcyan[m
+[31m-azul_oscuro = #333333[m
+[31m-dorado = #fc0[m
+[31m-		[m
+[31m-body[m
+[31m-	background gris_claro[m
+[31m-	font-size 16px[m
+[31m-	font-family 'Raleway', sans-serif[m
+[31m-	[m
+[31m-footer[m
+[31m-  background #202020[m
+[31m-  color rgba(255,255,255,0.7)[m
+[31m-  padding 1em[m
+[31m-  display relative[m
+[31m-  .footer-contactList[m
+[31m-    display inline-block[m
+[31m-    margin-right 2em[m
+[31m-    .footer-contactInfo[m
+[31m-      margin-bottom .3em[m
+[31m-      text-align left[m
+[31m-      a[m
+[31m-        text-decoration none[m
+[31m-        color #20B2AA[m
+[31m-  .footer-container[m
+[31m-      text-align center[m
+[31m-      position relative[m
+[31m-  .footer-column[m
+[31m-      display inline-block[m
+[31m-      margin 0 4em[m
+[31m-      &.description[m
+[31m-        color white[m
+[31m-        text-align justify[m
+[31m-        width 222px[m
+[31m-      .footer-infoAuthor[m
+[31m-          margin 0[m
+[31m-          font-size 0.8em        [m
+[31m-  .logo-footer[m
+[31m-    display inline-block[m
+[31m-    margin 0[m
+[31m-    position absolute[m
+[31m-    left 0[m
+[31m-    right 0[m
+[31m-    top -40px[m
+[31m-nav[m
+[31m-	background azul_oscuro[m
+[31m-	border-bottom 2px solid dorado[m
+[31m-	height 3.5em[m
+[31m-	position fixed[m
+[31m-	top 0[m
+[31m-	width 100%[m
+[31m-	z-index 2[m
+[31m-	.logo[m
+[31m-		display inline-block[m
+[31m-		margin 0 2em[m
+[31m-		[m
+[31m-	.mainMenu[m
+[31m-		display inline-block[m
+[31m-		left 10em[m
+[31m-		margin 0[m
+[31m-		position absolute[m
+[31m-		top 1em[m
+[31m-		li[m
+[31m-			padding-right 4em[m
+[31m-			display inline-block[m
+[31m-			a[m
+[31m-				border-right 1px solid white[m
+[31m-				color white[m
+[31m-				font-size .8em[m
+[31m-				padding-right 3em[m
+[31m-				text-decoration none[m
+[31m-				text-transform uppercase		[m
+[31m-			[m
+[31m-							[m
+[31m-	.search-left[m
+[31m-		display inline-block[m
+[31m-		position absolute[m
+[31m-		right 12.5em[m
+[31m-		top .8em			[m
+[31m-		.search-input[m
+[31m-			.input_search[m
+[31m-				    border 1px solid lightblue[m
+[31m-				    border-radius 5px[m
+[31m-				    font-family 'Raleway', sans-serif[m
+[31m-				    height 2.2em[m
+[31m-				    padding 0 1em 0 2em[m
+[31m-				    width 180px[m
+[31m-			.icon-busqueda[m
+[31m-				right 12.5em[m
+[31m-				top .6em[m
+[31m-				position absolute[m
+[31m-				&:before[m
+[31m-				  content "\e601"[m
+[31m-	.container_login[m
+[31m-		display inline-block[m
+[31m-		font-size .8em[m
+[31m-		position absolute[m
+[31m-		right .6em[m
+[31m-		top 1.1em[m
+[31m-		.ingresarUsuario[m
+[31m-			border-right 1px solid white[m
+[31m-			color gris_oscuro[m
+[31m-			padding-right .5em[m
+[31m-		.hacerIngresoUsuario[m
+[31m-			color dorado[m
+[31m-			padding-left .5em[m
+[31m-	.avatar[m
+[31m-		opacity .4[m
+[31m-		position absolute[m
+[31m-		right 10em[m
+[31m-		top .6em		[m
+[31m-[m
+[31m-ul[m
+[31m-	list-style none	[m
+[31m-	[m
+[31m-.registro[m
+[31m-	margin-top 3.5em[m
+[31m-	.info_registroUsuario[m
+[31m-		height 2em[m
+[31m-		background #5f9ea0[m
+[31m-		padding 1em 0[m
+[31m-		h2[m
+[31m-			margin 0[m
+[31m-			color white [m
+[31m-			font-weight bold[m
+[31m-	#registrarUsuario[m
+[31m-		background white[m
+[31m-		display block[m
+[31m-		margin 0 auto auto[m
+[31m-		position relative[m
+[31m-		width 90%[m
+[31m-		[m
+[31m-		.datosPersonales[m
+[31m-			border none[m
+[31m-			display inline-block[m
+[31m-			left 4em[m
+[31m-			position relative[m
+[31m-			width 32em[m
+[31m-			.container				[m
+[31m-				.input[m
+[31m-					border none[m
+[31m-					height 2em[m
+[31m-					margin .5em 0 1em 0[m
+[31m-					outline 5px solid gris_claro[m
+[31m-					padding-left 0.2em[m
+[31m-					width 390px[m
+[31m-			legend[m
+[31m-				font-size 1.5em[m
+[31m-				width 80%[m
+[31m-				border-bottom 1px solid gray[m
+[31m-				padding-bottom 10px[m
+[31m-				margin-bottom 1.5em[m
+[31m-		.datosUsuario[m
+[31m-			border none[m
+[31m-			display inline-block[m
+[31m-			height 532px[m
+[31m-			position absolute[m
+[31m-			right 10em[m
+[31m-			top 0[m
+[31m-			.container[m
+[31m-				.input[m
+[31m-					border none[m
+[31m-					height 2em[m
+[31m-					margin .5em 0 1em 0[m
+[31m-					outline 3px solid gris_claro[m
+[31m-					padding-left 0.2em[m
+[31m-					width 390px[m
+[31m-			legend[m
+[31m-				font-size 1.5em[m
+[31m-				border-bottom 1px solid gray[m
+[31m-				margin-bottom 1.5em[m
+[31m-				padding-bottom 10px[m
+[31m-				width 100%[m
+[31m-			.inputRegistrar[m
+[31m-				background cadetblue[m
+[31m-				border none[m
+[31m-				border-radius 50px[m
+[31m-				bottom 4em[m
+[31m-				color white[m
+[31m-				font-weight bold[m
+[31m-				height 2.5em	[m
+[31m-				position absolute[m
+[31m-				right 2em[m
+[31m-				width 150px[m
+[31m-			.icon-registrar[m
+[31m-				position absolute[m
+[31m-				bottom 4em[m
+[31m-				right 9em[m
+[31m-				opacity .4[m
+[31m-				z-index 1[m
+[31m-				&:before[m
+[31m-					content "\e607"[m
+[31m-			.miembro[m
+[31m-				position absolute[m
+[31m-				bottom 1em[m
+[31m-				right 1em[m
+[31m-				[m
+[31m-			[m
+\ No newline at end of file[m
+[1mdiff --git a/static/stylus/normalize.styl b/static/stylus/normalize.styl[m
+[1mdeleted file mode 100644[m
+[1mindex 4ef63b8..0000000[m
+[1m--- a/static/stylus/normalize.styl[m
+[1m+++ /dev/null[m
+[36m@@ -1,130 +0,0 @@[m
+[31m-html[m
+[31m-[m
+[31m-body[m
+[31m-  margin 0[m
+[31m-[m
+[31m-article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary[m
+[31m-  display block[m
+[31m-[m
+[31m-audio,canvas,progress,video[m
+[31m-[m
+[31m-audio[m
+[31m-  &:not([controls])[m
+[31m-    display none[m
+[31m-    height 0[m
+[31m-[m
+[31m-[hidden],template[m
+[31m-  display none[m
+[31m-[m
+[31m-a[m
+[31m-  background-color transparent[m
+[31m-[m
+[31m-a:active,a:hover[m
+[31m-  outline 0[m
+[31m-[m
+[31m-abbr[title][m
+[31m-  border-bottom 1px dotted[m
+[31m-[m
+[31m-b,strong[m
+[31m-  font-weight bold[m
+[31m-[m
+[31m-dfn[m
+[31m-  font-style italic[m
+[31m-[m
+[31m-h1[m
+[31m-  font-size 2em[m
+[31m-  margin 0.67em 0[m
+[31m-[m
+[31m-mark[m
+[31m-  background #ff0[m
+[31m-  color #000[m
+[31m-[m
+[31m-small[m
+[31m-  font-size 80%[m
+[31m-[m
+[31m-sub,sup[m
+[31m-  font-size 75%[m
+[31m-  line-height 0[m
+[31m-  position relative[m
+[31m-  vertical-align baseline[m
+[31m-[m
+[31m-sup[m
+[31m-  top -0.5em[m
+[31m-[m
+[31m-sub[m
+[31m-  bottom -0.25em[m
+[31m-[m
+[31m-img[m
+[31m-  border 0[m
+[31m-[m
+[31m-svg[m
+[31m-  &:not(:root)[m
+[31m-    overflow hidden[m
+[31m-[m
+[31m-figure[m
+[31m-  margin 1em 40px[m
+[31m-[m
+[31m-hr[m
+[31m-  -moz-box-sizing content-box[m
+[31m-  box-sizing content-box[m
+[31m-  height 0[m
+[31m-[m
+[31m-pre[m
+[31m-  overflow auto[m
+[31m-[m
+[31m-code,kbd,pre,samp[m
+[31m-  font-family monospace, monospace[m
+[31m-  font-size 1em[m
+[31m-[m
+[31m-button,input,optgroup,select,textarea[m
+[31m-[m
+[31m-button[m
+[31m-  overflow visible[m
+[31m-[m
+[31m-button,select[m
+[31m-  text-transform none[m
+[31m-[m
+[31m-button,html input[type="button"], input[type="reset"],input[type="submit"][m
+[31m-[m
+[31m-button[disabled],html input[disabled][m
+[31m-  cursor default[m
+[31m-[m
+[31m-button::-moz-focus-inner,input::-moz-focus-inner[m
+[31m-  border 0[m
+[31m-  padding 0[m
+[31m-[m
+[31m-input[m
+[31m-  line-height normal[m
+[31m-[m
+[31m-input[type="checkbox"],input[type="radio"][m
+[31m-[m
+[31m-input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button[m
+[31m-  height auto[m
+[31m-[m
+[31m-input[type="search"][m
+[31m-  -moz-box-sizing content-box[m
+[31m-  box-sizing content-box[m
+[31m-[m
+[31m-input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration[m
+[31m-  -webkit-appearance none[m
+[31m-[m
+[31m-fieldset[m
+[31m-  border 1px solid #c0c0c0[m
+[31m-  margin 0 2px[m
+[31m-  padding 0.35em 0.625em 0.75em[m
+[31m-[m
+[31m-legend[m
+[31m-[m
+[31m-textarea[m
+[31m-  overflow auto[m
+[31m-[m
+[31m-optgroup[m
+[31m-  font-weight bold[m
+[31m-[m
+[31m-table[m
+[31m-  border-collapse collapse[m
+[31m-  border-spacing 0[m
+[31m-[m
+[31m-td,th[m
+[31m-  padding 0[m
+[31m-[m
+[1mdiff --git a/static/stylus/style.styl b/static/stylus/style.styl[m
+[1mdeleted file mode 100644[m
+[1mindex 50736ab..0000000[m
+[1m--- a/static/stylus/style.styl[m
+[1m+++ /dev/null[m
+[36m@@ -1,25 +0,0 @@[m
+[31m-body[m
+[31m-  margin 0[m
+[31m-  padding 0[m
+[31m-[m
+[31m-h1, h2, h3, h4, h5, h6[m
+[31m-  text-align center[m
+[31m-  font-weight normal[m
+[31m-  text-rendering optimizelegibility[m
+[31m-[m
+[31m-h1[m
+[31m-  color #4E443C[m
+[31m-  font-size 36px[m
+[31m-  font-weight bold[m
+[31m-[m
+[31m-pre[m
+[31m-  border 1px solid #000[m
+[31m-  overflow-x auto[m
+[31m-  background #222[m
+[31m-  color #fff[m
+[31m-  text-shadow none[m
+[31m-[m
+[31m-.wrapper[m
+[31m-  max-width 750px[m
+[31m-  padding 0 20px 40px 20px[m
+[31m-  margin auto[m
+\ No newline at end of file[m
+[1mdiff --git a/template/GuayaGiant.html b/template/GuayaGiant.html[m
+[1mindex 60e7151..1665aa9 100644[m
+[1m--- a/template/GuayaGiant.html[m
+[1m+++ b/template/GuayaGiant.html[m
+[36m@@ -37,6 +37,8 @@[m
+ 				<a href="../{{log.urlPageIng}}" class="login ingresarUsuario" id="login_ingresar">{{log.nameIngresar}}</a>[m
+ 				<a href="../{{log.urlPageReg}}" class="login hacerIngresoUsuario" id="login_reg">{{log.nameRegistro}}</a>[m
+ 			</div>[m
+[32m+[m			[32m<a href=""><span class="icon-bars si-active" id="barMenu"></span></a>[m
+[32m+[m			[32m<a href=""><span class="icon-bars no-active" id="barMenuHide"></span></a>[m
+ 		</nav>		[m
+ 	</header>	[m
+ 	<section id="contenido">[m
+[36m@@ -86,7 +88,10 @@[m
+ 	</section>[m
+ 	<footer ng-controller="FooterController as footerCrtl">[m
+ 		<div class="footer-container" ng-repeat="footer in footerCrtl.footers">[m
+[31m-			<div class="footer-column">[m
+[32m+[m			[32m<figure class="logo-footer">[m
+[32m+[m				[32m<img ng-src="../{{footer.urlLogo}}" width="230px">[m
+[32m+[m			[32m</figure>[m
+[32m+[m			[32m<div class="footer-column contacts">[m
+ 				<ul class="footer-contactList">[m
+ 					<li class="footer-contactInfo" ng-repeat="contact in footer.contacts">[m
+ 						<a href="{{contact.url}}">[m
+[36m@@ -94,10 +99,7 @@[m
+ 						</a>[m
+ 					</li>							[m
+ 				</ul>[m
+[31m-			</div>[m
+[31m-			<figure class="logo-footer">[m
+[31m-				<img ng-src="../{{footer.urlLogo}}" width="230px">[m
+[31m-			</figure>[m
+[32m+[m			[32m</div>[m[41m			[m
+ 			<div class="footer-column author" ng-repeat="author in footer.authors">[m
+ 				<p class="footer-infoAuthor">[m
+ 					<strong>{{author.name}}</strong>[m
+[36m@@ -114,11 +116,13 @@[m
+ 	</footer>[m
+ 	<script src="../static/js/hammer.min.js"></script>[m
+ 	<script>[m
+[31m-	$(function() {		[m
+[32m+[m	[32m$(function() {[m
+ 		if (window.matchMedia("(max-width: 480px)").matches) {[m
+[31m-			debugger;[m
+ 			var $buttonShowMenu = document.getElementById('showMenu');[m
+ 			var $buttonHideMenu = document.getElementById('hideMenu');[m
+[32m+[m			[32mvar $barraMenuShow = document.getElementById('barMenu');[m
+[32m+[m			[32mvar $barraMenuHide = document.getElementById('barMenuHide');[m
+[32m+[m			[32mvar $menuList	= document.getElementById('opt_login');[m
+ 			var $menu = document.getElementById('menu');[m
+ [m
+ 			var $body = document.querySelector('body');[m
+[36m@@ -137,8 +141,26 @@[m
+ 				$menu.classList.remove('is-active');[m
+ 			};[m
+ [m
+[32m+[m			[32mvar barMenu = function() {[m[41m				[m
+[32m+[m				[32m$menuList.classList.add('is-active');[m
+[32m+[m				[32m$barraMenuShow.classList.remove('si-active');[m
+[32m+[m				[32m$barraMenuShow.classList.add('no-active');[m
+[32m+[m				[32m$barraMenuHide.classList.add('si-active');[m
+[32m+[m				[32m$barraMenuHide.classList.remove('no-active');[m
+[32m+[m			[32m};[m
+[32m+[m			[32mvar barMenuHide = function() {[m[41m	[m
+[32m+[m			[32mconsole.log('hide');[m
+[32m+[m				[32m$menuList.classList.remove('is-active');[m
+[32m+[m				[32m$barraMenuShow.classList.add('si-active');[m
+[32m+[m				[32m$barraMenuShow.classList.remove('no-active');[m
+[32m+[m				[32m$barraMenuHide.classList.remove('si-active');[m
+[32m+[m				[32m$barraMenuHide.classList.add('no-active');[m
+[32m+[m			[32m};[m
+[32m+[m
+ 			$buttonShowMenu.addEventListener("click", showMenu);[m
+ 			$buttonHideMenu.addEventListener("click", hideMenu);[m
+[32m+[m			[32m$barraMenuShow.addEventListener("click", barMenu);[m
+[32m+[m			[32m$barraMenuHide.addEventListener("click", barMenuHide);[m
+ [m
+ 			body.on('panright', showMenu);[m
+ 			body.on('panleft', hideMenu);[m
+[1mdiff --git a/template/LuzNumemGiant.html b/template/LuzNumemGiant.html[m
+[1mindex 98f77d8..dae8c87 100644[m
+[1m--- a/template/LuzNumemGiant.html[m
+[1m+++ b/template/LuzNumemGiant.html[m
+[36m@@ -37,6 +37,8 @@[m
+ 				<a href="../{{log.urlPageIng}}" class="login ingresarUsuario" id="login_ingresar">{{log.nameIngresar}}</a>[m
+ 				<a href="../{{log.urlPageReg}}" class="login hacerIngresoUsuario" id="login_reg">{{log.nameRegistro}}</a>[m
+ 			</div>[m
+[32m+[m			[32m<a href=""><span class="icon-bars si-active" id="barMenu"></span></a>[m
+[32m+[m			[32m<a href=""><span class="icon-bars no-active" id="barMenuHide"></span></a>[m
+ 		</nav>		[m
+ 	</header>	[m
+ 	<section id="contenido">[m
+[36m@@ -85,7 +87,10 @@[m
+ 	</section>	[m
+ 	<footer ng-controller="FooterController as footerCrtl">[m
+ 		<div class="footer-container" ng-repeat="footer in footerCrtl.footers">[m
+[31m-			<div class="footer-column">[m
+[32m+[m			[32m<figure class="logo-footer">[m
+[32m+[m				[32m<img ng-src="../{{footer.urlLogo}}" width="230px">[m
+[32m+[m			[32m</figure>[m
+[32m+[m			[32m<div class="footer-column contacts">[m
+ 				<ul class="footer-contactList">[m
+ 					<li class="footer-contactInfo" ng-repeat="contact in footer.contacts">[m
+ 						<a href="../{{contact.url}}">[m
+[36m@@ -93,10 +98,7 @@[m
+ 						</a>[m
+ 					</li>							[m
+ 				</ul>[m
+[31m-			</div>[m
+[31m-			<figure class="logo-footer">[m
+[31m-				<img ng-src="../{{footer.urlLogo}}" width="230px">[m
+[31m-			</figure>[m
+[32m+[m			[32m</div>[m[41m			[m
+ 			<div class="footer-column author" ng-repeat="author in footer.authors">[m
+ 				<p class="footer-infoAuthor">[m
+ 					<strong>{{author.name}}</strong>[m
+[36m@@ -117,6 +119,9 @@[m
+ 		if (window.matchMedia("(max-width: 480px)").matches) {[m
+ 			var $buttonShowMenu = document.getElementById('showMenu');[m
+ 			var $buttonHideMenu = document.getElementById('hideMenu');[m
+[32m+[m			[32mvar $barraMenuShow = document.getElementById('barMenu');[m
+[32m+[m			[32mvar $barraMenuHide = document.getElementById('barMenuHide');[m
+[32m+[m			[32mvar $menuList	= document.getElementById('opt_login');[m
+ 			var $menu = document.getElementById('menu');[m
+ [m
+ 			var $body = document.querySelector('body');[m
+[36m@@ -135,8 +140,26 @@[m
+ 				$menu.classList.remove('is-active');[m
+ 			};[m
+ [m
+[32m+[m			[32mvar barMenu = function() {[m[41m				[m
+[32m+[m				[32m$menuList.classList.add('is-active');[m
+[32m+[m				[32m$barraMenuShow.classList.remove('si-active');[m
+[32m+[m				[32m$barraMenuShow.classList.add('no-active');[m
+[32m+[m				[32m$barraMenuHide.classList.add('si-active');[m
+[32m+[m				[32m$barraMenuHide.classList.remove('no-active');[m
+[32m+[m			[32m};[m
+[32m+[m			[32mvar barMenuHide = function() {[m[41m	[m
+[32m+[m			[32mconsole.log('hide');[m
+[32m+[m				[32m$menuList.classList.remove('is-active');[m
+[32m+[m				[32m$barraMenuShow.classList.add('si-active');[m
+[32m+[m				[32m$barraMenuShow.classList.remove('no-active');[m
+[32m+[m				[32m$barraMenuHide.classList.remove('si-active');[m
+[32m+[m				[32m$barraMenuHide.classList.add('no-active');[m
+[32m+[m			[32m};[m
+[32m+[m
+ 			$buttonShowMenu.addEventListener("click", showMenu);[m
+ 			$buttonHideMenu.addEventListener("click", hideMenu);[m
+[32m+[m			[32m$barraMenuShow.addEventListener("click", barMenu);[m
+[32m+[m			[32m$barraMenuHide.addEventListener("click", barMenuHide);[m
+ [m
+ 			body.on('panright', showMenu);[m
+ 			body.on('panleft', hideMenu);[m
+[1mdiff --git a/template/ManillarRojo.html b/template/ManillarRojo.html[m
+[1mindex f4451bd..85d4fd4 100644[m
+[1m--- a/template/ManillarRojo.html[m
+[1m+++ b/template/ManillarRojo.html[m
+[36m@@ -37,6 +37,8 @@[m
+ 				<a href="../{{log.urlPageIng}}" class="login ingresarUsuario" id="login_ingresar">{{log.nameIngresar}}</a>[m
+ 				<a href="../{{log.urlPageReg}}" class="login hacerIngresoUsuario" id="login_reg">{{log.nameRegistro}}</a>[m
+ 			</div>[m
+[32m+[m			[32m<a href=""><span class="icon-bars si-active" id="barMenu"></span></a>[m
+[32m+[m			[32m<a href=""><span class="icon-bars no-active" id="barMenuHide"></span></a>[m
+ 		</nav>		[m
+ 	</header>	[m
+ 	<section id="contenido">[m
+[36m@@ -97,7 +99,10 @@[m
+ 	</section>[m
+ 	<footer ng-controller="FooterController as footerCrtl">[m
+ 		<div class="footer-container" ng-repeat="footer in footerCrtl.footers">[m
+[31m-			<div class="footer-column">[m
+[32m+[m			[32m<figure class="logo-footer">[m
+[32m+[m				[32m<img ng-src="../{{footer.urlLogo}}" width="230px">[m
+[32m+[m			[32m</figure>[m
+[32m+[m			[32m<div class="footer-column contacts">[m
+ 				<ul class="footer-contactList">[m
+ 					<li class="footer-contactInfo" ng-repeat="contact in footer.contacts">[m
+ 						<a href="../{{contact.url}}">[m
+[36m@@ -105,10 +110,7 @@[m
+ 						</a>[m
+ 					</li>							[m
+ 				</ul>[m
+[31m-			</div>[m
+[31m-			<figure class="logo-footer">[m
+[31m-				<img ng-src="../{{footer.urlLogo}}" width="230px">[m
+[31m-			</figure>[m
+[32m+[m			[32m</div>[m[41m			[m
+ 			<div class="footer-column author" ng-repeat="author in footer.authors">[m
+ 				<p class="footer-infoAuthor">[m
+ 					<strong>{{author.name}}</strong>[m
+[36m@@ -124,10 +126,13 @@[m
+ 	</footer>[m
+ 	<script src="../static/js/hammer.min.js"></script>[m
+ 	<script>	[m
+[31m-	$(function() {		[m
+[32m+[m	[32m$(function() {[m
+ 		if (window.matchMedia("(max-width: 480px)").matches) {[m
+ 			var $buttonShowMenu = document.getElementById('showMenu');[m
+ 			var $buttonHideMenu = document.getElementById('hideMenu');[m
+[32m+[m			[32mvar $barraMenuShow = document.getElementById('barMenu');[m
+[32m+[m			[32mvar $barraMenuHide = document.getElementById('barMenuHide');[m
+[32m+[m			[32mvar $menuList	= document.getElementById('opt_login');[m
+ 			var $menu = document.getElementById('menu');[m
+ [m
+ 			var $body = document.querySelector('body');[m
+[36m@@ -146,8 +151,26 @@[m
+ 				$menu.classList.remove('is-active');[m
+ 			};[m
+ [m
+[32m+[m			[32mvar barMenu = function() {[m[41m				[m
+[32m+[m				[32m$menuList.classList.add('is-active');[m
+[32m+[m				[32m$barraMenuShow.classList.remove('si-active');[m
+[32m+[m				[32m$barraMenuShow.classList.add('no-active');[m
+[32m+[m				[32m$barraMenuHide.classList.add('si-active');[m
+[32m+[m				[32m$barraMenuHide.classList.remove('no-active');[m
+[32m+[m			[32m};[m
+[32m+[m			[32mvar barMenuHide = function() {[m[41m	[m
+[32m+[m			[32mconsole.log('hide');[m
+[32m+[m				[32m$menuList.classList.remove('is-active');[m
+[32m+[m				[32m$barraMenuShow.classList.add('si-active');[m
+[32m+[m				[32m$barraMenuShow.classList.remove('no-active');[m
+[32m+[m				[32m$barraMenuHide.classList.remove('si-active');[m
+[32m+[m				[32m$barraMenuHide.classList.add('no-active');[m
+[32m+[m			[32m};[m
+[32m+[m
+ 			$buttonShowMenu.addEventListener("click", showMenu);[m
+ 			$buttonHideMenu.addEventListener("click", hideMenu);[m
+[32m+[m			[32m$barraMenuShow.addEventListener("click", barMenu);[m
+[32m+[m			[32m$barraMenuHide.addEventListener("click", barMenuHide);[m
+ [m
+ 			body.on('panright', showMenu);[m
+ 			body.on('panleft', hideMenu);[m
+[1mdiff --git a/template/PortaCaramanolaPastaLateralGris.html b/template/PortaCaramanolaPastaLateralGris.html[m
+[1mindex 9ba76d2..892e31c 100644[m
+[1m--- a/template/PortaCaramanolaPastaLateralGris.html[m
+[1m+++ b/template/PortaCaramanolaPastaLateralGris.html[m
+[36m@@ -85,7 +85,10 @@[m
+ 	</section>[m
+ 	<footer ng-controller="FooterController as footerCrtl">[m
+ 		<div class="footer-container" ng-repeat="footer in footerCrtl.footers">[m
+[31m-			<div class="footer-column">[m
+[32m+[m			[32m<figure class="logo-footer">[m
+[32m+[m				[32m<img ng-src="../{{footer.urlLogo}}" width="230px">[m
+[32m+[m			[32m</figure>[m
+[32m+[m			[32m<div class="footer-column contacts">[m
+ 				<ul class="footer-contactList">[m
+ 					<li class="footer-contactInfo" ng-repeat="contact in footer.contacts">[m
+ 						<a href="../{{contact.url}}">[m
+[36m@@ -93,10 +96,7 @@[m
+ 						</a>[m
+ 					</li>							[m
+ 				</ul>[m
+[31m-			</div>[m
+[31m-			<figure class="logo-footer">[m
+[31m-				<img ng-src="../{{footer.urlLogo}}" width="230px">[m
+[31m-			</figure>[m
+[32m+[m			[32m</div>[m[41m			[m
+ 			<div class="footer-column author" ng-repeat="author in footer.authors">[m
+ 				<p class="footer-infoAuthor">[m
+ 					<strong>{{author.name}}</strong>[m
+[1mdiff --git a/template/PortaCaramanolaRaceAzul.html b/template/PortaCaramanolaRaceAzul.html[m
+[1mindex 86e1580..c2e69c8 100644[m
+[1m--- a/template/PortaCaramanolaRaceAzul.html[m
+[1m+++ b/template/PortaCaramanolaRaceAzul.html[m
+[36m@@ -37,6 +37,8 @@[m
+ 				<a href="{{log.urlPageIng}}" class="login ingresarUsuario" id="login_ingresar">{{log.nameIngresar}}</a>[m
+ 				<a href="{{log.urlPageReg}}" class="login hacerIngresoUsuario" id="login_reg">{{log.nameRegistro}}</a>[m
+ 			</div>[m
+[32m+[m			[32m<a href=""><span class="icon-bars si-active" id="barMenu"></span></a>[m
+[32m+[m			[32m<a href=""><span class="icon-bars no-active" id="barMenuHide"></span></a>[m
+ 		</nav>		[m
+ 	</header>	[m
+ 	<section id="contenido">[m
+[36m@@ -84,7 +86,10 @@[m
+ 	</section>[m
+ 	<footer ng-controller="FooterController as footerCrtl">[m
+ 		<div class="footer-container" ng-repeat="footer in footerCrtl.footers">[m
+[31m-			<div class="footer-column">[m
+[32m+[m			[32m<figure class="logo-footer">[m
+[32m+[m				[32m<img ng-src="../{{footer.urlLogo}}" width="230px">[m
+[32m+[m			[32m</figure>[m
+[32m+[m			[32m<div class="footer-column contacts">[m
+ 				<ul class="footer-contactList">[m
+ 					<li class="footer-contactInfo" ng-repeat="contact in footer.contacts">[m
+ 						<a href="../{{contact.url}}">[m
+[36m@@ -92,10 +97,7 @@[m
+ 						</a>[m
+ 					</li>							[m
+ 				</ul>[m
+[31m-			</div>[m
+[31m-			<figure class="logo-footer">[m
+[31m-				<img ng-src="../{{footer.urlLogo}}" width="230px">[m
+[31m-			</figure>[m
+[32m+[m			[32m</div>[m[41m			[m
+ 			<div class="footer-column author" ng-repeat="author in footer.authors">[m
+ 				<p class="footer-infoAuthor">[m
+ 					<strong>{{author.name}}</strong>[m
+[36m@@ -113,9 +115,12 @@[m
+ 	<script src="../static/js/hammer.min.js"></script>[m
+ 	<script>	[m
+ 	$(function() {		[m
+[31m-		if (window.matchMedia("(max-width: 480px)").matches) {[m
+[32m+[m		[32mif (window.matchMedia("(max-width: 480px)").matches || window.matchMedia("(max-width: 768px)").matches) {[m
+ 			var $buttonShowMenu = document.getElementById('showMenu');[m
+ 			var $buttonHideMenu = document.getElementById('hideMenu');[m
+[32m+[m			[32mvar $barraMenuShow = document.getElementById('barMenu');[m
+[32m+[m			[32mvar $barraMenuHide = document.getElementById('barMenuHide');[m
+[32m+[m			[32mvar $menuList	= document.getElementById('opt_login');[m
+ 			var $menu = document.getElementById('menu');[m
+ [m
+ 			var $body = document.querySelector('body');[m
+[36m@@ -134,12 +139,28 @@[m
+ 				$menu.classList.remove('is-active');[m
+ 			};[m
+ [m
+[32m+[m			[32mvar barMenu = function() {[m[41m				[m
+[32m+[m				[32m$menuList.classList.add('is-active');[m
+[32m+[m				[32m$barraMenuShow.classList.remove('si-active');[m
+[32m+[m				[32m$barraMenuShow.classList.add('no-active');[m
+[32m+[m				[32m$barraMenuHide.classList.add('si-active');[m
+[32m+[m				[32m$barraMenuHide.classList.remove('no-active');[m
+[32m+[m			[32m};[m
+[32m+[m			[32mvar barMenuHide = function() {[m[41m	[m
+[32m+[m				[32m$menuList.classList.remove('is-active');[m
+[32m+[m				[32m$barraMenuShow.classList.add('si-active');[m
+[32m+[m				[32m$barraMenuShow.classList.remove('no-active');[m
+[32m+[m				[32m$barraMenuHide.classList.remove('si-active');[m
+[32m+[m				[32m$barraMenuHide.classList.add('no-active');[m
+[32m+[m			[32m};[m
+[32m+[m
+ 			$buttonShowMenu.addEventListener("click", showMenu);[m
+ 			$buttonHideMenu.addEventListener("click", hideMenu);[m
+[32m+[m			[32m$barraMenuShow.addEventListener("click", barMenu);[m
+[32m+[m			[32m$barraMenuHide.addEventListener("click", barMenuHide);[m
+ [m
+ 			body.on('panright', showMenu);[m
+ 			body.on('panleft', hideMenu);[m
+[31m-[m
+ 		};[m
+ 	});[m
+ 	</script>[m
+[1mdiff --git a/template/Portacaramanolametalica.html b/template/Portacaramanolametalica.html[m
+[1mindex e024fb0..ba97668 100644[m
+[1m--- a/template/Portacaramanolametalica.html[m
+[1m+++ b/template/Portacaramanolametalica.html[m
+[36m@@ -36,6 +36,8 @@[m
+ 				<a href="../{{log.urlPageIng}}" class="login ingresarUsuario" id="login_ingresar">{{log.nameIngresar}}</a>[m
+ 				<a href="../{{log.urlPageReg}}" class="login hacerIngresoUsuario" id="login_reg">{{log.nameRegistro}}</a>[m
+ 			</div>[m
+[32m+[m			[32m<a href=""><span class="icon-bars si-active" id="barMenu"></span></a>[m
+[32m+[m			[32m<a href=""><span class="icon-bars no-active" id="barMenuHide"></span></a>[m
+ 		</nav>		[m
+ 	</header>	[m
+ 	<section id="contenido">[m
+[36m@@ -85,7 +87,10 @@[m
+ 	</section>[m
+ 	<footer ng-controller="FooterController as footerCrtl">[m
+ 		<div class="footer-container" ng-repeat="footer in footerCrtl.footers">[m
+[31m-			<div class="footer-column">[m
+[32m+[m			[32m<figure class="logo-footer">[m
+[32m+[m				[32m<img ng-src="../{{footer.urlLogo}}" width="230px">[m
+[32m+[m			[32m</figure>[m
+[32m+[m			[32m<div class="footer-column contacts">[m
+ 				<ul class="footer-contactList">[m
+ 					<li class="footer-contactInfo" ng-repeat="contact in footer.contacts">[m
+ 						<a href="{{contact.url}}">[m
+[36m@@ -93,10 +98,7 @@[m
+ 						</a>[m
+ 					</li>							[m
+ 				</ul>[m
+[31m-			</div>[m
+[31m-			<figure class="logo-footer">[m
+[31m-				<img ng-src="../{{footer.urlLogo}}" width="230px">[m
+[31m-			</figure>[m
+[32m+[m			[32m</div>[m[41m			[m
+ 			<div class="footer-column author" ng-repeat="author in footer.authors">[m
+ 				<p class="footer-infoAuthor">[m
+ 					<strong>{{author.name}}</strong>[m
+[36m@@ -114,9 +116,12 @@[m
+ 	<script src="../static/js/hammer.min.js"></script>[m
+ 	<script>[m
+ 	$(function() {		[m
+[31m-		if (window.matchMedia("(max-width: 480px)").matches) {[m
+[32m+[m		[32mif (window.matchMedia("(max-width: 480px)").matches || window.matchMedia("(max-width: 768px)").matches) {[m
+ 			var $buttonShowMenu = document.getElementById('showMenu');[m
+ 			var $buttonHideMenu = document.getElementById('hideMenu');[m
+[32m+[m			[32mvar $barraMenuShow = document.getElementById('barMenu');[m
+[32m+[m			[32mvar $barraMenuHide = document.getElementById('barMenuHide');[m
+[32m+[m			[32mvar $menuList	= document.getElementById('opt_login');[m
+ 			var $menu = document.getElementById('menu');[m
+ [m
+ 			var $body = document.querySelector('body');[m
+[36m@@ -135,12 +140,28 @@[m
+ 				$menu.classList.remove('is-active');[m
+ 			};[m
+ [m
+[32m+[m			[32mvar barMenu = function() {[m[41m				[m
+[32m+[m				[32m$menuList.classList.add('is-active');[m
+[32m+[m				[32m$barraMenuShow.classList.remove('si-active');[m
+[32m+[m				[32m$barraMenuShow.classList.add('no-active');[m
+[32m+[m				[32m$barraMenuHide.classList.add('si-active');[m
+[32m+[m				[32m$barraMenuHide.classList.remove('no-active');[m
+[32m+[m			[32m};[m
+[32m+[m			[32mvar barMenuHide = function() {[m[41m	[m
+[32m+[m				[32m$menuList.classList.remove('is-active');[m
+[32m+[m				[32m$barraMenuShow.classList.add('si-active');[m
+[32m+[m				[32m$barraMenuShow.classList.remove('no-active');[m
+[32m+[m				[32m$barraMenuHide.classList.remove('si-active');[m
+[32m+[m				[32m$barraMenuHide.classList.add('no-active');[m
+[32m+[m			[32m};[m
+[32m+[m
+ 			$buttonShowMenu.addEventListener("click", showMenu);[m
+ 			$buttonHideMenu.addEventListener("click", hideMenu);[m
+[32m+[m			[32m$barraMenuShow.addEventListener("click", barMenu);[m
+[32m+[m			[32m$barraMenuHide.addEventListener("click", barMenuHide);[m
+ [m
+ 			body.on('panright', showMenu);[m
+ 			body.on('panleft', hideMenu);[m
+[31m-[m
+ 		};[m
+ 	});[m
+ 	</script>[m
+[1mdiff --git a/template/registroUsuario.html b/template/registroUsuario.html[m
+[1mindex 91b6142..9590454 100644[m
+[1m--- a/template/registroUsuario.html[m
+[1m+++ b/template/registroUsuario.html[m
+[36m@@ -6,6 +6,7 @@[m
+ 		<link rel="stylesheet" href="../static/css/estilosRegistroUsuario.css">[m
+ 		<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>[m
+ 		<link rel="stylesheet" href="../static/css/normalize.css">[m
+[32m+[m		[32m<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>[m
+ 		<script type="text/javascript" src="../static/js/jquery.jcarousel.min.js"></script>[m
+ 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>[m
+ 	</head>[m
+[36m@@ -35,9 +36,13 @@[m
+ 					<a href="../{{log.urlPageIng}}" class="login ingresarUsuario" id="login_ingresar">{{log.nameIngresar}}</a>[m
+ 					<a href="../{{log.urlPageReg}}" class="login hacerIngresoUsuario" id="login_reg">{{log.nameRegistro}}</a>[m
+ 				</div>[m
+[32m+[m				[32m<a href=""><span class="icon-bars si-active" id="barMenu"></span></a>[m
+[32m+[m				[32m<a href=""><span class="icon-bars no-active" id="barMenuHide"></span></a>[m
+ 			</nav>		[m
+ 		</header>[m
+ 		<section class="registro">[m
+[32m+[m			[32m<button class="contenido-button is-active icon-shonMenu" id="showMenu"></button>[m
+[32m+[m			[32m<button class="contenido-button icon-hideMenu" id="hideMenu"></button>[m
+ 			<div class="info_registroUsuario">[m
+ 				<h2>Ingreso Usuarios</h2>[m
+ 			</div>[m
+[36m@@ -119,16 +124,21 @@[m
+ 							<input id="confirmarPassword" type="text" class="input" placeholder="Ingrese de nuevo el password">[m
+ 						</div>[m
+ 					</div>[m
+[31m-					<span class="icon-registrar"></span>[m
+[31m-					<input class="inputRegistrar" type="submit" value="Registrar" />[m
+[31m-					<span class="miembro">¿Ya eres un miembro? <a href="#"> Ingresa</a></span>[m
+[32m+[m					[32m<div class="botonRegistrar">[m
+[32m+[m						[32m<span class="icon-registrar"></span>[m
+[32m+[m						[32m<input class="inputRegistrar" type="submit" value="Registrar" />[m
+[32m+[m						[32m<span class="miembro">¿Ya eres un miembro? <a href="#"> Ingresa</a></span>[m
+[32m+[m					[32m</div>[m[41m					[m
+ [m
+ 				</fieldset>[m
+ 			</form>			[m
+ 		</section>[m
+ 		<footer ng-controller="FooterController as footerCrtl">[m
+ 			<div class="footer-container" ng-repeat="footer in footerCrtl.footers">[m
+[31m-				<div class="footer-column">[m
+[32m+[m				[32m<figure class="logo-footer">[m
+[32m+[m					[32m<img ng-src="../{{footer.urlLogo}}" width="230px">[m
+[32m+[m				[32m</figure>[m
+[32m+[m				[32m<div class="footer-column contacts">[m
+ 					<ul class="footer-contactList">[m
+ 						<li class="footer-contactInfo" ng-repeat="contact in footer.contacts">[m
+ 							<a href="{{contact.url}}">[m
+[36m@@ -136,10 +146,7 @@[m
+ 							</a>[m
+ 						</li>							[m
+ 					</ul>[m
+[31m-				</div>[m
+[31m-				<figure class="logo-footer">[m
+[31m-					<img ng-src="../{{footer.urlLogo}}" width="230px">[m
+[31m-				</figure>[m
+[32m+[m				[32m</div>[m[41m				[m
+ 				<div class="footer-column author" ng-repeat="author in footer.authors">[m
+ 					<p class="footer-infoAuthor">[m
+ 						<strong>{{author.name}}</strong>[m
+[36m@@ -154,6 +161,58 @@[m
+ 				</div>[m
+ 			</div>	[m
+ 		</footer>[m
+[32m+[m		[32m<script src="../static/js/hammer.min.js"></script>[m
+[32m+[m		[32m<script type="text/javascript">[m
+[32m+[m		[32m$(function() {[m[41m		[m
+[32m+[m			[32mif (window.matchMedia("(max-width: 480px)").matches || window.matchMedia("(max-width: 768px)").matches) {[m
+[32m+[m				[32mvar $buttonShowMenu = document.getElementById('showMenu');[m
+[32m+[m				[32mvar $buttonHideMenu = document.getElementById('hideMenu');[m
+[32m+[m				[32mvar $barraMenuShow = document.getElementById('barMenu');[m
+[32m+[m				[32mvar $barraMenuHide = document.getElementById('barMenuHide');[m
+[32m+[m				[32mvar $menuList	= document.getElementById('opt_login');[m
+[32m+[m				[32mvar $menu = document.getElementById('menu');[m
+[32m+[m
+[32m+[m				[32mvar $body = document.querySelector('body');[m
+[32m+[m
+[32m+[m				[32mvar body = new Hammer($body);[m
+[32m+[m
+[32m+[m				[32mvar showMenu = function() {[m
+[32m+[m					[32m$buttonShowMenu.classList.remove('is-active');[m
+[32m+[m					[32m$buttonHideMenu.classList.add('is-active');[m
+[32m+[m					[32m$menu.classList.add('is-active');[m
+[32m+[m				[32m};[m
+[32m+[m
+[32m+[m				[32mvar hideMenu = function() {[m
+[32m+[m					[32m$buttonShowMenu.classList.add('is-active');[m
+[32m+[m					[32m$buttonHideMenu.classList.remove('is-active');[m
+[32m+[m					[32m$menu.classList.remove('is-active');[m
+[32m+[m				[32m};[m
+[32m+[m
+[32m+[m				[32mvar barMenu = function() {[m[41m				[m
+[32m+[m					[32m$menuList.classList.add('is-active');[m
+[32m+[m					[32m$barraMenuShow.classList.remove('si-active');[m
+[32m+[m					[32m$barraMenuShow.classList.add('no-active');[m
+[32m+[m					[32m$barraMenuHide.classList.add('si-active');[m
+[32m+[m					[32m$barraMenuHide.classList.remove('no-active');[m
+[32m+[m				[32m};[m
+[32m+[m				[32mvar barMenuHide = function() {[m[41m	[m
+[32m+[m					[32m$menuList.classList.remove('is-active');[m
+[32m+[m					[32m$barraMenuShow.classList.add('si-active');[m
+[32m+[m					[32m$barraMenuShow.classList.remove('no-active');[m
+[32m+[m					[32m$barraMenuHide.classList.remove('si-active');[m
+[32m+[m					[32m$barraMenuHide.classList.add('no-active');[m
+[32m+[m				[32m};[m
+[32m+[m
+[32m+[m				[32m$buttonShowMenu.addEventListener("click", showMenu);[m
+[32m+[m				[32m$buttonHideMenu.addEventListener("click", hideMenu);[m
+[32m+[m				[32m$barraMenuShow.addEventListener("click", barMenu);[m
+[32m+[m				[32m$barraMenuHide.addEventListener("click", barMenuHide);[m
+[32m+[m
+[32m+[m				[32mbody.on('panright', showMenu);[m
+[32m+[m				[32mbody.on('panleft', hideMenu);[m
+[32m+[m			[32m};[m
+[32m+[m		[32m});[m
+[32m+[m		[32m</script>[m
+ 		<script>[m
+ 		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){[m
+ 		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),[m

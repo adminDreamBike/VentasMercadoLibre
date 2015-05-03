@@ -37,6 +37,8 @@
 				<a href="../{{log.urlPageIng}}" class="login ingresarUsuario" id="login_ingresar">{{log.nameIngresar}}</a>
 				<a href="../{{log.urlPageReg}}" class="login hacerIngresoUsuario" id="login_reg">{{log.nameRegistro}}</a>
 			</div>
+			<a href=""><span class="icon-bars si-active" id="barMenu"></span></a>
+			<a href=""><span class="icon-bars no-active" id="barMenuHide"></span></a>
 		</nav>		
 	</header>	
 	<section id="contenido">
@@ -85,7 +87,10 @@
 	</section>	
 	<footer ng-controller="FooterController as footerCrtl">
 		<div class="footer-container" ng-repeat="footer in footerCrtl.footers">
-			<div class="footer-column">
+			<figure class="logo-footer">
+				<img ng-src="../{{footer.urlLogo}}" width="230px">
+			</figure>
+			<div class="footer-column contacts">
 				<ul class="footer-contactList">
 					<li class="footer-contactInfo" ng-repeat="contact in footer.contacts">
 						<a href="../{{contact.url}}">
@@ -93,10 +98,7 @@
 						</a>
 					</li>							
 				</ul>
-			</div>
-			<figure class="logo-footer">
-				<img ng-src="../{{footer.urlLogo}}" width="230px">
-			</figure>
+			</div>			
 			<div class="footer-column author" ng-repeat="author in footer.authors">
 				<p class="footer-infoAuthor">
 					<strong>{{author.name}}</strong>
@@ -117,6 +119,9 @@
 		if (window.matchMedia("(max-width: 480px)").matches) {
 			var $buttonShowMenu = document.getElementById('showMenu');
 			var $buttonHideMenu = document.getElementById('hideMenu');
+			var $barraMenuShow = document.getElementById('barMenu');
+			var $barraMenuHide = document.getElementById('barMenuHide');
+			var $menuList	= document.getElementById('opt_login');
 			var $menu = document.getElementById('menu');
 
 			var $body = document.querySelector('body');
@@ -135,8 +140,26 @@
 				$menu.classList.remove('is-active');
 			};
 
+			var barMenu = function() {				
+				$menuList.classList.add('is-active');
+				$barraMenuShow.classList.remove('si-active');
+				$barraMenuShow.classList.add('no-active');
+				$barraMenuHide.classList.add('si-active');
+				$barraMenuHide.classList.remove('no-active');
+			};
+			var barMenuHide = function() {	
+			console.log('hide');
+				$menuList.classList.remove('is-active');
+				$barraMenuShow.classList.add('si-active');
+				$barraMenuShow.classList.remove('no-active');
+				$barraMenuHide.classList.remove('si-active');
+				$barraMenuHide.classList.add('no-active');
+			};
+
 			$buttonShowMenu.addEventListener("click", showMenu);
 			$buttonHideMenu.addEventListener("click", hideMenu);
+			$barraMenuShow.addEventListener("click", barMenu);
+			$barraMenuHide.addEventListener("click", barMenuHide);
 
 			body.on('panright', showMenu);
 			body.on('panleft', hideMenu);

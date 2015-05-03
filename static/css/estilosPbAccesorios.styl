@@ -209,4 +209,358 @@ h3
         background red
       &.item-color-orange
         background DarkOrange
-      
+  .is-active
+    display block
+  .icon-hideMenu
+    &:before
+      content "\e602"
+  .icon-shonMenu
+    &:before
+      content "\e603"
+@media screen and (max-width: 480px)
+  nav
+    position relative
+    .avatar
+      display none
+    .logo
+      margin 0
+    .mainMenu
+      position fixed
+      top 4em
+      transition .3s
+      background #009688
+      left -205px
+      border-radius 2%
+      &.is-active
+        left 0
+      li
+        padding 0
+        display block
+        margin-bottom 1em
+        margin-right 1em
+        margin-top .5em
+        font-weight bold
+        a
+          border none
+          padding-right 0
+    .container_login
+      background lightblue
+      float right
+      padding 1em 2em      
+      right 0
+      text-align center
+      transition .3s
+      width 100%
+      top -6em
+      &.is-active
+        top 4.5em   
+      a
+        margin-bottom 1em
+        text-decoration none      
+      .ingresarUsuario
+        border 0
+        color white
+        display block
+        padding-right 0
+      .hacerIngresoUsuario
+        padding 0
+        color white
+    .icon-bars
+      color white
+      outline 0
+      position absolute
+      right 1em
+      top 1.2em
+      &:before
+        content "\e600"
+      &.is-active
+        top 4em
+      &.no-active
+        display none
+      &.si-active
+        display block
+    .search-left
+      left 55%
+      .search-input
+        position absolute
+        right -100px
+        .input_search
+          width 12em
+        .icon-busqueda
+          right 10.5em  
+  #contenido
+    .image_producto
+      margin-left 0
+      margin-right 0
+    .contenido        
+      &-button
+        background white
+        border none
+        border-radius 40px
+        height 40px
+        line-height 40px
+        outline 0
+        position fixed
+        right 1em
+        top 4em
+        width 40px
+        z-index 3
+        display none
+        background #FF8C00
+        outline 0
+        &.is-active
+          display block
+    .detallesGenerales
+      width 100%
+      .img_principal
+        display block
+        text-align center
+      .info_Producto
+        display block
+        margin 0
+        position relative
+        top 0
+        width 85%
+        margin-left 15%
+      .precio_Producto
+        margin 0
+        margin-left 1em
+        width 90%
+      .selector_images
+        margin 0 3em 1em 1em
+        .item_selector
+          display inline-block
+    .especificaciones
+      display block
+      position relative
+      width 90%
+    .titulo_Producto
+      margin-top 1em
+      h2
+        text-align center
+  footer
+    .footer-container
+      .footer-column
+        margin 0
+        &.contacts
+          margin-top 6em
+@media handheld, only screen and (max-width: 767px)
+  nav
+    position relative
+    .avatar
+      right 3.5em
+      display none
+    .logo
+      margin 0
+    .mainMenu
+      position fixed
+      top 4em
+      transition .3s
+      background #009688
+      left -205px
+      border-radius 2%
+      &.is-active
+        left 0
+      li
+        padding 0
+        display block
+        margin-bottom 1em
+        margin-right 1em
+        margin-top .5em
+        font-weight bold
+        a
+          border none
+          padding-right 0
+    .container_login
+      background lightblue
+      float right
+      padding 1em 2em      
+      right 0
+      text-align center
+      transition .3s
+      width 100%
+      top -6em
+      &.is-active
+        top 4.5em   
+      a
+        margin-bottom 1em
+        text-decoration none      
+      .ingresarUsuario
+        border 0
+        color white
+        display block
+        padding-right 0
+      .hacerIngresoUsuario
+        padding 0
+        color white
+    .icon-bars
+      color white
+      outline 0
+      position absolute
+      right 1em
+      top 1.2em
+      &:before
+        content "\e600"
+      &.is-active
+        top 4em
+      &.no-active
+        display none
+      &.si-active
+        display block
+        
+    .search-left
+      left 55%
+      .search-input
+        position absolute
+        right -100px
+        .input_search
+          width 12em
+        .icon-busqueda
+          right 11em
+          opacity .5
+  #contenido
+    .contenido        
+      &-button
+        background #FF8C00
+        border none
+        border-radius 40px
+        display none
+        height 40px
+        line-height 40px
+        outline 0
+        outline 0
+        position fixed
+        right 1em
+        top 4em
+        width 40px
+        z-index 3
+        &.is-active
+          display block
+    .detallesGenerales
+      width 100%
+      .info_Producto
+        display block
+        margin 1em
+        position relative
+        top 0
+        width 85%
+      .precio_Producto
+        margin 1em 0 1em .5em
+        width 90%
+    .especificaciones
+      position relative
+  footer
+    .footer-container
+      .logo-footer
+        position relative
+        display block
+      .footer-column
+        margin-left auto
+        margin-right auto
+        display block
+        .description
+          display block
+        &.contacts
+          display block
+          margin 0
+          .footer-contactList
+            margin 0 0 1em 0  
+@media screen and (min-width: 768px) and (max-width: 1024px)
+  nav
+    position relative
+    .avatar
+      right 3.5em
+      display none
+    .mainMenu
+      background #009688
+      border-radius 2%
+      left -205px
+      position fixed
+      top 4em
+      transition .3s
+      &.is-active
+        left 0
+      li
+        padding 0
+        display block
+        margin-bottom 1em
+        margin-right 1em
+        margin-top .5em
+        font-weight bold
+        a
+          border none
+          padding-right 0
+    .container_login
+      background lightblue
+      float right
+      padding 1em 2em      
+      right 0
+      text-align center
+      transition .3s
+      width 100%
+      top -6em
+      &.is-active
+        top 4.5em   
+      a
+        margin-bottom 1em
+        text-decoration none      
+      .ingresarUsuario
+        border 0
+        color white
+        display block
+        padding-right 0
+      .hacerIngresoUsuario
+        padding 0
+        color white
+    .icon-bars
+      color white
+      outline 0
+      position absolute
+      right 1em
+      top 1.2em
+      &:before
+        content "\e600"
+      &.is-active
+        top 4em
+      &.no-active
+        display none
+      &.si-active
+        display block
+    .search-left
+      right 11em
+      .search-input
+        position absolute
+        right -100px
+        .input_search
+          width 12em
+        .icon-busqueda
+          right 11em
+          opacity .5
+  footer
+    .footer-column
+      &.contacts
+        margin 0
+      &.description
+        margin 0    
+  #contenido
+    .contenido        
+      &-button
+        background #FF8C00
+        border none
+        border-radius 40px
+        display none
+        height 40px
+        line-height 40px
+        outline 0
+        position fixed
+        right 1em
+        top 3.6em
+        width 40px
+        z-index 3
+        &.is-active
+          display block
+    .detallesGenerales
+      width 40em
+    .especificaciones
+      display block
+      position relative

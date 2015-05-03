@@ -85,7 +85,10 @@
 	</section>
 	<footer ng-controller="FooterController as footerCrtl">
 		<div class="footer-container" ng-repeat="footer in footerCrtl.footers">
-			<div class="footer-column">
+			<figure class="logo-footer">
+				<img ng-src="../{{footer.urlLogo}}" width="230px">
+			</figure>
+			<div class="footer-column contacts">
 				<ul class="footer-contactList">
 					<li class="footer-contactInfo" ng-repeat="contact in footer.contacts">
 						<a href="../{{contact.url}}">
@@ -93,10 +96,7 @@
 						</a>
 					</li>							
 				</ul>
-			</div>
-			<figure class="logo-footer">
-				<img ng-src="../{{footer.urlLogo}}" width="230px">
-			</figure>
+			</div>			
 			<div class="footer-column author" ng-repeat="author in footer.authors">
 				<p class="footer-infoAuthor">
 					<strong>{{author.name}}</strong>

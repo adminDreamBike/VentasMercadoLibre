@@ -214,10 +214,363 @@ ul
 				opacity .4
 				z-index 1
 				&:before
-					content "\e607"
+					content "\e923"
 			.miembro
 				position absolute
 				bottom 1em
 				right 1em
+	.is-active
+	  display block
+	.icon-hideMenu
+	  &:before
+	    content "\e602"
+	.icon-shonMenu
+	  &:before
+	    content "\e603"
+@media screen and (max-width: 480px)
+	nav
+	  position relative
+	  .avatar
+	    display none
+	  .logo
+	    margin 0
+	  .mainMenu
+	    position fixed
+	    top 4em
+	    transition .3s
+	    background #009688
+	    left -205px
+	    border-radius 2%
+	    &.is-active
+	      left 0
+	    li
+	      padding 0
+	      display block
+	      margin-bottom 1em
+	      margin-right 1em
+	      margin-top .5em
+	      font-weight bold
+	      a
+	        border none
+	        padding-right 0
+	  .container_login
+	    background lightblue
+	    float right
+	    padding 1em 2em      
+	    right 0
+	    text-align center
+	    transition .3s
+	    width 100%
+	    top -6em
+	    &.is-active
+	      top 4.5em   
+	    a
+	      margin-bottom 1em
+	      text-decoration none      
+	    .ingresarUsuario
+	      border 0
+	      color white
+	      display block
+	      padding-right 0
+	    .hacerIngresoUsuario
+	      padding 0
+	      color white
+	  .icon-bars
+	    color white
+	    outline 0
+	    position absolute
+	    right 1em
+	    top 1.2em
+	    &:before
+	      content "\e600"
+	    &.is-active
+	      top 4em
+	    &.no-active
+	      display none
+	    &.si-active
+	      display block
+	  .search-left
+	    left 55%
+	    .search-input
+	      position absolute
+	      right -100px
+	      .input_search
+	        width 9em
+	        height 1.8em
+	      .icon-busqueda
+	        right 10.5em
+	.registro
+		.contenido        
+		  &-button
+		    background #FF8C00
+		    border none
+		    border-radius 40px
+		    display none
+		    height 40px
+		    line-height 40px
+		    outline 0
+		    outline 0
+		    position fixed
+		    right 1em
+		    top 4em
+		    width 40px
+		    z-index 3
+		    &.is-active
+		      display block
+		#registrarUsuario
+			margin 0
+			width 100%
+			.datosPersonales
+				width 0
+				left 0
+				.legend
+					width 0
+				.container
+					.input
+						width 17em 
+			.datosUsuario
+				height auto
+				position relative
+				right 0
+				padding-bottom 2em
+				.container
+					.input
+						width 17em
+				.inputRegistrar
+					bottom 0
+					display block
+					left 30%
+					margin-bottom 2em
+					position relative
+				.miembro
+					bottom 0
+					left 20%
+					position relative
+				.icon-registrar
+					position relative
+				.botonRegistrar
+					.icon-registrar
+						left 32%
+						bottom -2em
 				
-			
+	footer
+	  .footer-container
+	    .footer-column
+	      margin 0
+	      &.contacts
+	        margin-top 6em
+/* ========================================= */
+/* ! All smartphone specific CSS goes here   */
+/* ========================================= */
+@media handheld, only screen and (max-width: 767px)	
+  	nav
+	    position relative
+	    .avatar
+	      right 3.5em
+	      display none
+	    .logo
+	      margin 0
+	    .mainMenu
+	      position fixed
+	      top 4em
+	      transition .3s
+	      background #009688
+	      left -205px
+	      border-radius 2%
+	      &.is-active
+	        left 0
+	      li
+	        padding 0
+	        display block
+	        margin-bottom 1em
+	        margin-right 1em
+	        margin-top .5em
+	        font-weight bold
+	        a
+	          border none
+	          padding-right 0
+	    .container_login
+	      background lightblue
+	      float right
+	      padding 1em 2em      
+	      right 0
+	      text-align center
+	      transition .3s
+	      width 100%
+	      top -6em
+	      &.is-active
+	        top 4.5em   
+	      a
+	        margin-bottom 1em
+	        text-decoration none      
+	      .ingresarUsuario
+	        border 0
+	        color white
+	        display block
+	        padding-right 0
+	      .hacerIngresoUsuario
+	        padding 0
+	        color white
+	    .icon-bars
+	      color white
+	      outline 0
+	      position absolute
+	      right 1em
+	      top 1.2em
+	      &:before
+	        content "\e600"
+	      &.is-active
+	        top 4em
+	      &.no-active
+	        display none
+	      &.si-active
+	        display block
+	        
+	    .search-left
+	      left 55%
+	      .search-input
+	        position absolute
+	        right -100px
+	        .input_search
+	        	width 9em
+	        	height 1.8em	        		        
+	        .icon-busqueda
+	          right 10.5em
+	          opacity .5
+		.registro
+			.contenido        
+			  &-button
+			    background #FF8C00
+			    border none
+			    border-radius 40px
+			    display none
+			    height 40px
+			    line-height 40px
+			    outline 0
+			    outline 0
+			    position fixed
+			    right 1em
+			    top 4em
+			    width 40px
+			    z-index 3
+			    &.is-active
+			      display block
+			#registrarUsuario
+				.datosPersonales
+					left 0
+				.datosUsuario
+					position relative
+					display block
+					right 0
+					height auto
+					.botonRegistrar
+						.inputRegistrar
+							position relative
+							bottom 0
+							right 0
+						.miembro
+							display block
+							position relative
+							bottom 0
+							margin 1em 1em
+					.icon-registrar
+						right 0
+						left 1.5em
+						bottom 4.5em    
+	footer
+	  .footer-container
+	    .logo-footer
+	      position relative
+	      display block
+	    .footer-column
+	      margin-left auto
+	      margin-right auto
+	      display block
+	      .description
+	        display block
+	      &.contacts
+	        display block
+	        margin 0
+	        .footer-contactList
+	          margin 0 0 1em 0
+@media screen and (min-width: 768px) and (max-width: 1024px)
+	nav
+	  position relative
+	  .avatar
+	    right 3.5em
+	    display none
+	  .mainMenu
+	    background red
+	    position fixed
+	    top 4em
+	    transition .3s
+	    background #009688
+	    left -205px
+	    border-radius 2%
+	    &.is-active
+	      left 0
+	    li
+	      padding 0
+	      display block
+	      margin-bottom 1em
+	      margin-right 1em
+	      margin-top .5em
+	      font-weight bold
+	      a
+	        border none
+	        padding-right 0
+	  .container_login
+	    background lightblue
+	    float right
+	    padding 1em 2em      
+	    right 0
+	    text-align center
+	    transition .3s
+	    width 100%
+	    top -6em
+	    &.is-active
+	      top 4.5em
+	    a
+	      margin-bottom 1em
+	      text-decoration none      
+	  .icon-bars
+	    color white
+	    outline 0
+	    position absolute
+	    right 1em
+	    top 1.2em
+	    &:before
+	      content "\e600"
+	    &.is-active
+	      top 4em
+	    &.no-active
+	      display none
+	    &.si-active
+	      display block      
+	  .search-left
+	      left 55%
+	      right 10em
+	      .search-input
+	        position absolute
+	        right -100px
+	        .input_search
+	          width 20em
+	        .icon-busqueda
+	          right 21.5em
+	          opacity .5     
+	footer
+	  .footer-container
+	    .logo-footer
+	      position relative
+	      display block
+	    .footer-column
+	      margin-left auto
+	      margin-right auto
+	      display block
+	      .description
+	        display block
+	      &.contacts
+	        display block
+	        margin 0
+	        .footer-contactList
+	          margin 0 0 1em 0	
